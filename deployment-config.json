@@ -1,0 +1,9 @@
+{
+    "type": "sftp",
+    "host": "67.225.176.57",
+    "username": "eddymusic",
+    "password": "Mus1c4666?",
+    "port": 22222,
+    "remotePath": "/home/eddymusic/public_html/",
+    "uploadOnSave": true
+}

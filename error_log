@@ -1,0 +1,31 @@
+[27-Apr-2019 12:34:46 America/Bogota] PHP Parse error:  syntax error, unexpected '$r' (T_VARIABLE) in /home/eddymusic/public_html/application/controllers/Admin_ajax.php on line 575
+[27-Apr-2019 12:34:46 America/Bogota] PHP Parse error:  syntax error, unexpected '$r' (T_VARIABLE) in /home/eddymusic/public_html/application/controllers/Admin_ajax.php on line 575
+[27-Apr-2019 12:34:46 America/Bogota] PHP Parse error:  syntax error, unexpected '$r' (T_VARIABLE) in /home/eddymusic/public_html/application/controllers/Admin_ajax.php on line 575
+[27-Apr-2019 12:34:46 America/Bogota] PHP Parse error:  syntax error, unexpected '$r' (T_VARIABLE) in /home/eddymusic/public_html/application/controllers/Admin_ajax.php on line 575
+[27-Apr-2019 12:37:15 America/Bogota] PHP Fatal error:  Unsupported operand types in /home/eddymusic/public_html/application/controllers/Admin_ajax.php on line 574
+[27-Apr-2019 12:41:05 America/Bogota] PHP Fatal error:  Unsupported operand types in /home/eddymusic/public_html/application/controllers/Admin_ajax.php on line 574
+[27-Apr-2019 12:50:39 America/Bogota] PHP Fatal error:  Unsupported operand types in /home/eddymusic/public_html/application/models/MainModel.php on line 46
+[27-Apr-2019 18:48:43 America/Bogota] PHP Fatal error:  Call to undefined function num_rows() in /home/eddymusic/public_html/application/controllers/Admin_ajax.php on line 777
+[27-Apr-2019 19:19:03 America/Bogota] PHP Fatal error:  Cannot use object of type stdClass as array in /home/eddymusic/public_html/application/models/MainModel.php on line 46
+[27-Apr-2019 19:19:29 America/Bogota] PHP Fatal error:  Cannot use object of type stdClass as array in /home/eddymusic/public_html/application/models/MainModel.php on line 46
+[27-Apr-2019 21:22:07 America/Bogota] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR), expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in /home/eddymusic/public_html/application/models/MainModel.php on line 38
+[27-Apr-2019 21:22:14 America/Bogota] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR), expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in /home/eddymusic/public_html/application/models/MainModel.php on line 38
+[27-Apr-2019 21:22:17 America/Bogota] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR), expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in /home/eddymusic/public_html/application/models/MainModel.php on line 38
+[27-Apr-2019 21:22:24 America/Bogota] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR), expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in /home/eddymusic/public_html/application/models/MainModel.php on line 38
+[27-Apr-2019 21:25:51 America/Bogota] PHP Parse error:  syntax error, unexpected 'where' (T_STRING) in /home/eddymusic/public_html/application/models/MainModel.php on line 38
+[27-Apr-2019 21:29:55 America/Bogota] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR), expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in /home/eddymusic/public_html/application/models/MainModel.php on line 38
+[27-Apr-2019 21:33:32 America/Bogota] PHP Parse error:  syntax error, unexpected '0' (T_LNUMBER) in /home/eddymusic/public_html/application/models/MainModel.php on line 38
+[03-May-2019 18:50:48 America/Bogota] PHP Parse error:  syntax error, unexpected end of file, expecting variable (T_VARIABLE) in /home/eddymusic/public_html/application/controllers/Admin_ajax.php on line 444
+[03-May-2019 19:50:10 America/Bogota] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home/eddymusic/public_html/application/controllers/Admin_ajax.php on line 146
+[03-May-2019 19:50:10 America/Bogota] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home/eddymusic/public_html/application/controllers/Admin_ajax.php on line 146
+[03-May-2019 19:50:10 America/Bogota] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home/eddymusic/public_html/application/controllers/Admin_ajax.php on line 146
+[03-May-2019 19:50:20 America/Bogota] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home/eddymusic/public_html/application/controllers/Admin_ajax.php on line 146
+[03-May-2019 19:50:20 America/Bogota] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home/eddymusic/public_html/application/controllers/Admin_ajax.php on line 146
+[03-May-2019 19:50:26 America/Bogota] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home/eddymusic/public_html/application/controllers/Admin_ajax.php on line 146
+[03-May-2019 19:50:27 America/Bogota] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home/eddymusic/public_html/application/controllers/Admin_ajax.php on line 146
+[03-May-2019 19:50:27 America/Bogota] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home/eddymusic/public_html/application/controllers/Admin_ajax.php on line 146
+[03-May-2019 19:50:27 America/Bogota] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home/eddymusic/public_html/application/controllers/Admin_ajax.php on line 146
+[04-May-2019 16:17:17 America/Bogota] PHP Parse error:  syntax error, unexpected 'where' (T_STRING) in /home/eddymusic/public_html/application/controllers/Admin_ajax.php on line 789
+[04-May-2019 16:17:17 America/Bogota] PHP Parse error:  syntax error, unexpected 'where' (T_STRING) in /home/eddymusic/public_html/application/controllers/Admin_ajax.php on line 789
+[04-May-2019 16:17:17 America/Bogota] PHP Parse error:  syntax error, unexpected 'where' (T_STRING) in /home/eddymusic/public_html/application/controllers/Admin_ajax.php on line 789
+[04-May-2019 16:17:17 America/Bogota] PHP Parse error:  syntax error, unexpected 'where' (T_STRING) in /home/eddymusic/public_html/application/controllers/Admin_ajax.php on line 789
