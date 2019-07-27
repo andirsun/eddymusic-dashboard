@@ -99,6 +99,11 @@ class Admin_ajax extends CI_Controller {
 		echo json_encode($r);
 	}
 	public function reasignClassUser(){
+		// SE DEBEN HACER LAS MISMAS MODIFICACIONES ACA QUE EN EL RET SERVER PARA LAS APIS DE LA APLICACION/////////
+		////////////////////////////////////////////////////////////
+		/////////////////////////////////////////////////////////
+		////////////////////////////////////
+		///////////////////////////
 		$idUser = $this->input->get('idUser');
 		$nHours = $this->input->get('nHours');
 		$dateStart = $this->input->get('dateStart');
@@ -106,13 +111,19 @@ class Admin_ajax extends CI_Controller {
 		$idInstrument = $this->input->get('idInstrument');
 		$nDay = $this->input->get('nDay');
 		$instrument = $this->db->where('id',$idInstrument)->get('instrumentos')->result()[0];
-		//echo '<pre>';
-		//	var_dump($_GET);
-		 //echo '</pre>';
-		$checkClassHead = $this->db->where('dateStart',$dateStart)->where('idInstrument',$idInstrument)->where('nDay',$nDay)->where('time',$time)->get('clasesHead');//esta comprobacoio no la esta haciendo
+		/*echo '<pre>';
+			var_dump($dateStart);
+			var_dump($idInstrument);
+			var_dump($time);
+			
+		echo '</pre>';*/
+		$checkClassHead = $this->db/*->where('dateStart',$dateStart)*/->where('idInstrument',$idInstrument)->where('nDay',$nDay)->where('time',$time)->get('clasesHead');//esta comprobacoio no la esta haciendo, quite la comprobacion del date start para que reconozca el idclashead que se ve regularmente todas las semanas
 		
 		if($checkClassHead->num_rows()==0){
-		
+			/*echo '<pre>';
+				echo 'no encontro ninguna class head';
+				var_dump($checkClassHead->result());
+			echo '</pre>';*/
 			$idInstrument = $this->input->get('idInstrument');
 			$nHours = 1;
 			$date = $this->input->get('date');
@@ -132,7 +143,8 @@ class Admin_ajax extends CI_Controller {
 		}
 		$hoursRest = $this->mainModel->horasRestantesEstudiante($idUser,$idInstrument);
 		$checkClass = $this->db->select('id')->where('idStudent',$idUser)->where('idClassHead',$idClassHead)->get('relStudentClassHead');// mira si el estudiante esta en esa clase
-		$nAlumns = $this->db->select('COUNT(id) AS n')->where('idClassHead',$idClassHead)->get('relStudentClassHead')->result()[0]->n;
+		$nAlumns = $this->db->select('COUNT(id) AS n')->where('idClassHead',$idClassHead)->where('type',0)->get('relStudentClassHead')->result()[0]->n;//el tipo tiene que ser 0 por que los cupos que valen son los de estudiante regular
+
 		if($checkClass->num_rows()==0){
 			$classHead = $this->db->where('id',$idClassHead)->get('clasesHead');
 			if($classHead->num_rows()>0){
@@ -148,6 +160,11 @@ class Admin_ajax extends CI_Controller {
 								'nDay' => $this->input->get('nDay'),
 								'type' => 2
 							);
+							/*cho '<pre>';
+								echo 'AL estudiante voy a meterlo en la clase';
+								var_dump($idClassHead);
+								var_dump($a);
+							echo '</pre>';*/
 							$this->db->insert('relStudentClassHead',$a);
 							$id = $this->db->insert_id();
 							// $sql = $this->db->where('id',$id)->get('clases');

@@ -260,7 +260,7 @@ class Restserver extends REST_Controller {
 		//echo '<pre>';
 		//	var_dump($_GET);
 		 //echo '</pre>';
-		$checkClassHead = $this->db->where('dateStart ',$dateStart)->where('idInstrument',$idInstrument)->where('nDay',$nDay)->where('time',$time)->get('clasesHead');
+		$checkClassHead = $this->db/*->where('dateStart ',$dateStart)*/->where('idInstrument',$idInstrument)->where('nDay',$nDay)->where('time',$time)->get('clasesHead');
 		
 		if($checkClassHead->num_rows()==0){
 		
@@ -283,7 +283,7 @@ class Restserver extends REST_Controller {
 		}
 		$hoursRest = $this->mainModel->horasRestantesEstudiante($idUser,$idInstrument);
 		$checkClass = $this->db->select('id')->where('idStudent',$idUser)->where('idClassHead',$idClassHead)->get('relStudentClassHead');// mira si el estudiante esta en esa clase
-		$nAlumns = $this->db->select('COUNT(id) AS n')->where('idClassHead',$idClassHead)->get('relStudentClassHead')->result()[0]->n;
+		$nAlumns = $this->db->select('COUNT(id) AS n')->where('type',0)->where('idClassHead',$idClassHead)->get('relStudentClassHead')->result()[0]->n;
 		if($checkClass->num_rows()==0){
 			$classHead = $this->db->where('id',$idClassHead)->get('clasesHead');
 			if($classHead->num_rows()>0){
