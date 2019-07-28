@@ -39,7 +39,7 @@
               <input id="contraseña1" name="pass" type="password" class="form-control" placeholder="Constraseña" required="required">
             </div>
             <div class="form-group">
-              <button type="submit" class="btn btn-block ml-auto login_btn">Login</button>
+              <button type="submit" class="btn btn-block ml-auto login_btn">Iniciar</button>
             </div>
             <div class="alert alert-danger py-2" style="display: none;" id="msg-login">
             	<h4 class="m-0 text-center" id="txt-login-msg"></h4>
