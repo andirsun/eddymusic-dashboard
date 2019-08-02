@@ -142,7 +142,7 @@ class Admin_ajax extends CI_Controller {
 
 		}
 		$hoursRest = $this->mainModel->horasRestantesEstudiante($idUser,$idInstrument);
-		$checkClass = $this->db->select('id')->where('idStudent',$idUser)->where('idClassHead',$idClassHead)->get('relStudentClassHead');// mira si el estudiante esta en esa clase
+		$checkClass = $this->db->select('id')->where('idStudent',$idUser)->where('idClassHead',$idClassHead)->where('dateStart',$time)->get('relStudentClassHead');// mira si el estudiante esta en esa clase
 		$nAlumns = $this->db->select('COUNT(id) AS n')->where('idClassHead',$idClassHead)->where('type',0)->get('relStudentClassHead')->result()[0]->n;//el tipo tiene que ser 0 por que los cupos que valen son los de estudiante regular
 
 		if($checkClass->num_rows()==0){
