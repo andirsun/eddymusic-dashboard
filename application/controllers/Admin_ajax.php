@@ -44,7 +44,7 @@ class Admin_ajax extends CI_Controller {
 		$instrument = $this->db->where('id',$this->input->get('idInstrument'))->get('instrumentos')->result()[0];
 		$hoursRest = $this->mainModel->horasRestantesEstudiante($idUser,$idInstrument);
 		$checkClass = $this->db->select('id')->where('idStudent',$idUser)->where('idClassHead',$idClassHead)->where('type<',2)->get('relStudentClassHead');
-		$nAlumns = $this->db->select('COUNT(id) AS n')->where('idClassHead',$idClassHead)->where('type<',2)->get('relStudentClassHead')->result()[0]->n;
+		$nAlumns = $this->db->select('COUNT(id) AS n')->where('idClassHead',$idClassHead)->where('type',0)->get('relStudentClassHead')->result()[0]->n; //aqui solo voy a contar los que esten regularmente 
 		if($checkClass->num_rows()==0){
 			$classHead = $this->db->where('id',$idClassHead)->get('clasesHead');
 			if($classHead->num_rows()>0){
@@ -817,7 +817,7 @@ class Admin_ajax extends CI_Controller {
 			// echo '</pre>';
 			$c->idStudent = $idStudent;
 			//No borrar ni por el putas, info requerida en el front
-			$nAlumns = $this->db->select('COUNT(id) AS n')->where('status',0)->where('type<',2)->where('idClassHead',$c->id)->get('relStudentClassHead')->result()[0]->n;
+			$nAlumns = $this->db->select('COUNT(id) AS n')->where('status',0)->where('type',0)->where('idClassHead',$c->id)->get('relStudentClassHead')->result()[0]->n; //aqui cuento cuantos estudiantes hay matriculados con 0 o 1
 			$data[] = array('dataClass'=>$c,'studentsInscribed'=>$nAlumns);
 		}
 		//echo '<pre>';
