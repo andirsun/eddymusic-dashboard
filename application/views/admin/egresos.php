@@ -143,6 +143,10 @@
                         <option value="Nomina">Nomina</option>
                         <option value="Viaticos">Viaticos</option>
                         <option value="Gastos Financieros">Gastos Financieros</option>
+                        <option value="Cafeteria">Cafeteria</option>
+                        <option value="Restaurante">Restaurante</option>
+                        <option value="Publicidad">Publicidad</option>
+                        <option value="Elementos Aseo">Elementos de Aseo</option>
                         <option value="Otros">Otros</option>
                         
                     </select>
@@ -197,6 +201,10 @@
                         <option value="Nomina">Nomina</option>
                         <option value="Viaticos">Viaticos</option>
                         <option value="Gastos Financieros">Gastos Financieros</option>
+                        <option value="Cafeteria">Cafeteria</option>
+                        <option value="Restaurante">Restaurante</option>
+                        <option value="Publicidad">Publicidad</option>
+                        <option value="Elementos Aseo">Elementos de Aseo</option>
                         <option value="Otros">Otros</option>
                         
                     </select>
