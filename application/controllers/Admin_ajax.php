@@ -43,7 +43,7 @@ class Admin_ajax extends CI_Controller {
 		$idInstrument = $this->input->get('idInstrument');
 		$instrument = $this->db->where('id',$this->input->get('idInstrument'))->get('instrumentos')->result()[0];
 		$hoursRest = $this->mainModel->horasRestantesEstudiante($idUser,$idInstrument);
-		$checkClass = $this->db->select('id')->where('idStudent',$idUser)->where('idClassHead',$idClassHead)->where('type<',2)->get('relStudentClassHead');
+		$checkClass = $this->db->select('id')->where('idStudent',$idUser)->where('idClassHead',$idClassHead)->where('type',0)->get('relStudentClassHead');
 		$nAlumns = $this->db->select('COUNT(id) AS n')->where('idClassHead',$idClassHead)->where('type',0)->get('relStudentClassHead')->result()[0]->n; //aqui solo voy a contar los que esten regularmente 
 		if($checkClass->num_rows()==0){
 			$classHead = $this->db->where('id',$idClassHead)->get('clasesHead');
