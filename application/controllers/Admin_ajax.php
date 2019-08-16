@@ -810,7 +810,7 @@ class Admin_ajax extends CI_Controller {
 		$instrument = $this->db->where('id',$this->input->get('idInstrument'))->get('instrumentos')->result()[0]->name; //Asi Saco el nombre del instrumento
 		$data = array();
 		foreach ($sql->result() as $key => $c) {
-			$idStudent = $this->db->where('idStudent',$this->input->get('idUser'))->where('status',0)->where('type<',2)->where('idClassHead',$c->id)->get('relStudentClassHead')->num_rows() == 0 ? null : $this->input->get('idUser');
+			$idStudent = $this->db->where('idStudent',$this->input->get('idUser'))->where('status',0)->where('type<',1)->where('idClassHead',$c->id)->get('relStudentClassHead')->num_rows() == 0 ? null : $this->input->get('idUser');
 			//$this->db->where('idStudent',$this->input->get('idUser'))->where('idClassHead',$c->id)/*->join('clasesHead','clasesHead.id = relStudentClassHead.idClassHead')*/->get('relStudentClassHead')->num_rows() == 0 ? null : $this->input->get('idUser');
 			// echo '<pre>';
 			// 	var_dump($c->id);
