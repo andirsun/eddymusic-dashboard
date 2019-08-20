@@ -85,7 +85,8 @@
 	</div>
 
 	<footer>
-		 © Anderson Laverde - 2019 Copyright  - www.andersonlaverde.com
+		
+		 <a href="https://www.andersonlaverde.com"> © Anderson Laverde - 2019 Copyright</a>
 	</footer>
 	<?php require __DIR__.'/modal.php'; ?>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
