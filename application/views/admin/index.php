@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/styles.css?<? echo time_unix(); ?>">
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/main.css?<? echo time_unix(); ?>">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-	
+	 
 	
 	<link rel="icon" href="<?php echo base_url()?>assets/images/miniicono.png">
 </head>
@@ -83,6 +83,10 @@
       		</div>
     	</div>
 	</div>
+
+	<footer>
+		 © Anderson Laverde - 2019 Copyright  - www.andersonlaverde.com
+	</footer>
 	<?php require __DIR__.'/modal.php'; ?>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-143760552-1"></script>
