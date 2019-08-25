@@ -39,20 +39,22 @@ $(function() {
         }
     });
 
+    blockAllClases();
+    changeDateClassByStudent();
+    closeFormChangeDateClassByStudent();
     changeClassPrivate();
-    noNegative();
+    deleteClassHead();
+    formAddHeadClass();
     getClassInstruments();
     getSchedule();
     getClassInstruments();
-    openListClassAndLoadHandleClassInstruments();
-    formAddHeadClass();
     getListStudentClassByInstrument();
+    noNegative();
+    openListClassAndLoadHandleClassInstruments();
     nextOrPrevWeek();
     sendTeacher();
     selectStatusStudent();
-    changeDateClassByStudent();
-    closeFormChangeDateClassByStudent();
-    deleteClassHead();
+
 });
 
 function changeClassPrivate() {
@@ -105,6 +107,17 @@ function changeClassPrivate() {
             }
         });
     });
+}
+
+function blockAllClases() {
+    $("body").on('click', '#armor-plating', function(event) {
+        //esta funcion lo que hace es que cuando le doy en el boton grande del modal de bloquear clases le da un click al boton que bloquea cada clase y eso lo hace con todas
+        //las que esten a esa hora
+        var modalBody = $(this).parents(".modal-body");
+        var sons = $(modalBody).find(".armor-input").trigger("click");
+        //console.log(sons);
+    });
+
 }
 
 function changeDateClassByStudent() {
