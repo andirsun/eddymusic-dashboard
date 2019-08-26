@@ -156,6 +156,7 @@ class Admin_ajax extends CI_Controller {
 								'idStudent' => $idUser,
 								'idClassHead' => $idClassHead,
 								'dateStart' => $dateStart.' '.$this->input->get('time'),
+								'date'=> date('y-m-d H:i:s'),//para la fecha actual
 								'nHours' => $nHours,
 								'nDay' => $this->input->get('nDay'),
 								'type' => 2

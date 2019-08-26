@@ -10,26 +10,27 @@ var dataTableOptions = {
 		}
 	},
 };
-$(function(){ 
+$(function () {
 	getDirectory();
 	editarUsuario();
 	filterUsersDirectory();
 });
 
-function editarUsuario(){
-	$("body").on("click","#tablaDirectorio #editarUsuario",function(event){
-		idseleccion=$(this).attr("value");
-		
+function editarUsuario() {
+	$("body").on("click", "#tablaDirectorio #editarUsuario", function (event) {
+		idseleccion = $(this).attr("value");
+
 		console.log()
 		$.ajax({
-			url: base_url+'admin_ajax/getUserByIdDirectory',
+			url: base_url + 'admin_ajax/getUserByIdDirectory',
 			type: 'GET',
 			dataType: 'json',
-			data:{idseleccion:idseleccion},
-			beforeSend:function(){
+			data: {
+				idseleccion: idseleccion
 			},
-			success:function(r){	
-				if(r.response==2){
+			beforeSend: function () {},
+			success: function (r) {
+				if (r.response == 2) {
 					console.log(idseleccion);
 					$("#userNameEdit").val(r.content[0].nombre);
 					$("#acudienteEdit").val(r.content[0].acudiente);
@@ -37,32 +38,33 @@ function editarUsuario(){
 					$("#mainTelEdit").val(r.content[0].mainTel);
 					$("#optionalTelEdit").val(r.content[0].optionalTel);
 					$("#cumpleañosEdit").val(r.content[0].cumpleaños);
-					$("#correoEdit").val(r.content[0].correo);					
+					$("#correoEdit").val(r.content[0].correo);
 				}
-				
-				
+
+
 			},
-			error:function(xhr, status, msg){
+			error: function (xhr, status, msg) {
 				console.log(xhr.responseText);
 			}
 		});
-	});	
+	});
 }
-function getDirectory(){
+
+function getDirectory() {
 	$.ajax({
-		url: base_url+'admin_ajax/getUsersDirectory',
+		url: base_url + 'admin_ajax/getUsersDirectory',
 		type: 'GET',
 		dataType: 'json',
-		beforeSend:function(){
-	
+		beforeSend: function () {
+
 		},
-		success:function(r){
+		success: function (r) {
 			console.log(r);
-			if(r.response == 2) {			
+			if (r.response == 2) {
 				var table = $('#tablaDirectorio').find("tbody");
 				var str = '';
-				if(r.content.length) {
-					$.each(r.content,function(index, user){
+				if (r.content.length) {
+					$.each(r.content, function (index, user) {
 						var tr = $("#cloneTr").clone();
 						console.log(user.id);
 						$(tr).find("#id").text(user.id);
@@ -86,57 +88,59 @@ function getDirectory(){
 				$("#tablaDirectorio").DataTable(dataTableOptions);
 			}
 		},
-		error:function(xhr, status, msg){
+		error: function (xhr, status, msg) {
 			console.log(xhr.responseText);
 		}
 	});
 }
-function filterUsersDirectory(){
-	$("body").on("click","#buttonSearch",function(event){
+
+function filterUsersDirectory() {
+	$("body").on("click", "#buttonSearch", function (event) {
 		dato = $("#caja_busqueda").val();
 		campo = '';
-		filtro= $("#filterStudent option:selected").attr("value");
-		if(filtro == '0'){
-			campo='nombre';
-		}else{
-			if(filtro =='1'){
-				campo='mainTel';
+		filtro = $("#filterStudent option:selected").attr("value");
+		if (filtro == '0') {
+			campo = 'nombre';
+		} else {
+			if (filtro == '1') {
+				campo = 'mainTel';
 			}
 		}
 		console.log(campo);
 		$.ajax({
-			url: base_url+'admin_ajax/filterTableDirectory',
+			url: base_url + 'admin_ajax/filterTableDirectory',
 			type: 'GET',
 			dataType: 'json',
-			data:{dato:dato,campo:campo},
-			beforeSend:function(){
+			data: {
+				dato: dato,
+				campo: campo
 			},
-			success:function(r){
+			beforeSend: function () {},
+			success: function (r) {
 				var table = $('#tablaDirectorio').find("tbody");
 				var str = "";
-				if(r.response==2){
-					$.each(r.content,function(index, el){
-						str += 
-						'<tr>'+
-							'<th scope="row">'+el.idUser+'</th>'+
-							'<td>'+el.nombre+'</td>'+
-							'<td>'+el.acudiente+'</td>'+
-							'<td>'+el.address+'</td>'+
-							'<td>'+el.mainTel+'</td>'+
-							'<td>'+el.optionalTel+'</td>'+
-							'<td>'+el.cumpleaños+'</td>'+
-							'<td>'+el.correo+'</td>'+
-						'</tr>';
+				if (r.response == 2) {
+					$.each(r.content, function (index, el) {
+						str +=
+							'<tr>' +
+							'<th scope="row">' + el.idUser + '</th>' +
+							'<td>' + el.nombre + '</td>' +
+							'<td>' + el.acudiente + '</td>' +
+							'<td>' + el.address + '</td>' +
+							'<td>' + el.mainTel + '</td>' +
+							'<td>' + el.optionalTel + '</td>' +
+							'<td>' + el.cumpleaños + '</td>' +
+							'<td>' + el.correo + '</td>' +
+							'</tr>';
 					});
 					$(table).html(str);
-					
-				}
-				else{
+
+				} else {
 					getDirectory();
 					alert("Usuario no encontrado");
 				}
 			},
-			error:function(xhr, status, msg){
+			error: function (xhr, status, msg) {
 				console.log(xhr.responseText);
 			}
 		});

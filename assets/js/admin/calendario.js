@@ -3,8 +3,8 @@ $.ajax({
     url: base_url + 'admin_ajax/cumpleanos',
     type: 'GET',
     dataType: 'json',
-    beforeSend: function() {},
-    success: function(r) {
+    beforeSend: function () {},
+    success: function (r) {
         console.log("array con las fechas de cumpleaños", r);
         var calendarEl = document.getElementById('calendar');
 
@@ -26,7 +26,7 @@ $.ajax({
 
 
     },
-    error: function(xhr, status, msg) {
+    error: function (xhr, status, msg) {
         console.log(xhr.responseText);
     }
 });

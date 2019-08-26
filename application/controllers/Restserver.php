@@ -294,7 +294,8 @@ class Restserver extends REST_Controller {
 							$a = array(
 								'idStudent' => $idUser,
 								'idClassHead' => $idClassHead,
-								'dateStart' => $dateStart.' '.$this->input->get('time'),
+                                'dateStart' => $dateStart.' '.$this->input->get('time'),
+                                'date'=> date('y-m-d H:i:s'),//asi me agarra la fecha actual
 								'nHours' => $nHours,
 								'nDay' => $this->input->get('nDay'),
 								'type' => 2

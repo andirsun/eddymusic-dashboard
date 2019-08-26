@@ -15,7 +15,7 @@ var dataTableOptions = {
 	},
 };
 
-$(function() {
+$(function () {
 	getInstruments();
 	getUsers();
 	checkDoucument();
@@ -28,66 +28,72 @@ $(function() {
 	cancelEditUser();
 });
 
-function confirmarEliminar(){
-	$("body").on("click","#tablaEstudiantes #borrarUsuario",function(event){
-		idseleccion=$(this).attr("value");
-		if(confirm('Seguro Quieres Eliminar Al Estudiante??')){
+function confirmarEliminar() {
+	$("body").on("click", "#tablaEstudiantes #borrarUsuario", function (event) {
+		idseleccion = $(this).attr("value");
+		if (confirm('Seguro Quieres Eliminar Al Estudiante??')) {
 			$.ajax({
-				url: base_url+'admin_ajax/deleteUser',
+				url: base_url + 'admin_ajax/deleteUser',
 				type: 'GET',
 				dataType: 'json',
-				data:{id:idseleccion},
-				beforeSend:function(){
+				data: {
+					id: idseleccion
 				},
-				success:function(r){
-					if(r.response==2){
+				beforeSend: function () {},
+				success: function (r) {
+					if (r.response == 2) {
 						alert("Usuario Eliminado");
 					}
-					getUsers();//para volver a cargar la tabla
-					
+					getUsers(); //para volver a cargar la tabla
+
 				},
-				error:function(xhr, status, msg){
+				error: function (xhr, status, msg) {
 					console.log(xhr.responseText);
 				}
 			});
 		}
 	});
 }
-function changeType(){
-	$('[id="typeDocument"]').click(function(){
+
+function changeType() {
+	$('[id="typeDocument"]').click(function () {
 		$('[id="typeDocument"]').removeClass('active');
 		$(this).addClass('active');
 		var val = $(this).attr('data-type');
 		typeDocument = val;
 		$('input[name="type_document"]').val(val);
 	});
-} 
-function checkDoucument(){
-	$('body').on('change', 'input[name^="document"]', function(event) {
+}
+
+function checkDoucument() {
+	$('body').on('change', 'input[name^="document"]', function (event) {
 		var val = $(this).val();
-		var data = {doc:val, type: typeDocument};
+		var data = {
+			doc: val,
+			type: typeDocument
+		};
 		var loader = $('#loader');
 		// console.log('check document', data);
 		$.ajax({
-			url: base_url+'admin_ajax/checkDocument',
+			url: base_url + 'admin_ajax/checkDocument',
 			type: 'GET',
 			dataType: 'json',
 			data: data,
 			async: false,
-			beforeSend:function(){
+			beforeSend: function () {
 				$(loader).show();
 			},
-			success:function(r){
-				if(r.response==2){
+			success: function (r) {
+				if (r.response == 2) {
 					$(loader).html('<i class="fa fa-check text-success"></i>');
 					checkDocument_ = true;
-				}else{
+				} else {
 					checkDocument_ = false;
 					$(loader).html('<i class="fa fa-times text-danger"></i> <span class="d-block">Documento ya existe</span>');
 				}
 				console.log(r);
 			},
-			error:function(xhr, status, msg){
+			error: function (xhr, status, msg) {
 				console.log(xhr.responseText);
 			}
 		});
@@ -95,8 +101,9 @@ function checkDoucument(){
 	// $('input[name="document"]').change(function(event){
 	// });
 }
+
 function cancelEditUser() {
-	$("#cancel-edit").click(function(event) {
+	$("#cancel-edit").click(function (event) {
 		var btn = this;
 		var form = $(btn).closest('form');
 		$(form).find("#id").attr('value', 0);
@@ -106,25 +113,27 @@ function cancelEditUser() {
 		$(btn).fadeOut('fast');
 	});
 }
-function editarUsuario(){
-	$("body").on("click","#tablaEstudiantes #editarUsuario",function(event){
-		idseleccion=$(this).attr("value");
+
+function editarUsuario() {
+	$("body").on("click", "#tablaEstudiantes #editarUsuario", function (event) {
+		idseleccion = $(this).attr("value");
 		$.ajax({
-			url: base_url+'admin_ajax/getUserById',
+			url: base_url + 'admin_ajax/getUserById',
 			type: 'GET',
 			dataType: 'json',
-			data:{idseleccion:idseleccion},
-			beforeSend:function(){
+			data: {
+				idseleccion: idseleccion
 			},
-			success:function(r){	
+			beforeSend: function () {},
+			success: function (r) {
 				console.log(r);
-				if(r.response==2){
+				if (r.response == 2) {
 					// console.log(idseleccion);
 					$("#addUserForm #id").attr('value', r.content[0].id);
 					$("#addUserForm #level").attr('value', r.content[0].level);
 					$("#addUserForm #userName").val(r.content[0].name);
 					$("#addUserForm button[data-type]").removeClass('active');
-					$("#addUserForm button[data-type="+r.content[0].type_document+"]").addClass('active');
+					$("#addUserForm button[data-type=" + r.content[0].type_document + "]").addClass('active');
 					$("#addUserForm input[name=type_document]").attr('value', r.content[0].type_document);
 					$("#addUserForm #numIdentidicacion").val(r.content[0].document);
 					$("#addUserForm #idHuellero").val(r.content[0].idHuellero);
@@ -139,46 +148,46 @@ function editarUsuario(){
 					$("#addUserForm #cancel-edit").fadeIn('fast');
 					$("#addUserForm button[type=submit]").text('Editar estudiante');
 					$("#pills-home-tab").trigger('click');
-					checkDocument_ = true;			
+					checkDocument_ = true;
 				}
 			},
-			error:function(xhr, status, msg){
+			error: function (xhr, status, msg) {
 				console.log(xhr.responseText);
 			}
 		});
 	});
 }
-function getInstruments(){
+
+function getInstruments() {
 	$.ajax({
-		url: base_url+'admin_ajax/getInstruments',
+		url: base_url + 'admin_ajax/getInstruments',
 		type: 'GET',
 		dataType: 'json',
-		beforeSend:function(){
-		},
-		success:function(r){
+		beforeSend: function () {},
+		success: function (r) {
 			var select = $('select#instrument');
 			var str = '<option value="" selected>Seleccione...</option>';
-			if(r.response==2){
-				$.each(r.content,function(index, el){
-					str += '<option value="'+el.id+'">'+el.name+'</option>';
+			if (r.response == 2) {
+				$.each(r.content, function (index, el) {
+					str += '<option value="' + el.id + '">' + el.name + '</option>';
 				});
 				$(select).html(str);
 			}
 			// console.log(r);
 		},
-		error:function(xhr, status, msg){
+		error: function (xhr, status, msg) {
 			console.log(xhr.responseText);
 		}
 	});
 }
-function getUsers(){
+
+function getUsers() {
 	$.ajax({
-		url: base_url+'admin_ajax/getUsers',
+		url: base_url + 'admin_ajax/getUsers',
 		type: 'GET',
 		dataType: 'json',
-		beforeSend:function(){
-		},
-		success:function(r){
+		beforeSend: function () {},
+		success: function (r) {
 			// console.log('list users \n', r);
 			var tableBody = $('#tablaEstudiantes').find("tbody");
 			var str = buildTrUser(r.content);
@@ -186,53 +195,53 @@ function getUsers(){
 			table = $("#tablaEstudiantes").DataTable(dataTableOptions);
 			// console.log(table);
 		},
-		error:function(xhr, status, msg){
+		error: function (xhr, status, msg) {
 			console.log(xhr.responseText);
 		}
 	});
 }
+
 function sendUser() {
-	$('#addUserForm').submit(function(e){  
+	$('#addUserForm').submit(function (e) {
 		e.preventDefault();
 		var form = $(this);
 		var data = $(form).serialize();
 		var btn = $(form).find('button[type="submit"]');
 		var classMsg = '';
-		var textMsg  = '';
+		var textMsg = '';
 		// console.log(data);
-		if(checkDocument_){ //si se evalua como True
+		if (checkDocument_) { //si se evalua como True
 			$.ajax({
-				url: base_url+'admin_ajax/addUser',
+				url: base_url + 'admin_ajax/addUser',
 				type: 'GET',
 				dataType: 'json',
 				data: data,
-				beforeSend:function(){
+				beforeSend: function () {
 					$(btn).attr('disabled', true);
 					$(btn).html('<i class="fa fa-spin fa-spinner"></i>');
 				},
-				success:function(r){
+				success: function (r) {
 					// console.log('respuesta al ingresar un usuario', r);
-					if(r.response==2){
-						$(btn).html('AÑADIDO');		
-						setTimeout(function(){
-						}, 5000);
+					if (r.response == 2) {
+						$(btn).html('AÑADIDO');
+						setTimeout(function () {}, 5000);
 						var tableBody = $('#tablaEstudiantes').find("tbody");
 						var str = buildTrUser(r.content);
 						try {
 							// console.log(table);						
 							table.destroy();
-						} catch(e) {
+						} catch (e) {
 							// console.log(e);
 						}
 						// console.log(str);
 						var idUser = $(form).find("#id").attr('value');
 						classMsg = 'alert-success';
-						if(idUser == 0) {
+						if (idUser == 0) {
 							$(tableBody).append(str);
 							textMsg = 'Usuario agregado Correctamente';
 						} else {
 							// console.log($(tableBody).find('tr[data-id='+idUser+']'));
-							$(tableBody).find('tr[data-id='+idUser+']').replaceWith(str);
+							$(tableBody).find('tr[data-id=' + idUser + ']').replaceWith(str);
 							textMsg = 'Usuario actualizado Correctamente';
 						}
 						table = $("#tablaEstudiantes").DataTable(dataTableOptions);
@@ -241,12 +250,12 @@ function sendUser() {
 						classMsg = 'alert-danger';
 					}
 				},
-				error:function(xhr, status, msg){
+				error: function (xhr, status, msg) {
 					console.log(xhr.responseText);
 					classMsg = 'alert-danger';
 					textMsg = 'Ups!, ocurrio un error';
 				},
-				complete: function() {
+				complete: function () {
 					$(form)[0].reset();
 					$(form).find("#id").attr('value', 0);
 					$(form).find("#level").attr('value', 3);
@@ -257,52 +266,58 @@ function sendUser() {
 					var body = $("html, body");
 					$(form).find('#msg-add-user').addClass(classMsg);
 					$(form).find('#msg-add-user #text-add-form').text(textMsg);
-			    $(form).find('#msg-add-user').slideDown('fast', function() {
-						body.stop().animate({scrollTop: $(form).find('#msg-add-user').offset().top }, 500, 'swing', function() { 
-					  	setTimeout(function() {
-					  		$(form).find('#msg-add-user').slideUp('fast', function() {
-					  			$(form).find('#msg-add-user').removeClass(classMsg);
-					  		});
-					  	}, 1800);
-					  });
+					$(form).find('#msg-add-user').slideDown('fast', function () {
+						body.stop().animate({
+							scrollTop: $(form).find('#msg-add-user').offset().top
+						}, 500, 'swing', function () {
+							setTimeout(function () {
+								$(form).find('#msg-add-user').slideUp('fast', function () {
+									$(form).find('#msg-add-user').removeClass(classMsg);
+								});
+							}, 1800);
+						});
 					});
 				}
 			});
-		}else{
+		} else {
 			alert('Documento invalido');
 		}
 	});
 }
-function handleClasesUser(){
-	$('body').on('click','[id="handleClases"]',function(){
+
+function handleClasesUser() {
+	$('body').on('click', '[id="handleClases"]', function () {
 		var btn = $(this);
 		var idUser = $(this).attr('value');
-		var data = {idUser:idUser}
+		var data = {
+			idUser: idUser
+		}
 		$.ajax({
-			url: base_url+'admin_ajax/formClassUser',
+			url: base_url + 'admin_ajax/formClassUser',
 			type: 'GET',
 			dataType: 'HTML',
 			data: data,
-			beforeSend:function(){
+			beforeSend: function () {
 				$(btn).html('<i class="fa fa-spin fa-spinner"></i>');
 			},
-			success:function(r){
+			success: function (r) {
 				$(btn).html('<i class="fas fa-calendar"></i>');
-				loadModal('Adminitrador de Clases', r,'Cerrar');
+				loadModal('Adminitrador de Clases', r, 'Cerrar');
 				console.log(r);
 			},
-			error:function(xhr, status, msg){
+			error: function (xhr, status, msg) {
 				console.log(xhr.responseText);
 			}
 		});
 	})
 }
+
 function buildTrUser(listUser) {
 	var str = '';
-	$.each(listUser,function(index, el){
+	$.each(listUser, function (index, el) {
 		var tr = $(trClone).clone();
 		var birthday = '--';
-		if(el.birthday != "0000-00-00" && el.birthday != null) {
+		if (el.birthday != "0000-00-00" && el.birthday != null) {
 			birthday = el.birthday;
 		}
 		$(tr).removeAttr('id');
@@ -316,14 +331,15 @@ function buildTrUser(listUser) {
 		$(tr).find('#observaciones').text(el.observaciones);
 		$(tr).find('#editarUsuario').attr('value', el.id);
 		$(tr).find('#borrarUsuario').attr('value', el.id);
-		$(tr).find("#usuarioCalendario").attr('href', base_url+'admin/nav/clasesStudent/'+el.id);
+		$(tr).find("#usuarioCalendario").attr('href', base_url + 'admin/nav/clasesStudent/' + el.id);
 		$(tr).find("#usuarioCalendario").attr('value', el.id);
 		str += $(tr).prop('outerHTML');
 	});
 	return str;
 }
+
 function selectTypeDocumentToEdit() {
-	$("#btnGroupType button").click(function(event) {
+	$("#btnGroupType button").click(function (event) {
 		// console.log($(this).closest('#btnGroupType button'));
 		$("#btnGroupType").find("button").removeClass('active');
 		$(this).addClass('active');
