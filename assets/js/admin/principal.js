@@ -1,5 +1,13 @@
 var userLevel;
 var sucursalActive;
+function change(name){
+	var objeto = "#"+name;
+	$(objeto).addClass("shadow  mb-1 ml-4 mr-4 bg-white rounded");
+}
+function unchange(name){
+	var objeto = "#"+name;
+	$(objeto).removeClass("shadow  mb-1 ml-4 mr-4 bg-white rounded");
+}
 $(function () {
 	console.log(666);
 	//setNombreStudent();
