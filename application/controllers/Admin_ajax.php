@@ -16,7 +16,6 @@ class Admin_ajax extends CI_Controller {
 		$this->load->view('admin/index',$this->data);
 		//
 	}
-	
 	public function nameStudent(){
 		$idUser = $this->input->get('id');
 		$sql = $this->db->select('name')->where('id',$idUser)->get('users')->result()[0];
@@ -29,7 +28,6 @@ class Admin_ajax extends CI_Controller {
 		$b['response'] = 2;
 		echo json_encode($b);
 	}
-
 	public function nameSucursal(){
 		$b['content'] = $_SESSION['sucursal'];
 		$b['response'] = 2;
@@ -802,7 +800,6 @@ class Admin_ajax extends CI_Controller {
 		$r['response']=$data;
 		echo json_encode($r);
 	}
-	
 	public function getClassAvailableStudent(){
 		$sql = $this->db->where('idInstrument',$this->input->get('idInstrument'))->where('idSucursal',$_SESSION['sucursal'])->order_by('nDay asc, time asc')->get('clasesHead');//Obtiene las Cabeceras de clase (Esta bien hecha la consulta)
 		/*echo '<pre>';
@@ -1064,6 +1061,13 @@ class Admin_ajax extends CI_Controller {
 		$r['response'] = 2;
 		$r['content'] = $sql->result();
 		echo json_encode($r);
+	}
+	public function getReprogramaciones(){
+		$firstday = date('l - d/m/Y', strtotime("sunday -1 week")); 
+		$date = time(); // Change to whatever date you need
+		$dotw = $dotw = date('w', $date);
+		$start = ($dotw == 6 /* Saturday */) ? $date : strtotime('last Saturday', $date);
+		$end = ($dotw == 5 /* Friday */) ? $date : strtotime('next Friday', $date);
 	}
 	public function historyClassStudent(){ //sirve para buscar el historial de clases de un estudiante por istrumento 
 		$f1 = $this->input->get('dateFrom');
