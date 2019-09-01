@@ -440,6 +440,20 @@ class Admin_ajax extends CI_Controller {
 		//}
 			echo json_encode($r);
 	}
+	public function setRevisarCancelacion(){
+		$id = $this->input->get('id');
+		
+		$this->db->set('status',1)->where('id',$id)->update('relStudentClassHead');
+		$b['response'] = 2;
+		echo json_encode($b);
+	}
+	public function setRevertirRevisionCancelacion(){
+		$id = $this->input->get('id');
+		
+		$this->db->set('status',0)->where('id',$id)->update('relStudentClassHead');
+		$b['response'] = 2;
+		echo json_encode($b);
+	}
 	public function addUser(){
 		// echo '<pre>';
 		// 	var_dump($_GET);
@@ -1064,6 +1078,7 @@ class Admin_ajax extends CI_Controller {
 		$r['content'] = $sql->result();
 		echo json_encode($r);
 	}
+
 	public function getCancelaciones(){
 		/*Esta funcion me permite obtener las clases que han sido reprogramadas en la ultima semana*/ 
 		$day = date('w');

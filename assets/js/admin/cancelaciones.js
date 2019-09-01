@@ -1,6 +1,7 @@
 $(function(){
    loadData();
    revisarRegistro();
+   deshacerRegistro();
    
    
 });
@@ -12,7 +13,6 @@ function loadData(){
 		type: 'GET',
 		dataType: 'json',
 		beforeSend: function () {
-         //$("#tableCancelations").dataTable().fnDestroy();
 		},
 		success: function (r) {
          if (r.response == 2) {
@@ -32,16 +32,68 @@ function loadData(){
 	}); 
 }
 
-function revisarRegistro(id){
+function revisarRegistro(){
    $("body").on("click","#tableCancelations input",function(event){
       $(this).attr('disabled',true);
       var objeto = $(this).closest('td').find('label').html("Revisado <i style='color:green;' class='fas fa-check-circle'></i>");
       var id = $(this).attr("id");
       console.log(id);
+      $.ajax({
+         url: base_url + 'admin_ajax/setRevisarCancelacion',
+         type: 'GET',
+         dataType: 'json',
+         data:{id:id},
+         beforeSend: function () {
+      
+         },
+         success: function (r) {
+            if (r.response == 2) {
+              console.log("estado cambiado correctamente");
+            }else{
+               alert("Ups algo malo paso, reporta el error y recarga la pagina ");
+            }
+            
+         },
+         error: function (xhr, status, msg) {
+            console.log(xhr.responseText);
+         }
+      }); 
       
    });
 }
 
+function deshacerRegistro(){
+   $("body").on("click","#tableCancelations span",function(event){
+      $(this).closest('td').find('label').html("No revisado <i style='color:red;' class='fas fa-times-circle'></i>");
+      //$(this).closest('td').find('input').attr("disabled",false)
+      $(this).closest('td').find('input').trigger("click");
+      var id = $(this).attr("id");
+      
+      
+      $.ajax({
+         url: base_url + 'admin_ajax/setRevertirRevisionCancelacion',
+         type: 'GET',
+         dataType: 'json',
+         data:{id:id},
+         beforeSend: function () {
+      
+         },
+         success: function (r) {
+            if (r.response == 2) {
+              console.log("estado desactivado correctamente");
+            }else{
+               alert("Ups algo malo paso, reporta el error y recarga la pagina ");
+            }
+            location.reload();
+         },
+         error: function (xhr, status, msg) {
+            console.log(xhr.responseText);
+         }
+      }); 
+      
+      
+   });
+}
 function buildTable(data){
    //this function complete and build the table cancelaciones with de data of the query
    var str = '';

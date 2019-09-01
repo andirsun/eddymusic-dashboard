@@ -8,7 +8,7 @@
                         <th>Fecha/hora</th>
                         <th>Estudiante</th>
                         <th>Instrumento</th>
-                        <th>Fecha Reprogramacion</th>
+                        <th>Clase Agendada</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -22,12 +22,16 @@
                             <div class="custom-control custom-switch">
                                 <input value="" type="checkbox" class="custom-control-input" id="customSwitch1">
                                     <label id="estado" class="custom-control-label" for="customSwitch1"></label>
+                                    <?php if ($level==0 || $level==4): ?>
+                                        <span id="revertir"><i class="fas fa-history"></i></span>
+                                    <?php endif ?>
                             </div>
+                            <!--
                             <?php if ($level==0 || $level==4): ?>
                                 <button type="button" id="revertir" class="btn btn-danger btn-sm" value=''>
                                     <i class="fas fa-history"></i>
                                 </button>
-                            <?php endif ?>
+                            <?php endif ?>-->
                         </td>
                     </tr>
                 </tbody>
