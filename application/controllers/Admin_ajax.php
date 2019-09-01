@@ -1063,11 +1063,16 @@ class Admin_ajax extends CI_Controller {
 		echo json_encode($r);
 	}
 	public function getReprogramaciones(){
+		/*Esta funcion me permite obtener las clases que han sido reprogramadas en la ultima semana*/ 
 		$firstday = date('l - d/m/Y', strtotime("sunday -1 week")); 
 		$date = time(); // Change to whatever date you need
 		$dotw = $dotw = date('w', $date);
 		$start = ($dotw == 6 /* Saturday */) ? $date : strtotime('last Saturday', $date);
 		$end = ($dotw == 5 /* Friday */) ? $date : strtotime('next Friday', $date);
+		$sql = $this->db->where('type',2)->where('date>',$start)->where('date<',$end)->get('relStudentClassHead')->result();
+		$r['response'] = 2;
+		$r['content'] = $sql->result();
+		echo json_encode($r);
 	}
 	public function historyClassStudent(){ //sirve para buscar el historial de clases de un estudiante por istrumento 
 		$f1 = $this->input->get('dateFrom');

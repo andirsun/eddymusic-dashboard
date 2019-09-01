@@ -1,0 +1,7 @@
+$(function(){
+   loadData();
+});
+
+function loadData(){
+    
+}
