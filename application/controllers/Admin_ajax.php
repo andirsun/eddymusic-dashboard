@@ -17,18 +17,7 @@ class Admin_ajax extends CI_Controller {
 		//
 	}
 
-	public function cancelaciones(){
-		/*Esta funcion me permite obtener las clases que han sido reprogramadas en la ultima semana*/ 
-		$firstday = date('l - d/m/Y', strtotime("sunday -1 week")); 
-		$date = time(); // Change to whatever date you need
-		$dotw = $dotw = date('w', $date);
-		$start = ($dotw == 6 /* Saturday */) ? $date : strtotime('last Saturday', $date);
-		$end = ($dotw == 5 /* Friday */) ? $date : strtotime('next Friday', $date);
-		$sql = $this->db->where('type',2)->where('date>',$start)->where('date<',$end)->get('relStudentClassHead')->result();
-		$r['response'] = 2;
-		$r['content'] = $sql->result();
-		echo json_encode($r);
-	}
+	
 	public function nameStudent(){
 		$idUser = $this->input->get('id');
 		$sql = $this->db->select('name')->where('id',$idUser)->get('users')->result()[0];
@@ -1075,7 +1064,24 @@ class Admin_ajax extends CI_Controller {
 		$r['content'] = $sql->result();
 		echo json_encode($r);
 	}
-	
+	public function getCancelaciones(){
+		/*Esta funcion me permite obtener las clases que han sido reprogramadas en la ultima semana*/ 
+		$day = date('w');
+		$week_start = date('Y-m-d', strtotime('-'.$day.' days')).' 00:00:00';
+		$week_end = date('Y-m-d', strtotime('+'.(6-$day).' days')).' 00:00:00';
+		$sql = $this->db->select('relStudentClassHead.*,users.name,instrumentos.name instrumento')
+						->where('type',2)
+						->where('relStudentClassHead.date>',$week_start)
+						->where('relStudentClassHead.date<',$week_end)
+						->join('users','relStudentClassHead.idStudent = users.id')
+						->join('clasesHead','relStudentClassHead.idCLassHead = clasesHead.id')
+						->join('instrumentos','clasesHead.idInstrument = instrumentos.id')
+						->order_by('relStudentClassHead.date desc')
+						->get('relStudentClassHead')->result();
+		$r['response'] = 2;
+		$r['content'] = $sql;
+		echo json_encode($r);
+	}
 	public function historyClassStudent(){ //sirve para buscar el historial de clases de un estudiante por istrumento 
 		$f1 = $this->input->get('dateFrom');
 		$f2 = $this->input->get('dateEnd');
