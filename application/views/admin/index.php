@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	<title>Eddy music academy</title>
+	<title>Eddy music academy 2019</title>
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/bootstrap.min.css">
 	<!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet"> -->

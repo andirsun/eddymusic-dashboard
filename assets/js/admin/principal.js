@@ -36,7 +36,7 @@ function setNombreSesion() {
 		success: function (r) {
 			//console.log(r);
 			if (r.response == 2) {
-				$("#nombreUsuario").append('¡Hola!' + r.content + '<i class="fas fa-circle mr-2 ml-2" style="color:#3ec63e"></i><b><i style="color:#3ec63e">en linea</i></b>');
+				$("#nombreUsuario").append( r.content + '<i class="fas fa-circle mr-2 ml-2" style="color:#3ec63e"></i>');
 
 			}
 		},
@@ -67,7 +67,7 @@ function setNombreSucursal() {
 				name = 'Pitalito';
 			}
 			if (r.response == 2) {
-				$("#nombreSucursal").html('<i class="fas fa-map-marker fa-2x" style="color:#FF3232"></i> Sucursal <h2 style="color:#FF3232">' + name + '</h2>');
+				$("#nombreSucursal").html('<i class="fas fa-map-marker fa-2x mt-1" style="color:#FF3232"></i> Sucursal <h2 style="color:#FF3232">' + name + '</h2>');
 
 			}
 		},

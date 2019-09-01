@@ -111,8 +111,8 @@
             <h1 class="h2">Listado de estudiantes</h1>
         </div>
         <div class="shadow p-3 mb-5 bg-white rounded ">
-            <table class="table table-striped table-hover table-responsive-sm" id="tablaEstudiantes">
-                <thead class="thead-dark">
+            <table class="table table-borderless table-hover table-responsive-sm" id="tablaEstudiantes">
+                <thead>
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">numHuellero</th>

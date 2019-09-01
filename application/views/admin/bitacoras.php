@@ -6,9 +6,9 @@
   </div>
 </div>
 
-<div class="container-fluid py-2" id="contenido">
-  <table  class="table table-striped table-hover table-lg table-responsive" id="tablaBitacoras" >
-      <thead class="thead-dark">
+<div class="container-fluid py-2 mt-2 mb-5 shadow p-3 mb-5 bg-white rounded" id="contenido">
+  <table  class="table table-borderless table-hover table-responsive-sm" id="tablaBitacoras" >
+      <thead>
         <tr>
           <th scope="col">Fecha</th>
           <th scope="col">Nombre Estudiante</th>
