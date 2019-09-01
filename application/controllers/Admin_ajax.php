@@ -1,5 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
-//Pruebas Con servidor Hostinger
+//Pruebas Con el servidor de hostingerrrrrrrrrrrrrrrr
 
 class Admin_ajax extends CI_Controller {
 	private $data;
@@ -15,6 +15,19 @@ class Admin_ajax extends CI_Controller {
 	public function index()	{
 		$this->load->view('admin/index',$this->data);
 		//
+	}
+
+	public function cancelaciones(){
+		/*Esta funcion me permite obtener las clases que han sido reprogramadas en la ultima semana*/ 
+		$firstday = date('l - d/m/Y', strtotime("sunday -1 week")); 
+		$date = time(); // Change to whatever date you need
+		$dotw = $dotw = date('w', $date);
+		$start = ($dotw == 6 /* Saturday */) ? $date : strtotime('last Saturday', $date);
+		$end = ($dotw == 5 /* Friday */) ? $date : strtotime('next Friday', $date);
+		$sql = $this->db->where('type',2)->where('date>',$start)->where('date<',$end)->get('relStudentClassHead')->result();
+		$r['response'] = 2;
+		$r['content'] = $sql->result();
+		echo json_encode($r);
 	}
 	public function nameStudent(){
 		$idUser = $this->input->get('id');
@@ -1062,18 +1075,7 @@ class Admin_ajax extends CI_Controller {
 		$r['content'] = $sql->result();
 		echo json_encode($r);
 	}
-	public function getReprogramaciones(){
-		/*Esta funcion me permite obtener las clases que han sido reprogramadas en la ultima semana*/ 
-		$firstday = date('l - d/m/Y', strtotime("sunday -1 week")); 
-		$date = time(); // Change to whatever date you need
-		$dotw = $dotw = date('w', $date);
-		$start = ($dotw == 6 /* Saturday */) ? $date : strtotime('last Saturday', $date);
-		$end = ($dotw == 5 /* Friday */) ? $date : strtotime('next Friday', $date);
-		$sql = $this->db->where('type',2)->where('date>',$start)->where('date<',$end)->get('relStudentClassHead')->result();
-		$r['response'] = 2;
-		$r['content'] = $sql->result();
-		echo json_encode($r);
-	}
+	
 	public function historyClassStudent(){ //sirve para buscar el historial de clases de un estudiante por istrumento 
 		$f1 = $this->input->get('dateFrom');
 		$f2 = $this->input->get('dateEnd');
