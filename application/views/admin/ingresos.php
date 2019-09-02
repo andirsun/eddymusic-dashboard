@@ -36,7 +36,7 @@
             </div>
         </div>
         <table class="table table-borderless table-hover table-responsive-sm ml-2 mt-2 shadow p-3 mb-5 bg-white rounded" id="tablaIngresosEfectivo">
-            <thead>
+            <thead  class="thead-dark">
                 <tr >
                     <th id="fecha">Fecha/Hora</th>
                     <th id="estudiante">Estudiante</th>
@@ -95,7 +95,7 @@
 
     </div>
     <table class="table table-borderless table-hover table-responsive-sm" id="tablaIngresosBanco">
-        <thead>
+        <thead  class="thead-dark">
             <tr> 
                 <th id="fecha">Fecha</th>
                 <th id="estudiante">Estudiante</th>

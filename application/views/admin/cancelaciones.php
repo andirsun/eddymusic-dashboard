@@ -1,7 +1,9 @@
+
 <div class="container mt-5 mb-5 shadow p-3 mb-5 bg-white rounded">
     <div clas="row">
         <div class="col ">
-            <h2>Reprogramaciones de clase</h2>
+            <h2>Reprogramaciones de clase DESPLIEGUE BAJO DEMANDA</h2>
+            <!--
             <table class="table table-borderless table-hover table-responsive-sm" id="tableCancelations">
                 <thead >
                     <tr>
@@ -26,16 +28,10 @@
                                         <span id="revertir"><i class="fas fa-history"></i></span>
                                     <?php endif ?>
                             </div>
-                            <!--
-                            <?php if ($level==0 || $level==4): ?>
-                                <button type="button" id="revertir" class="btn btn-danger btn-sm" value=''>
-                                    <i class="fas fa-history"></i>
-                                </button>
-                            <?php endif ?>-->
                         </td>
                     </tr>
                 </tbody>
-            </table>
+            </table>-->
         </div>
     </div>
 </div>

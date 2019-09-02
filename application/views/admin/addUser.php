@@ -112,7 +112,7 @@
         </div>
         <div class="shadow p-3 mb-5 bg-white rounded ">
             <table class="table table-borderless table-hover table-responsive-sm" id="tablaEstudiantes">
-                <thead>
+                <thead class="thead-dark">
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">numHuellero</th>

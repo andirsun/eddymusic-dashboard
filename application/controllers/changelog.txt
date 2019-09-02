@@ -1,0 +1,10 @@
+        Changelog (Cambios mas recientes )
+
+1 of September 2019 -Anderson Laverde : 
+
+* Cambio en el estilo de ventanas , menu lateral y estetica en general para todas las pestan`as como ingresos egresos y ahora la informacion es mas estetica clara y legible (migracion de estilo a material design)
+* Se implemento la desactivacion de profesores para que asi no puedan acceder a las funcionalidades como el acceso a la aplicacion
+* se implemento un calendario de cumplen`os para los profesores donde se veran las fechas como en los estudiantes
+* se implemento una tabla de reprogramaciones donde las asistentes podran revisar cada una de las reprogramaciones hechas por estudiantes en las aplicaciones y asi poder confirmarlas 
+* se implemento un control de acceso de administrador para poder desactivas dichas revisiones en caso de errores
+* se implementaron las correcciones de la organizacion por defecto de las tablas de ingresos, egresos y bitacoras , donde por defecto los registros mas recientes aparecen primero.

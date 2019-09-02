@@ -33,7 +33,7 @@
             </div>
     </div>
         <table class="table table-borderless table-hover table-responsive-sm" id="tablaEgresosEfectivo">
-            <thead >
+            <thead  class="thead-dark" >
                 <tr>
                     <th id="fecha">Fecha</th>
                     <th id="concepto">Concepto Egreso</th>
@@ -85,7 +85,7 @@
             </div>
         </div>
         <table class="table table-borderless table-hover table-responsive-sm" id="tablaEgresosBanco">
-            <thead >
+            <thead  class="thead-dark">
                 <tr >
                     <th id="fecha">Fecha</th>
                     <th id="concepto">Concepto Gasto</th>
