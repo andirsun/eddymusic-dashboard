@@ -10,6 +10,15 @@ var dataTableOptions = {
     }
   },
 };
+var options = {
+  "columns": [
+    { "width": "10%" },
+    { "width": "10%" },
+    { "width": "10%" },
+    { "width": "10%" },
+    { "width": "60%" },
+  ]
+} 
 $(function () {
   $("#tablaBitacoras").DataTable(dataTableOptions);
   console.log("AnderDev");
@@ -87,7 +96,7 @@ function cargarTablasBitacoras() {
           var tableBody = $('#tablaBitacoras').find("tbody");
           var str = construirTablaBitacoras(r.content);
           $(tableBody).html(str);
-          table = $("#tablaBitacoras").DataTable();
+          table = $("#tablaBitacoras").DataTable(options);
           //console.log(table);
         } else {
           table = $("#tablaBitacoras").DataTable();
