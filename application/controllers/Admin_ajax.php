@@ -16,8 +16,6 @@ class Admin_ajax extends CI_Controller {
 		$this->load->view('admin/index',$this->data);
 		//
 	}
-
-	
 	public function nameStudent(){
 		$idUser = $this->input->get('id');
 		$sql = $this->db->select('name')->where('id',$idUser)->get('users')->result()[0];
@@ -1078,7 +1076,6 @@ class Admin_ajax extends CI_Controller {
 		$r['content'] = $sql->result();
 		echo json_encode($r);
 	}
-
 	public function getCancelaciones(){
 		/*Esta funcion me permite obtener las clases que han sido reprogramadas en la ultima semana*/ 
 		$day = date('w');
