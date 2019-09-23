@@ -14,10 +14,11 @@ class Restserver extends REST_Controller {
         $this->response($array);
     }
     public function autenticar_get(){
-		$user = $this->input->get('user');
+		$user = $this->input->get('user');//DOcumento de la persona
 		$pass = $this->input->get('pass');
 		//$sql = $this->db->where('(name="'.$user.'") AND document="'.$pass.'"')->get('users'); // Solo inicia con el nombre
-		$sql = $this->db->where('name',$user)->where('document',$pass)->get('users'); // Solo inicia con el nombre
+        //$sql = $this->db->where('name',$user)->where('document',$pass)->get('users'); // Solo inicia con el nombre
+        $sql = $this->db->where('user',$document)->where('document',$pass)->get('users'); // Solo inicia con el nombre
 		if($sql->num_rows()==1){
 			$user = $sql->result()[0];
 			//$_SESSION['data_user'] = $user;
