@@ -32,8 +32,8 @@
                 <input type="text"  class="form-control" id="dineroEgresos" placeholder="Dinero" readonly>
             </div>
     </div>
-        <table class="table table-striped table-hover table-responsive-sm" id="tablaEgresosEfectivo">
-            <thead class="thead-dark">
+        <table class="table table-borderless table-hover table-responsive-sm" id="tablaEgresosEfectivo">
+            <thead  class="thead-dark" >
                 <tr>
                     <th id="fecha">Fecha</th>
                     <th id="concepto">Concepto Egreso</th>
@@ -84,8 +84,8 @@
                 <input type="text"  class="form-control" id="dineroEgresosBanco" placeholder="Dinero" readonly>
             </div>
         </div>
-        <table class="table table-striped table-hover table-responsive-sm" id="tablaEgresosBanco">
-            <thead class="thead-dark">
+        <table class="table table-borderless table-hover table-responsive-sm" id="tablaEgresosBanco">
+            <thead  class="thead-dark">
                 <tr >
                     <th id="fecha">Fecha</th>
                     <th id="concepto">Concepto Gasto</th>

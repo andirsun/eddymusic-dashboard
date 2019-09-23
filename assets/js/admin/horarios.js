@@ -5,7 +5,7 @@ var statusEstudents = {
     2: 'Cancelar',
     3: 'No asistio'
 };
-$(function() {
+$(function () {
     $('[id=dateformAddHeadClass]').datetimepicker({
         format: 'YYYY-MM-DD',
         daysOfWeekDisabled: [0]
@@ -13,7 +13,7 @@ $(function() {
     $("#datepicker").datetimepicker({
         format: 'MM-DD-YYYY'
     });
-    $("#datepicker").keydown(function(event) {
+    $("#datepicker").keydown(function (event) {
         return false;
     });
 
@@ -25,7 +25,7 @@ $(function() {
     //Get the value of Start and End of Week
     var lastWeekSelected = $("#datepicker").val();
     // no se hizo en change porque por solo abrir llama la funcion getSchedule 
-    $('#datepicker').on('dp.hide', function(e) {
+    $('#datepicker').on('dp.hide', function (e) {
         var value = new Date($("#datepicker").val());
         value = value == "Invalid Date" ? new Date() : value;
         var firstDate = moment(value).day(0).format("MM-DD-YYYY");
@@ -39,25 +39,27 @@ $(function() {
         }
     });
 
+    blockAllClases();
+    changeDateClassByStudent();
+    closeFormChangeDateClassByStudent();
     changeClassPrivate();
-    noNegative();
+    deleteClassHead();
+    formAddHeadClass();
     getClassInstruments();
     getSchedule();
     getClassInstruments();
-    openListClassAndLoadHandleClassInstruments();
-    formAddHeadClass();
     getListStudentClassByInstrument();
+    noNegative();
+    openListClassAndLoadHandleClassInstruments();
     nextOrPrevWeek();
     sendTeacher();
     selectStatusStudent();
-    changeDateClassByStudent();
-    closeFormChangeDateClassByStudent();
-    deleteClassHead();
+
 });
 
 function changeClassPrivate() {
     // console.log('changeprivate class');
-    $("#accordionList").on('change', 'input[private]', function(evt) {
+    $("#accordionList").on('change', 'input[private]', function (evt) {
         var blocked = $(this).prop('checked') ? 1 : 0;
         var input = this;
         var label = $(this).next('label');
@@ -72,33 +74,33 @@ function changeClassPrivate() {
             type: 'GET',
             dataType: 'json',
             data: data,
-            beforeSend: function() {
+            beforeSend: function () {
                 var loader = 'Bloqueando <i class="fa fa-spin fa-spinner"></i>';
                 $(input).prop('disabled', true);
                 $(label).html(loader);
                 $(label).css('cursor', 'no-drop');
             },
-            success: function(r) {
+            success: function (r) {
                 // console.log(r);
                 if (r.response == 2) {
                     $(label).toggleClass('active');
                 } else if (r.response == 1) {
-                    $(label).next("#msg-alert-blocked").slideDown('fade', function() {
-                        setTimeout(function() {
+                    $(label).next("#msg-alert-blocked").slideDown('fade', function () {
+                        setTimeout(function () {
                             $(label).next("#msg-alert-blocked").slideUp('fast');
                         }, 2000);
                     });
                 }
             },
-            error: function(xhr, status, msg) {
+            error: function (xhr, status, msg) {
                 console.log(xhr.responseText);
-                $(label).next("#msg-alert-blocked").slideDown('fade', function() {
-                    setTimeout(function() {
+                $(label).next("#msg-alert-blocked").slideDown('fade', function () {
+                    setTimeout(function () {
                         $(label).next("#msg-alert-blocked").slideUp('fast');
                     }, 2000);
                 });
             },
-            complete: function() {
+            complete: function () {
                 $(label).html(labelContent);
                 $(input).prop('disabled', false);
                 $(label).css('cursor', 'pointer');
@@ -107,8 +109,19 @@ function changeClassPrivate() {
     });
 }
 
+function blockAllClases() {
+    $("body").on('click', '#armor-plating', function (event) {
+        //esta funcion lo que hace es que cuando le doy en el boton grande del modal de bloquear clases le da un click al boton que bloquea cada clase y eso lo hace con todas
+        //las que esten a esa hora
+        var modalBody = $(this).parents(".modal-body");
+        var sons = $(modalBody).find(".armor-input").trigger("click");
+        //console.log(sons);
+    });
+
+}
+
 function changeDateClassByStudent() {
-    $("#clases").on('submit', 'form#reasigndateform', function(event) {
+    $("#clases").on('submit', 'form#reasigndateform', function (event) {
         event.preventDefault();
         var tr = $(this).closest('tr');
         var form = this;
@@ -141,12 +154,12 @@ function changeDateClassByStudent() {
             type: 'GET',
             dataType: 'json',
             data: data,
-            beforeSend: function() {
+            beforeSend: function () {
                 var loader = '<i class="fa fa-spin fa-spinner"></i> Asignando...';
                 $(form).find("button[type=submit]").attr('disabled', true);
                 $(form).find("button[type=submit]").html(loader);
             },
-            success: function(r) {
+            success: function (r) {
                 console.log(r);
                 if (r.response == 2) {
                     text = 'Guardado correctamente';
@@ -175,21 +188,21 @@ function changeDateClassByStudent() {
                     }
                 }
             },
-            error: function(xhr, status, msg) {
+            error: function (xhr, status, msg) {
                 classCss = 'alert-danger';
                 text = 'Ups ocurrio un error';
                 console.log(xhr.responseText);
             },
-            complete: function() {
+            complete: function () {
                 $(form).find("button[type=submit]").attr('disabled', false);
                 $(form).find("button[type=submit]").text('Asignar');
 
                 $(form).find("#msg-new-date").addClass(classCss);
                 $(form).find("#msg-new-date #text-msg").text(text);
 
-                $(form).find("#msg-new-date").slideDown('fast', function() {
-                    setTimeout(function() {
-                        $(form).find("#msg-new-date").slideUp('fast', function() {
+                $(form).find("#msg-new-date").slideDown('fast', function () {
+                    setTimeout(function () {
+                        $(form).find("#msg-new-date").slideUp('fast', function () {
                             $(form).find("#msg-new-date").removeClass(classCss);
                         });
                     }, 1800);
@@ -200,7 +213,7 @@ function changeDateClassByStudent() {
 }
 
 function closeFormChangeDateClassByStudent() {
-    $("#clases").on("click", "#btn-close-form-asign-date", function(evt) {
+    $("#clases").on("click", "#btn-close-form-asign-date", function (evt) {
         var btn = this;
         var form = $(btn).closest('form');
         $(form).slideUp('fast');
@@ -208,7 +221,7 @@ function closeFormChangeDateClassByStudent() {
 }
 
 function formAddHeadClass() {
-    $("body").on('submit', 'form#formAddHeadClass', function(evt) {
+    $("body").on('submit', 'form#formAddHeadClass', function (evt) {
         evt.preventDefault();
         var form = this;
         var idInstrument = $(form).find("#list-instrument-select").val();
@@ -234,20 +247,20 @@ function formAddHeadClass() {
             type: 'GET',
             dataType: 'json',
             data: data,
-            beforeSend: function() {
+            beforeSend: function () {
                 var loader = '<i class="fa fa-spin fa-spinner"></i>';
                 $(form).find('button[type=submit]').html(loader);
                 $(form).find('button[type=submit]').prop('disabled', true);
             },
-            success: function(r) {
+            success: function (r) {
                 // console.log('cabeceras de la clase');
                 // console.log(r);
                 if (r.response == 2) {
                     $(form).find("#msgHeadClass #text-msg").text('Clase asignada correctamente');
                     $(form).find("#msgHeadClass").addClass('alert-success');
-                    $(form).find("#msgHeadClass").slideDown('fast', function() {
-                        setTimeout(function() {
-                            $(form).find("#msgHeadClass").slideUp('fast', function() {
+                    $(form).find("#msgHeadClass").slideDown('fast', function () {
+                        setTimeout(function () {
+                            $(form).find("#msgHeadClass").slideUp('fast', function () {
                                 $(form).find("#msgHeadClass #text-msg").text('');
                                 $(form).find("#msgHeadClass").removeClass('alert-success');
                             });
@@ -256,7 +269,7 @@ function formAddHeadClass() {
 
                     var classAsign = r.content[0];
 
-                    var instrumentIndex = listInstruments.findIndex(function(instrument) {
+                    var instrumentIndex = listInstruments.findIndex(function (instrument) {
                         return instrument.id == classAsign.idInstrument
                     });
                     var name = '';
@@ -292,9 +305,9 @@ function formAddHeadClass() {
                             $(contentMsg).find("#text-msg").text('Error al enviar, los datos enviados no son correctos');
                             break;
                     }
-                    $(contentMsg).slideDown('fast', function() {
-                        setTimeout(function() {
-                            $(contentMsg).slideUp('fast', function() {
+                    $(contentMsg).slideDown('fast', function () {
+                        setTimeout(function () {
+                            $(contentMsg).slideUp('fast', function () {
                                 $(contentMsg).find("#text-msg").text('');
                                 $(contentMsg).removeClass('alert-danger');
                             });
@@ -302,10 +315,10 @@ function formAddHeadClass() {
                     });
                 }
             },
-            error: function(xhr, status, msg) {
+            error: function (xhr, status, msg) {
                 console.log(xhr.responseText);
             },
-            complete: function() {
+            complete: function () {
                 $(form).find('button[type=submit]').prop('disabled', false);
                 $(form).find('button[type=submit]').html('Crear');
             }
@@ -319,20 +332,22 @@ function getTeachers(func) {
         type: 'GET',
         dataType: 'json',
         async: false,
-        data: { level: 2 },
-        success: function(r) {
+        data: {
+            level: 2
+        },
+        success: function (r) {
             // console.log('listprofesors');
             // console.log(r);
             func(true, r);
         },
-        error: function(xhr, status, msg) {
+        error: function (xhr, status, msg) {
             func(false);
         }
     });
 }
 
 function getListStudentClassByInstrument() {
-    $("#accordionList").on('click', 'button#btnHeadClass', function(evt) {
+    $("#accordionList").on('click', 'button#btnHeadClass', function (evt) {
         var dataTargetId = $(this).data('target');
         var idInstrument = $(this).data('instrument');
         var idClassHead = $(this).closest('[data-head]').data('head');
@@ -351,35 +366,35 @@ function getListStudentClassByInstrument() {
                 type: 'GET',
                 dataType: 'json',
                 data: data,
-                beforeSend: function() {
+                beforeSend: function () {
                     var loader = $("#trStudentCloneLoader").clone().detach();
                     $(contentList).find("#tbody-list-students").html($(loader).prop('outerHTML'));
                 },
-                success: function(r) {
+                success: function (r) {
                     console.log('clase de estudiantes');
                     console.log(r);
                     if (r.response == 2) {
                         var str = '';
                         if (r.content.length) {
                             var strOptionsTeachers = '<option value="">-- Seleccionar profesor --</option>';
-                            getTeachers(function(success, response) {
+                            getTeachers(function (success, response) {
                                 if (success) {
                                     if (response.response == 2) {
-                                        $.each(response.content, function(index, teacher) {
+                                        $.each(response.content, function (index, teacher) {
                                             var opt = new Option(teacher.name, teacher.id);
                                             strOptionsTeachers += $(opt).prop('outerHTML');
                                         });
                                     }
                                 }
                             });
-                            $.each(r.content, function(index, student) {
+                            $.each(r.content, function (index, student) {
                                 var trItemClone = $("#trStudentClone").clone();
                                 var dataStudentToGetHoursResidual = {
                                     idUser: student.idStudent,
                                     idInstrument
                                 };
                                 console.log(dataStudentToGetHoursResidual);
-                                getHourResidualByStudent(dataStudentToGetHoursResidual, function(err, _hours) {
+                                getHourResidualByStudent(dataStudentToGetHoursResidual, function (err, _hours) {
                                     if (!err) {
                                         $(trItemClone).find("#hour-class").text(_hours);
                                     } else {
@@ -430,14 +445,14 @@ function getListStudentClassByInstrument() {
                         } else {
                             txt = 'Ocurrio un error';
                         }
-                        $(contentList).find("#msg-card #msg-card").slideDown('fast', function() {
-                            setTimeout(function() {
+                        $(contentList).find("#msg-card #msg-card").slideDown('fast', function () {
+                            setTimeout(function () {
                                 $(contentList).find("#msg-card #msg-card").slideUp('fast');
                             }, 1800);
                         });
                     }
                 },
-                error: function(xhr, status, msg) {
+                error: function (xhr, status, msg) {
                     console.log(xhr.responseText);
                 }
             });
@@ -460,11 +475,11 @@ function getSchedule(firtsDay = '') {
         type: 'GET',
         dataType: 'json',
         data: data,
-        beforeSend: function() {
+        beforeSend: function () {
             $("button[btn-week]").prop('disabled', true);
             $("#loader-schedule").fadeIn('fast');
         },
-        success: function(r) {
+        success: function (r) {
             console.log('clases de la semana');
             console.log(r);
             if (r.response == 2) {
@@ -497,7 +512,7 @@ function getSchedule(firtsDay = '') {
                         h = i + ' pm';
                     }
                     $(trHour).find("td#hora").text(h);
-                    $.each(days, function(index, _date) {
+                    $.each(days, function (index, _date) {
                         var btnAsign = $("#btnAsignClone").clone();
                         $(btnAsign).attr('id', 'btnAsign');
                         $(btnAsign).text('--');
@@ -508,12 +523,12 @@ function getSchedule(firtsDay = '') {
                     str += $(trHour).prop('outerHTML');
                 }
                 $("#tbody-schedule").html(str);
-                $.each(days, function(index, day) {
+                $.each(days, function (index, day) {
                     if (week[day].regular.length || week[day].single.length) {
-                        $.each(week[day].regular, function(index, regularClass) {
+                        $.each(week[day].regular, function (index, regularClass) {
                             addDays(regularClass);
                         });
-                        $.each(week[day].single, function(index, singleClass) {
+                        $.each(week[day].single, function (index, singleClass) {
                             addDays(singleClass);
                         });
                     }
@@ -528,19 +543,19 @@ function getSchedule(firtsDay = '') {
                 });
             } else if (r.response == 1) {
                 // error
-                $("#alert-msg-datepicker-calendar").slideDown('fast', function() {
-                    setTimeout(function() {
+                $("#alert-msg-datepicker-calendar").slideDown('fast', function () {
+                    setTimeout(function () {
                         $("#alert-msg-datepicker-calendar").slideUp('fast');
                     }, 1800);
                 });
             }
             $("#loader-schedule").fadeOut('fast');
         },
-        error: function(xhr, status, msg) {
+        error: function (xhr, status, msg) {
             console.log(xhr.responseText);
             $("#loader-schedule").fadeIn('fast');
         },
-        complete: function() {
+        complete: function () {
             $("button[btn-week]").prop('disabled', false);
         }
     });
@@ -552,18 +567,18 @@ function getClassInstruments() {
         type: 'GET',
         dataType: 'json',
         async: false,
-        success: function(r) {
+        success: function (r) {
             if (r.response == 2) {
                 listInstruments = r.content;
                 var str = '<option value="">Instrumentos</option>';
-                $.each(listInstruments, function(index, instrument) {
+                $.each(listInstruments, function (index, instrument) {
                     var opt = new Option(instrument.name, instrument.id);
                     str += $(opt).prop('outerHTML');
                 });
                 $("#list-instrument-select").html(str);
             }
         },
-        error: function(xhr, status, msg) {
+        error: function (xhr, status, msg) {
             console.log(xhr.responseText);
         }
     })
@@ -576,7 +591,7 @@ function getHourResidualByStudent(data, cb) {
         dataType: 'json',
         data: data,
         async: false,
-        success: function(r) {
+        success: function (r) {
             console.log(r);
             if (r.response == 2) {
                 cb(false, r.content);
@@ -584,14 +599,14 @@ function getHourResidualByStudent(data, cb) {
                 cb(true, r.content);
             }
         },
-        error: function(xhr, status, msg) {
+        error: function (xhr, status, msg) {
             cb(true, xhr.responseText);
         }
     });
 }
 
 function noNegative() {
-    $('body').on('change', 'input[type=number]', function(evt) {
+    $('body').on('change', 'input[type=number]', function (evt) {
         var input = this;
         var val = Number($(input).val());
         if (isNaN(val) || val < 0) {
@@ -601,7 +616,7 @@ function noNegative() {
 }
 
 function nextOrPrevWeek() {
-    $("#control-week").on('click', 'button[btn-week]', function(evt) {
+    $("#control-week").on('click', 'button[btn-week]', function (evt) {
         var btn = this;
         var typeControl = $(btn).attr('btn-week');
         var date = pipeDateFormatSend($(btn).attr('date'));
@@ -620,7 +635,7 @@ function nextOrPrevWeek() {
 }
 
 function deleteClassHead() {
-    $("#accordionList").on('click', '#botonBorrarClase', function(event) {
+    $("#accordionList").on('click', '#botonBorrarClase', function (event) {
         event.preventDefault();
         var btn = this;
         var idseleccion = $(btn).attr('value');
@@ -630,16 +645,18 @@ function deleteClassHead() {
                 url: base_url + 'admin_ajax/deleteClassHead',
                 type: 'GET',
                 dataType: 'json',
-                data: { id: idseleccion },
-                beforeSend: function() {},
-                success: function(r) {
+                data: {
+                    id: idseleccion
+                },
+                beforeSend: function () {},
+                success: function (r) {
                     if (r.response == 2) {
                         alert("Clase Eliminada, Cierra y vuelve a abrir la hora");
                     }
 
 
                 },
-                error: function(xhr, status, msg) {
+                error: function (xhr, status, msg) {
                     console.log(xhr.responseText);
                 }
             });
@@ -649,7 +666,7 @@ function deleteClassHead() {
 
 
 function openListClassAndLoadHandleClassInstruments() {
-    $("#tbody-schedule").on('click', 'button#btnAsign', function(event) {
+    $("#tbody-schedule").on('click', 'button#btnAsign', function (event) {
         var fechaBoton = $(this).closest('td').attr("data-date");
 
         var btn = this;
@@ -681,12 +698,12 @@ function openListClassAndLoadHandleClassInstruments() {
             type: 'GET',
             dataType: 'json',
             data: data,
-            success: function(r) {
+            success: function (r) {
                 console.log('headClasses');
                 console.log(r);
                 if (r.response == 2) {
                     var str = '';
-                    var daysDisabled = [0, 1, 2, 3, 4, 5, 6].filter(function(_day) {
+                    var daysDisabled = [0, 1, 2, 3, 4, 5, 6].filter(function (_day) {
                         return _day != nDay;
                     });
                     console.log("voy a ponerle la fecha", fechaBoton);
@@ -701,9 +718,9 @@ function openListClassAndLoadHandleClassInstruments() {
                     });
                     */
                     if (hasClassBtnPrimary) {
-                        $.each(r.content, function(index, classInstrument) {
+                        $.each(r.content, function (index, classInstrument) {
                             // console.log(classInstrument.idInstrument);
-                            var instrumentIndex = listInstruments.findIndex(function(instrument) {
+                            var instrumentIndex = listInstruments.findIndex(function (instrument) {
                                 return instrument.id == classInstrument.idInstrument
                             });
                             if (instrumentIndex >= 0) {
@@ -788,7 +805,7 @@ function removeDuplicates(myArr, prop) {
 }
 
 function sendTeacher() {
-    $("#clases").on('submit', 'form#selectTeacher', function(event) {
+    $("#clases").on('submit', 'form#selectTeacher', function (event) {
         event.preventDefault();
         var form = this;
         var d = new Date();
@@ -811,10 +828,10 @@ function sendTeacher() {
             type: 'GET',
             dataType: 'json',
             data: data,
-            beforeSend: function() {
+            beforeSend: function () {
                 $(form).find('button[type=submit]').prop('disabled', true);
             },
-            success: function(r) {
+            success: function (r) {
                 console.log(r);
                 if (r.response == 2) {
                     if (r.content == "Asignado") {
@@ -830,17 +847,17 @@ function sendTeacher() {
                     textMsg = r.content;
                 }
             },
-            error: function(xhr, status, msg) {
+            error: function (xhr, status, msg) {
                 console.log(xhr.responseText);
                 msgClass = 'alert-danger';
                 textMsg = 'Ocurrio un error';
             },
-            complete: function() {
+            complete: function () {
                 $(form).find("#msg-alert").addClass(msgClass);
                 $(form).find("#msg-alert #text-alert").text(textMsg);
-                $(form).find("#msg-alert").slideDown('fast', function() {
-                    setTimeout(function() {
-                        $(form).find("#msg-alert").slideUp('fast', function() {
+                $(form).find("#msg-alert").slideDown('fast', function () {
+                    setTimeout(function () {
+                        $(form).find("#msg-alert").slideUp('fast', function () {
                             $(form).find("#msg-alert").removeClass(msgClass);
                         })
                     }, 1800);
@@ -858,9 +875,9 @@ function showAndHideMessage(classMsg, txtMsg, tr) {
     $(msgContent).find('h2').addClass(classMsg);
     $(msgContent).find('h2').text(txtMsg);
     $(msgContent).insertAfter(tr);
-    $(msgContent).fadeIn('fast', function() {
-        setTimeout(function() {
-            $(msgContent).fadeOut('fast', function() {
+    $(msgContent).fadeIn('fast', function () {
+        setTimeout(function () {
+            $(msgContent).fadeOut('fast', function () {
                 $(msgContent).remove();
             });
         }, 2500);
@@ -868,7 +885,7 @@ function showAndHideMessage(classMsg, txtMsg, tr) {
 }
 
 function selectStatusStudent() {
-    $('body').on('submit', 'form#formSendStateStudent', function(evt) {
+    $('body').on('submit', 'form#formSendStateStudent', function (evt) {
         evt.preventDefault();
         var form = this;
         var tr = $(this).closest('tr');
@@ -909,11 +926,11 @@ function selectStatusStudent() {
             type: 'GET',
             dataType: 'json',
             data: data,
-            beforeSend: function() {
+            beforeSend: function () {
                 $(select).prop('disabled', true);
                 $(select).next("#msg-status").fadeIn('fast');
             },
-            success: function(r) {
+            success: function (r) {
                 console.log(r);
                 if (r.response == 2) {
                     currentHours
@@ -954,12 +971,12 @@ function selectStatusStudent() {
 
                 }
             },
-            error: function(xhr, status, msg) {
+            error: function (xhr, status, msg) {
                 console.log(xhr.responseText);
                 classMsg = 'alert-danger';
                 txtMsg = 'Ups! ocurrio un error';
             },
-            complete: function() {
+            complete: function () {
                 $(select).prop('disabled', false);
                 $(select).next("#msg-status").fadeOut('fast');
                 showAndHideMessage(classMsg, txtMsg, tr);

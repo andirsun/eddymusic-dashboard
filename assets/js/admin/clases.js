@@ -1,7 +1,7 @@
-(function() {
+(function () {
     var listTeachers = [];
     var statusUser = ['--', 'Asistido', 'No asistido', 'Cancelado'];
-    $(function() {
+    $(function () {
         setNombreStudent();
         getTeachers();
         getInstrumentByStudent();
@@ -33,7 +33,7 @@
     function calcularPrecio() {
 
 
-        $("#tabContentInstruments").on('click', '#calcularPrecio', function(evt) {
+        $("#tabContentInstruments").on('click', '#calcularPrecio', function (evt) {
             evt.preventDefault();
             //evt.stopImmediatePropagation();
             var padre = $(this).closest(".tab-pane.fade.show.active"); //asi se selecciona el padre en un tab para agarrar la informacion de un div en especifico de un tab
@@ -51,10 +51,10 @@
                 type: 'GET',
                 dataType: 'json',
                 data: data,
-                beforeSend: function() {
+                beforeSend: function () {
 
                 },
-                success: function(r) {
+                success: function (r) {
                     var valor = r.content;
                     var descuento = $(padre).find('select#discount').val();
                     var porcentaje = $(padre).find('input[name=porcentaje]').val();
@@ -74,7 +74,7 @@
 
                     $(padre).find("#price").val(valor);
                 },
-                error: function(xhr, status, msg) {
+                error: function (xhr, status, msg) {
                     console.log(xhr.responseText);
                 }
             });
@@ -87,25 +87,27 @@
             url: base_url + 'admin_ajax/nameStudent',
             type: 'GET',
             dataType: 'json',
-            data: { id: idUserStudent },
-            beforeSend: function() {
+            data: {
+                id: idUserStudent
+            },
+            beforeSend: function () {
 
             },
-            success: function(r) {
+            success: function (r) {
                 console.log("nombre del estudiante", r.content);
                 if (r.response == 2) {
                     $("#titulo2").append(r.content.name);
 
                 }
             },
-            error: function(xhr, status, msg) {
+            error: function (xhr, status, msg) {
                 console.log(xhr.responseText);
             }
         });
     }
 
     function activeHistoryTab() {
-        $(document).on('click', '#histroy-tab', function(event) {
+        $(document).on('click', '#histroy-tab', function (event) {
             event.preventDefault();
             /* Act on the event */
             var tagAncle = this;
@@ -128,7 +130,7 @@
     }
 
     function addInstrumentByStudent() {
-        $("#addInstrument").click(function(event) {
+        $("#addInstrument").click(function (event) {
             event.stopImmediatePropagation();
             var btn = this;
             var idInstrument = $("#list-instrument-no-selected").val();
@@ -142,12 +144,12 @@
                 type: 'GET',
                 data: data,
                 dataType: 'json',
-                beforeSend: function() {
+                beforeSend: function () {
                     var loader = '<i class="fa fa-spin fa-spinner"></i> Agregando';
                     $(btn).prop('disabled', true);
                     $(btn).html(loader);
                 },
-                success: function(r) {
+                success: function (r) {
                     console.log(r);
                     var res = r;
                     if (res.response == 2) {
@@ -204,23 +206,23 @@
                         } else if (r.response == "dataError") {
                             $("#msg-add-instrument #txt-add-instrument").text('Error de datos');
                         }
-                        $("#msg-add-instrument").slideDown('fast', function() {
-                            setTimeout(function() {
+                        $("#msg-add-instrument").slideDown('fast', function () {
+                            setTimeout(function () {
                                 $("#msg-add-instrument").slideUp('fast');
                             }, 1800);
                         });
                     }
                 },
-                error: function(xhr, status, msg) {
+                error: function (xhr, status, msg) {
                     console.log(xhr.responseText);
                     $("#msg-add-instrument #txt-add-instrument").text('Error de datos');
-                    $("#msg-add-instrument").slideDown('fast', function() {
-                        setTimeout(function() {
+                    $("#msg-add-instrument").slideDown('fast', function () {
+                        setTimeout(function () {
                             $("#msg-add-instrument").slideUp('fast');
                         }, 1800);
                     });
                 },
-                complete: function() {
+                complete: function () {
                     $(btn).prop('disabled', false);
                     $(btn).text('Agregar instrumento');
                 }
@@ -230,7 +232,7 @@
 
     function addHourClass() {
         // console.log('addd');
-        $("#tabContentInstruments").on('submit', 'form[addPackageInstrument]', function(evt) {
+        $("#tabContentInstruments").on('submit', 'form[addPackageInstrument]', function (evt) {
             evt.preventDefault();
             evt.stopImmediatePropagation();
             var form = this;
@@ -256,12 +258,12 @@
                 type: 'GET',
                 dataType: 'json',
                 data: data,
-                beforeSend: function() {
+                beforeSend: function () {
                     var loader = '<i class="fa fa-spin fa-spinner"></i>';
                     $(form).find('button[type=submit]').prop('disabled', true);
                     $(form).find('button[type=submit]').html(loader);
                 },
-                success: function(r) {
+                success: function (r) {
                     console.log(r);
                     if (r.response == 2) {
                         classCssAlert = 'alert-success';
@@ -291,19 +293,19 @@
                         $(msg).addClass(classCssAlert);
                     }
                 },
-                error: function(xhr, status, msg) {
+                error: function (xhr, status, msg) {
                     console.log(xhr.responseText);
                     classCssAlert = 'alert-danger';
                     $(msg).addClass(classCssAlert);
                     $(msg).text('Ocurrio un error');
                 },
-                complete: function() {
+                complete: function () {
                     $(form)[0].reset();
                     $(form).find('button[type=submit]').prop('disabled', false);
                     $(form).find('button[type=submit]').html('Agregar paquete horas');
-                    $(msg).slideDown('fast', function() {
-                        setTimeout(function() {
-                            $(msg).slideUp('fast', function() {
+                    $(msg).slideDown('fast', function () {
+                        setTimeout(function () {
+                            $(msg).slideUp('fast', function () {
                                 $(msg).removeClass(classCssAlert);
                                 $(msg).text('');
                             });
@@ -315,7 +317,7 @@
     }
 
     function changeDateFormInputHistroy() {
-        $(document).on('dp.hide', 'input[data-date]', function(event) {
+        $(document).on('dp.hide', 'input[data-date]', function (event) {
             console.log(event);
             var input = this;
             var form = $(input).closest('form');
@@ -333,7 +335,7 @@
 
     function changeDateSelectedClass() {
         // console.log('data change');
-        $("#mainModal").on('dp.change', "#date-select-class", function(evt) {
+        $("#mainModal").on('dp.change', "#date-select-class", function (evt) {
             //console.log(evt);
             var val = $(this).val();
             var content = $(this).closest('#content-date');
@@ -343,7 +345,7 @@
     }
 
     function formAgendClass() {
-        $('body').on('submit', 'form#formAgendClass', function(evt) {
+        $('body').on('submit', 'form#formAgendClass', function (evt) {
             evt.preventDefault();
             evt.stopImmediatePropagation();
             var form = this;
@@ -381,20 +383,20 @@
                 type: 'GET',
                 dataType: 'json',
                 data: data,
-                beforeSend: function() {
+                beforeSend: function () {
                     var loader = '<i class="fas fa-spin fa-spinner"></i>';
                     $(form).find('button[type=submit]').prop('disabled', true);
                     $(form).find('button[type=submit]').html(loader);
                 },
-                success: function(r) {
+                success: function (r) {
                     console.log(r);
                     if (r.response == 2) {
                         $(msgContent).find('#text-msg-card-class').text('Genial! La Clase Quedo Agendada');
                         classAlert = 'alert-success';
                         getHoursResidual(idInstrument, idUserStudent, $("#mainModal").find("#remaining-hour"));
-                        setTimeout(function() {
+                        setTimeout(function () {
                             var _card = $(cardbody).closest('[card]');
-                            $(_card).slideUp('fast', function() {
+                            $(_card).slideUp('fast', function () {
                                 $(_card).remove();
                             });
                         }, 2100);
@@ -424,11 +426,11 @@
                         $(form).find('button[type=submit]').prop('disabled', false);
                     }
                 },
-                error: function(xhr, status, msg) {
+                error: function (xhr, status, msg) {
                     console.log(xhr.responseText);
                     $(form).find('button[type=submit]').prop('disabled', false);
                 },
-                complete: function() {
+                complete: function () {
                     closeMessage();
                     $(form).find('button[type=submit]').html('<i class="fas fa-check"></i>');
                 }
@@ -436,9 +438,9 @@
 
             function closeMessage() {
                 $(msgContent).addClass(classAlert);
-                $(msgContent).slideDown('fast', function() {
-                    setTimeout(function() {
-                        $(msgContent).slideUp('fast', function() {
+                $(msgContent).slideDown('fast', function () {
+                    setTimeout(function () {
+                        $(msgContent).slideUp('fast', function () {
                             $(msgContent).removeClass(classAlert);
                             $(msgContent).find('#text-msg-card-class').text('');
                         });
@@ -454,15 +456,17 @@
             type: 'GET',
             dataType: 'json',
             async: false,
-            data: { level: 2 },
-            success: function(r) {
+            data: {
+                level: 2
+            },
+            success: function (r) {
                 if (r.response == 2) {
                     listTeachers = r.content;
                 } else {
                     listTeachers = [];
                 }
             },
-            error: function(xhr, status, msg) {
+            error: function (xhr, status, msg) {
                 console.log(xhr.responseText);
                 listTeachers = [];
             }
@@ -474,14 +478,14 @@
             url: base_url + 'admin_ajax/getInstruments',
             type: 'GET',
             dataType: 'json',
-            beforeSend: function() {},
-            success: function(r) {
+            beforeSend: function () {},
+            success: function (r) {
                 console.log('instruments');
                 console.log(r);
                 if (r.response == 2) {
                     var options = '';
                     if (r.content.length) {
-                        $.each(r.content, function(index, instrument) {
+                        $.each(r.content, function (index, instrument) {
                             var opt = new Option(instrument.name, instrument.id);
                             var instrumentSelected = $("#list-instruments").find('a[data-id=' + instrument.id + ']');
                             // console.log(instrumentSelected);
@@ -496,7 +500,7 @@
                     $("#list-instrument-no-selected").trigger('change');
                 }
             },
-            error: function(xhr, status, msg) {
+            error: function (xhr, status, msg) {
                 console.log(xhr.responseText);
             }
         });
@@ -508,15 +512,17 @@
                 url: base_url + 'admin_ajax/getInstrumentsStudent',
                 type: 'GET',
                 async: false,
-                data: { idUser: idUserStudent },
-                beforeSend: function() {},
-                success: function(r) {
+                data: {
+                    idUser: idUserStudent
+                },
+                beforeSend: function () {},
+                success: function (r) {
                     var res = JSON.parse(r);
                     console.log(res);
                     if (res.response == 2) {
                         var strTabs = '';
                         var strContentTabs = '';
-                        $.each(res.content, function(index, instrument) {
+                        $.each(res.content, function (index, instrument) {
                             var itemInstrument = $("#item-instrument").clone();
                             var contentCloneTab = $("#tab-content-clone").clone();
 
@@ -560,7 +566,7 @@
                         $("#list-instruments").html(strTabs);
                     }
                 },
-                error: function(xhr, status, msg) {
+                error: function (xhr, status, msg) {
                     console.log(xhr.responseText);
                 }
             });
@@ -570,7 +576,7 @@
     }
 
     function getInstrumentPackageStudentById() {
-        $("#list-instruments").on('shown.bs.tab', 'a[data-toggle="tab"]', function(evt) {
+        $("#list-instruments").on('shown.bs.tab', 'a[data-toggle="tab"]', function (evt) {
             var idContentInstrument = $(this).attr('href');
             var idInstrument = $(this).data('id');
             var data = {
@@ -583,20 +589,20 @@
                 type: 'GET',
                 dataType: 'json',
                 data: data,
-                beforeSend: function() {
+                beforeSend: function () {
                     var loader = '<i class="fa fa-spin fa-spinner"></i>';
                     var itemClone = $("#item-package-clone").clone();
                     $(itemClone).removeAttr('id');
                     $(itemClone).html(loader);
                     $(idContentInstrument).find("#list-package").html($(itemClone).prop('outerHTML'));
                 },
-                success: function(r) {
+                success: function (r) {
                     console.log('traer paquete de clase por estudiante');
                     console.log(r);
                     if (r.response == 2) {
                         var str = '';
                         if (r.content.length) {
-                            $.each(r.content, function(index, item) {
+                            $.each(r.content, function (index, item) {
                                 var itemClone = $("#item-package-clone").clone().detach();
                                 var descuento = "";
                                 var porcentaje = "";
@@ -635,7 +641,7 @@
                     }
                     $(idContentInstrument).find("#list-package").html(str);
                 },
-                error: function(xhr, status, msg) {
+                error: function (xhr, status, msg) {
                     console.log(xhr.responseText);
                 }
             });
@@ -644,20 +650,20 @@
                 type: 'GET',
                 dataType: 'json',
                 data: data,
-                beforeSend: function() {
+                beforeSend: function () {
                     var loader = '<i class="fa fa-spin fa-spinner"></i>';
                     var itemClone = $("#item-package-clone").clone();
                     $(itemClone).removeAttr('id');
                     $(itemClone).html(loader);
                     $(idContentInstrument).find("#next-class").html($(itemClone).prop('outerHTML'));
                 },
-                success: function(r) {
+                success: function (r) {
                     console.log('clases futuras por instrumento');
                     console.log(r);
                     if (r.response == 2) {
                         var str = '';
                         if (r.content.length) {
-                            $.each(r.content, function(index, item) {
+                            $.each(r.content, function (index, item) {
                                 var itemClone = $("#item-next-class").clone();
                                 $(itemClone).removeAttr('id');
                                 $(itemClone).attr('data-id', item.id);
@@ -691,7 +697,7 @@
 
                     }
                 },
-                error: function(xhr, status, msg) {
+                error: function (xhr, status, msg) {
                     console.log(xhr.responseText);
                 }
             });
@@ -699,23 +705,25 @@
     }
 
     function removeHistoryClassStudent() {
-        $('body').on('click', '[id="deleteClass"]', function() {
+        $('body').on('click', '[id="deleteClass"]', function () {
             if (confirm('Esta seguro que desea eliminar esta clase Vista del estudiante ?')) {
                 var id = $(this).attr('value');
-                var data = { id: id };
+                var data = {
+                    id: id
+                };
                 $.ajax({
                     url: base_url + 'admin_ajax/deleteClassHistoryStudent',
                     type: 'GET',
                     dataType: 'json',
                     data: data,
-                    beforeSend: function() {},
-                    success: function(r) {
+                    beforeSend: function () {},
+                    success: function (r) {
                         if (r.response == 2) {
                             location.reload(true);
                         }
                         console.log(r);
                     },
-                    error: function(xhr, status, msg) {
+                    error: function (xhr, status, msg) {
                         console.log(xhr.responseText);
                     }
                 });
@@ -725,26 +733,28 @@
     }
 
     function removeClassStudent() {
-        $('body').on('click', '[id="removeClass"]', function() {
+        $('body').on('click', '[id="removeClass"]', function () {
             if (confirm('Esta seguro que desea remover esta clase del estudiante?')) {
                 var content = $(this).closest('.list-group-item');
                 var idClass = $(content).attr('data-id');
-                var data = { id: idClass };
+                var data = {
+                    id: idClass
+                };
                 $.ajax({
                     url: base_url + 'admin_ajax/removeClassStudent',
                     type: 'GET',
                     dataType: 'json',
                     data: data,
-                    beforeSend: function() {
+                    beforeSend: function () {
 
                     },
-                    success: function(r) {
+                    success: function (r) {
                         if (r.response == 2) {
                             $(content).remove();
                         }
                         console.log(r);
                     },
-                    error: function(xhr, status, msg) {
+                    error: function (xhr, status, msg) {
                         console.log(xhr.responseText);
                     }
                 });
@@ -753,7 +763,7 @@
     }
 
     function getHistoryByStrumentAndStundent() {
-        $("body").on('submit', '#form-history', function(event) {
+        $("body").on('submit', '#form-history', function (event) {
             event.preventDefault();
             var form = this;
             var content = $(form).closest('#instrument-content-information');
@@ -769,21 +779,21 @@
                 type: 'GET',
                 dataType: 'json',
                 data: data,
-                beforeSend: function() {
+                beforeSend: function () {
                     var loader = '<i class="fa fa-spin fa-spinner"></i>';
                     $(form).find('button[type=submit]').html(loader);
                     $(form).find('button[type=submit]').prop('disabled', true);
                 },
-                success: function(r) {
+                success: function (r) {
                     console.log(r);
                     if (r.response == 2) {
                         var str = '';
                         if (r.content.length) {
                             var cont = 0;
-                            $.each(r.content, function(index, history) {
+                            $.each(r.content, function (index, history) {
                                 var tr = $("#trClone").clone();
                                 //console.log(listTeachers)
-                                var indexTacher = listTeachers.indexOf(function(teacher) {
+                                var indexTacher = listTeachers.indexOf(function (teacher) {
                                     return teacher.id == history.idProfesor;
                                 });
                                 $(tr).removeAttr('id');
@@ -807,10 +817,10 @@
                     $(content).find("#table-history").html(str);
 
                 },
-                error: function(xhr, status, msg) {
+                error: function (xhr, status, msg) {
                     console.log(xhr.responseText);
                 },
-                complete: function() {
+                complete: function () {
                     $(form).find('button[type=submit]').text('Generar');
                     $(form).find('button[type=submit]').prop('disabled', false);
                 }
@@ -823,16 +833,19 @@
             url: base_url + 'admin_ajax/getHoursResidual',
             type: 'GET',
             dataType: 'json',
-            data: { idInstrument, idUser },
-            beforeSend: function() {},
-            success: function(r) {
+            data: {
+                idInstrument,
+                idUser
+            },
+            beforeSend: function () {},
+            success: function (r) {
                 console.log('horas residuales');
                 console.log(r);
                 if (r.response == 2) {
                     $(el).text(r.content);
                 }
             },
-            error: function(xhr, status, msg) {
+            error: function (xhr, status, msg) {
                 console.log(xhr.responseText);
             }
         });
@@ -843,22 +856,24 @@
             url: base_url + '',
             type: 'GET',
             dataType: 'json',
-            data: { idUser: idUserStudent },
-            beforeSend: function() {},
-            success: function(r) {
+            data: {
+                idUser: idUserStudent
+            },
+            beforeSend: function () {},
+            success: function (r) {
                 console.log(r);
                 if (r.response == 2) {
                     console.log('usuario traido');
                 }
             },
-            error: function(xhr, status, msg) {
+            error: function (xhr, status, msg) {
                 console.log(xhr.responseText);
             }
         });
     }
 
     function openModalListClasesAvailable() {
-        $("#tabContentInstruments").on('click', 'button#btn-see-class-available', function(event) {
+        $("#tabContentInstruments").on('click', 'button#btn-see-class-available', function (event) {
             var btn = this;
             var contentBtn = $(btn).html();
             var idInstrument = $(this).attr('id-instrument');
@@ -872,12 +887,12 @@
                 dataType: 'json',
                 async: false,
                 data: data,
-                beforeSend: function() {
+                beforeSend: function () {
                     var loader = '<i class="fa fa-spin fa-spinner"></i>';
                     $(btn).prop('disabled', true);
                     $(btn).html(loader);
                 },
-                success: function(r) {
+                success: function (r) {
                     console.log(r);
                     if (r.response == 2) {
                         var str = '<h4>Horas restantes: <span id="remaining-hour"></span></h2>';
@@ -885,7 +900,7 @@
                         var instrument = r.instrument;
                         var nCupos = instrument.cupos;
                         if (r.content.length) {
-                            var listClass = r.content.filter(function(_class) {
+                            var listClass = r.content.filter(function (_class) {
                                 return _class.dataClass.idStudent === null; //aca se hace un filtrado de que cuando el el id del estudiante venga en el array de la clase entonces es por que esta matriculado y no le debe mostrar esa clase
                             });
                             console.log("aqui ya no debe estar", listClass);
@@ -895,7 +910,7 @@
                             // console.log(r.content);
                             var nameInstrument = $("#list-instruments a[href='#instrument-" + r.content[0].dataClass.idInstrument + "']").text();
                             if (listClass.length) {
-                                $.each(listClass, function(index, classAvailable) {
+                                $.each(listClass, function (index, classAvailable) {
                                     console.log(classAvailable);
                                     var cardClone = $("#card-clone").clone();
                                     $(cardClone).removeAttr('id');
@@ -952,7 +967,7 @@
                         }
                         loadModal('Clases disponibles', str, 'Cerrar');
                         var calendars = $("#bodyModal").find('input[data-calendar]');
-                        $.each(calendars, function(index, inputCalendar) {
+                        $.each(calendars, function (index, inputCalendar) {
                             var days = [0, 1, 2, 3, 4, 5, 6];
                             var nday = Number($(inputCalendar).closest('[card-body]').data("nday"));
                             console.log(nday);
@@ -968,17 +983,17 @@
                             });
                         });
                     } else if (r.response == 1) {
-                        $("#msg-error-class-available").slideDown('fast', function() {
-                            setTimeout(function() {
+                        $("#msg-error-class-available").slideDown('fast', function () {
+                            setTimeout(function () {
                                 $("#msg-error-class-available").slideUp('fast');
                             }, 1800);
                         });
                     }
                 },
-                error: function(xhr, status, msg) {
+                error: function (xhr, status, msg) {
                     console.log(xhr.responseText);
                 },
-                complete: function() {
+                complete: function () {
                     $(btn).prop('disabled', false);
                     $(btn).html(contentBtn);
                 }
@@ -1014,7 +1029,7 @@
     }
 
     function selectBono() {
-        $("#tabContentInstruments").on('click', 'label[for^="bono-instrument"]', function(evt) {
+        $("#tabContentInstruments").on('click', 'label[for^="bono-instrument"]', function (evt) {
             evt.stopImmediatePropagation();
             var label = this;
             var idInput = $(this).attr('for');
@@ -1053,7 +1068,7 @@
     }
 
     function selectTypeOption() {
-        $("#mainModal").on('click', 'label[data-option]', function(event) {
+        $("#mainModal").on('click', 'label[data-option]', function (event) {
             console.log(this);
             var type = $(this).data('option');
             var contentOptions = $(this).closest('[card-body]');
@@ -1066,7 +1081,7 @@
     }
 
     function keydownPrice() {
-        $("#tabContentInstruments").on('keyup', 'input#price', function(event) {
+        $("#tabContentInstruments").on('keyup', 'input#price', function (event) {
             console.log($(this).val(), Number($(this).val()));
 
             // var maxNumber = 57;

@@ -6,15 +6,19 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	<title>Eddy music academy</title>
+	<title>Eddy music academy 2019</title>
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/bootstrap.min.css">
 	<!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet"> -->
-	<link rel="stylesheet" href="<?php echo base_url() ?>assets/js/plugins/dataTable/datatables.min.css">
+	
+
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/styles.css?<? echo time_unix(); ?>">
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/main.css?<? echo time_unix(); ?>">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 	 
+	<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/css/bootstrap4-toggle.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+
 	
 	<link rel="icon" href="<?php echo base_url()?>assets/images/miniicono.png">
 </head>
@@ -101,7 +105,7 @@
 	</script>
 
 	<script src="<?php echo base_url() ?>assets/js/bootstrap.min.js"></script>
-	<script src="<?php echo base_url() ?>assets/js/plugins/dataTable/datatables.min.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 	<script src="<?php echo base_url() ?>assets/js/plugins/jquery-number/jquery.number.min.js"></script>
 	<script src="<?php echo base_url() ?>assets/js/admin/principal.js?<? echo time_unix(); ?>"></script>
 	</body>

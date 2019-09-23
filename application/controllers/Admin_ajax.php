@@ -1,5 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
-//Pruebas Con servidor Hostinger
+//Pruebas Con el servidor de hostingerrrrrrrrrrrrrrrr
 
 class Admin_ajax extends CI_Controller {
 	private $data;
@@ -16,7 +16,6 @@ class Admin_ajax extends CI_Controller {
 		$this->load->view('admin/index',$this->data);
 		//
 	}
-	
 	public function nameStudent(){
 		$idUser = $this->input->get('id');
 		$sql = $this->db->select('name')->where('id',$idUser)->get('users')->result()[0];
@@ -29,7 +28,6 @@ class Admin_ajax extends CI_Controller {
 		$b['response'] = 2;
 		echo json_encode($b);
 	}
-
 	public function nameSucursal(){
 		$b['content'] = $_SESSION['sucursal'];
 		$b['response'] = 2;
@@ -156,6 +154,7 @@ class Admin_ajax extends CI_Controller {
 								'idStudent' => $idUser,
 								'idClassHead' => $idClassHead,
 								'dateStart' => $dateStart.' '.$this->input->get('time'),
+								'date'=> date('y-m-d H:i:s'),//para la fecha actual
 								'nHours' => $nHours,
 								'nDay' => $this->input->get('nDay'),
 								'type' => 2
@@ -438,6 +437,20 @@ class Admin_ajax extends CI_Controller {
 		//	$r['content'] = 'Accion Bloqueada Por que no tienes Horas Disponibles';
 		//}
 			echo json_encode($r);
+	}
+	public function setRevisarCancelacion(){
+		$id = $this->input->get('id');
+		
+		$this->db->set('status',1)->where('id',$id)->update('relStudentClassHead');
+		$b['response'] = 2;
+		echo json_encode($b);
+	}
+	public function setRevertirRevisionCancelacion(){
+		$id = $this->input->get('id');
+		
+		$this->db->set('status',0)->where('id',$id)->update('relStudentClassHead');
+		$b['response'] = 2;
+		echo json_encode($b);
 	}
 	public function addUser(){
 		// echo '<pre>';
@@ -801,7 +814,6 @@ class Admin_ajax extends CI_Controller {
 		$r['response']=$data;
 		echo json_encode($r);
 	}
-	
 	public function getClassAvailableStudent(){
 		$sql = $this->db->where('idInstrument',$this->input->get('idInstrument'))->where('idSucursal',$_SESSION['sucursal'])->order_by('nDay asc, time asc')->get('clasesHead');//Obtiene las Cabeceras de clase (Esta bien hecha la consulta)
 		/*echo '<pre>';
@@ -1062,6 +1074,24 @@ class Admin_ajax extends CI_Controller {
 		$sql = $this->db->get('users');
 		$r['response'] = 2;
 		$r['content'] = $sql->result();
+		echo json_encode($r);
+	}
+	public function getCancelaciones(){
+		/*Esta funcion me permite obtener las clases que han sido reprogramadas en la ultima semana*/ 
+		$day = date('w');
+		$week_start = date('Y-m-d', strtotime('-'.$day.' days')).' 00:00:00';
+		$week_end = date('Y-m-d', strtotime('+'.(6-$day).' days')).' 00:00:00';
+		$sql = $this->db->select('relStudentClassHead.*,users.name,instrumentos.name instrumento')
+						->where('type',2)
+						->where('relStudentClassHead.date>',$week_start)
+						->where('relStudentClassHead.date<',$week_end)
+						->join('users','relStudentClassHead.idStudent = users.id')
+						->join('clasesHead','relStudentClassHead.idCLassHead = clasesHead.id')
+						->join('instrumentos','clasesHead.idInstrument = instrumentos.id')
+						->order_by('relStudentClassHead.date desc')
+						->get('relStudentClassHead')->result();
+		$r['response'] = 2;
+		$r['content'] = $sql;
 		echo json_encode($r);
 	}
 	public function historyClassStudent(){ //sirve para buscar el historial de clases de un estudiante por istrumento 

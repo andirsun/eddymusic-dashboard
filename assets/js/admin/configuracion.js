@@ -53,7 +53,7 @@ function añadirinstrumento() {
 						//             '<div id="borrarInstrumento" class="btn btn-danger" value='+el.id+'><i class="fas fa-trash"></i></div>'+
 						//     '</tr>';
 					});
-					if($('td.dataTables_empty').length>0){
+					if ($('td.dataTables_empty').length > 0) {
 						$('td.dataTables_empty').closest('tr').remove();
 					}
 					$(tbody).append(str);
@@ -73,7 +73,7 @@ function cargarInstrumentos() {
 		type: 'GET',
 		dataType: 'json',
 		beforeSend: function () {
-			
+
 		},
 		success: function (r) {
 			console.log(r);
@@ -107,7 +107,7 @@ function cargarInstrumentos() {
 }
 
 function cancelarEdicion() {
-	$('body').on('click', '#close-form-edit', function(event) {
+	$('body').on('click', '#close-form-edit', function (event) {
 		var btn = this;
 		var form = $(btn).closest('form');
 		$(form)[0].reset();
@@ -121,7 +121,7 @@ function cancelarEdicion() {
 function confirmarEliminar() {
 	$("body").on("click", "#tablaInstrumentos #borrarInstrumento", function (event) {
 		idseleccion = $(this).attr("value");
-		if(confirm('Estas Seguro que Quieres Eliminar el Instrumento?')){
+		if (confirm('Estas Seguro que Quieres Eliminar el Instrumento?')) {
 			$.ajax({
 				url: base_url + 'admin_ajax/deleteInstrument',
 				type: 'GET',

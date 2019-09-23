@@ -9,7 +9,11 @@
 <div class="tab-content" id="pills-tabContent">
     <div class="tab-pane fade show active" id="ingresosEfectivo" role="tabpanel" aria-labelledby="pills-home-tab">
         <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#modalIngresoEfectivo" data-whatever="@mdo">Agregar Nuevo Ingreso</button>
-        <div  id="flujoCaja" class="container-fluid">
+        <div  class="container-fluid ">
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-3 text-center shadow p-3 mb-5 bg-white rounded" id="flujoCaja"></div>
+            </div>
             
 
         </div>
@@ -31,8 +35,8 @@
                 <input type="text"  class="form-control" id="dineroIngresos" placeholder="Dinero" readonly>
             </div>
         </div>
-        <table class="table table-striped table-hover table-responsive-sm" id="tablaIngresosEfectivo">
-            <thead class="thead-dark">
+        <table class="table table-borderless table-hover table-responsive-sm ml-2 mt-2 shadow p-3 mb-5 bg-white rounded" id="tablaIngresosEfectivo">
+            <thead  class="thead-dark">
                 <tr >
                     <th id="fecha">Fecha/Hora</th>
                     <th id="estudiante">Estudiante</th>
@@ -90,8 +94,8 @@
         
 
     </div>
-    <table class="table table-striped table-hover table-responsive-sm" id="tablaIngresosBanco">
-        <thead class="thead-dark">
+    <table class="table table-borderless table-hover table-responsive-sm" id="tablaIngresosBanco">
+        <thead  class="thead-dark">
             <tr> 
                 <th id="fecha">Fecha</th>
                 <th id="estudiante">Estudiante</th>

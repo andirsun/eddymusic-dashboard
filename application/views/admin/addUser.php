@@ -106,27 +106,29 @@
 	</div>
 	
     <!-- ------------------------------------------------------------------>
-    <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+    <div class="tab-pane fade show active ml-2 mr-2" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">Listado de estudiantes</h1>
         </div>
-        <table class="table table-striped table-hover table-responsive-sm" id="tablaEstudiantes">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">numHuellero</th>
-                    <th scope="col">Nombre completo </th>
-                    <th scope="col">Tipo Documento</th>
-                    <th scope="col">Documento</th>
-                    <th scope="col">Fecha Cumpleaños</th>
-                    <th scope="col">Observaciones </th>
-                    <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                
-            </tbody>
-        </table>
+        <div class="shadow p-3 mb-5 bg-white rounded ">
+            <table class="table table-borderless table-hover table-responsive-sm" id="tablaEstudiantes">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">numHuellero</th>
+                        <th scope="col">Nombre completo </th>
+                        <th scope="col">Tipo Documento</th>
+                        <th scope="col">Documento</th>
+                        <th scope="col">Fecha Cumpleaños</th>
+                        <th scope="col">Observaciones </th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 <!-- Modal para editar usuario -->

@@ -18,7 +18,7 @@
 
 </style>
 </head>
-  <div id='calendar'></div>
+  <div class="shadow p-3 mb-5 bg-white rounded" id='calendar'></div>
 <script src='<?php echo base_url() ?>assets/fullcalendar/packages/core/main.js?<? echo time_unix(); ?>'></script>
 <script src='<?php echo base_url() ?>assets/fullcalendar/packages/interaction/main.js?<? echo time_unix(); ?>'></script>
 <script src='<?php echo base_url() ?>assets/fullcalendar/packages/daygrid/main.js?<? echo time_unix(); ?>'></script>
