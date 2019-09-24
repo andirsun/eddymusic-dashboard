@@ -17,8 +17,30 @@ class Restserver extends REST_Controller {
 		$user = $this->input->get('user');//DOcumento de la persona
 		$pass = $this->input->get('pass');
 		//$sql = $this->db->where('(name="'.$user.'") AND document="'.$pass.'"')->get('users'); // Solo inicia con el nombre
-        //$sql = $this->db->where('name',$user)->where('document',$pass)->get('users'); // Solo inicia con el nombre
-        $sql = $this->db->where('user',$document)->where('document',$pass)->get('users'); // Solo inicia con el nombre
+        $sql = $this->db->where('name',$user)->where('document',$pass)->get('users'); // Solo inicia con el nombre
+       // $sql = $this->db->where('document',$user)->where('document',$pass)->get('users'); // Solo inicia con el nombre
+		if($sql->num_rows()==1){
+			$user = $sql->result()[0];
+			//$_SESSION['data_user'] = $user;
+			//$_SESSION['name'] = $user->name;
+			//$_SESSION['sucursal'] = $user->idSucursal;
+			$r['username'] = $user->name;
+			$r['level'] = $user->level;
+            $r['sucursal'] = $user->idSucursal;
+            $r['id'] = $user->id;
+			//$r['data'] = $user;
+			$response = 2;
+		}else{	
+			$r['Estado'] = "Ups, Revisa Tus datos e intenta de nuevo";
+			$response = 1;
+		}
+		$r['response'] = $response;
+		echo json_encode($r);
+    } 
+    public function autenticarprueba_get(){
+		$user = $this->input->get('user');//DOcumento de la persona
+		$pass = $this->input->get('pass');
+		$sql = $this->db->where('document',$user)/*->where('document',$pass)*/->get('users'); // Solo inicia con el nombre
 		if($sql->num_rows()==1){
 			$user = $sql->result()[0];
 			//$_SESSION['data_user'] = $user;
