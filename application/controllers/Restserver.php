@@ -37,20 +37,22 @@ class Restserver extends REST_Controller {
 		$r['response'] = $response;
 		echo json_encode($r);
     } 
-    public function autenticarprueba_get(){
+    public function login_get(){
+        /*New Method of autetication with the email and the document */
 		$user = $this->input->get('user');//DOcumento de la persona
 		$pass = $this->input->get('pass');
-		$sql = $this->db->where('document',$user)/*->where('document',$pass)*/->get('users'); // Solo inicia con el nombre
+        $sql = $this->db->where('email',$user)->where('document',$pass)->get('users'); 
+        /*POr si no entra en el if*/
+        $response = 3;
+        $r['Estado'] = "Error interno del servidor, contacta con el administrador";
+        ///////////////////////////////////////////////////////
 		if($sql->num_rows()==1){
-			$user = $sql->result()[0];
-			//$_SESSION['data_user'] = $user;
-			//$_SESSION['name'] = $user->name;
-			//$_SESSION['sucursal'] = $user->idSucursal;
+            $user = $sql->result()[0];
+            $r['Estado'] = "Logeo COrrecto..";
 			$r['username'] = $user->name;
 			$r['level'] = $user->level;
             $r['sucursal'] = $user->idSucursal;
             $r['id'] = $user->id;
-			//$r['data'] = $user;
 			$response = 2;
 		}else{	
 			$r['Estado'] = "Ups, Revisa Tus datos e intenta de nuevo";
