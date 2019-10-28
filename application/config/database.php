@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '142.93.8.70',
-	'username' => 'root',
-	'password' => 'b1ae5fa17b15307cb91dd83c97130ef682b7154f980665d3',
-	'database' => 'eddymusic',
+	'hostname' => 'localhost',
+	'username' => 'eddymusic_admin',
+	'password' => '@ander147852369',
+	'database' => 'eddymusic_eddymusic',
 	'dbdriver' => 'mysqli',
 	'dbport' => '3306',
 	'dbprefix' => '',
