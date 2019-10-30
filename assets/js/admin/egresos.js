@@ -285,7 +285,9 @@ function getEgresosEfectivo() {
 			var tableBody = $('#tablaEgresosEfectivo').find("tbody");
 			var str = buildTrUserEfectivo(r.content);
 			$(tableBody).html(str);
-			table = $("#tablaEgresosEfectivo").DataTable(dataTableOptions);
+			table = $("#tablaEgresosEfectivo").DataTable( {
+				"order": [[ 1, "asc" ]]
+			} );
 			flujoDeCajaEfectivo();
 			console.log(table);
 		},
@@ -308,7 +310,9 @@ function getEgresosBancos() {
 			var tableBody = $('#tablaEgresosBanco').find("tbody");
 			var str = buildTrUserBanco(r.content);
 			$(tableBody).html(str);
-			table = $("#tablaEgresosBanco").DataTable(dataTableOptions);
+			table = $("#tablaEgresosBanco").DataTable( {
+				"order": [[ 1, "asc" ]]
+			} );
 			flujoDeCajaBanco();
 			console.log(table);
 		},
@@ -341,7 +345,9 @@ function filtrarEgresosEfectivo() {
 				var tableBody = $('#tablaEgresosEfectivo').find("tbody");
 				var str = buildTrUserEfectivo(r.content);
 				$(tableBody).html(str);
-				table = $("#tablaEgresosEfectivo").DataTable(dataTableOptions);
+				table = $("#tablaEgresosEfectivo").DataTable( {
+					"order": [[ 1, "asc" ]]
+				} );
 				console.log(table);
 			},
 			error: function (xhr, status, msg) {
@@ -374,7 +380,9 @@ function filtrarEgresosBanco() {
 				var tableBody = $('#tablaEgresosBanco').find("tbody");
 				var str = buildTrUserBanco(r.content);
 				$(tableBody).html(str);
-				table = $("#tablaEgresosBanco").DataTable(dataTableOptions);
+				table = $("#tablaEgresosBanco").DataTable( {
+					"order": [[ 1, "asc" ]]
+				} );
 				console.log(table);
 			},
 			error: function (xhr, status, msg) {

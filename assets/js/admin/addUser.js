@@ -192,7 +192,10 @@ function getUsers() {
 			var tableBody = $('#tablaEstudiantes').find("tbody");
 			var str = buildTrUser(r.content);
 			$(tableBody).html(str);
-			table = $("#tablaEstudiantes").DataTable(dataTableOptions);
+			table = $("#tablaEstudiantes").DataTable( {
+				"order": [[ 1, "desc" ]],
+				
+			} );
 			// console.log(table);
 		},
 		error: function (xhr, status, msg) {

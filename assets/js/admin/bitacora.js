@@ -96,7 +96,16 @@ function cargarTablasBitacoras() {
           var tableBody = $('#tablaBitacoras').find("tbody");
           var str = construirTablaBitacoras(r.content);
           $(tableBody).html(str);
-          table = $("#tablaBitacoras").DataTable(options);
+          table = $("#tablaBitacoras").DataTable( {
+            "order": [[ 1, "desc" ]],
+            "columns": [
+              { "width": "10%" },
+              { "width": "10%" },
+              { "width": "10%" },
+              { "width": "10%" },
+              { "width": "60%" },
+            ]
+          } );
           //console.log(table);
         } else {
           table = $("#tablaBitacoras").DataTable();

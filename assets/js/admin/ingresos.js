@@ -234,7 +234,9 @@ function filtrarIngresosEfectivo() {
 				var tableBody = $('#tablaIngresosEfectivo').find("tbody");
 				var str = buildTrUserEfectivo(r.content);
 				$(tableBody).html(str);
-				table = $("#tablaIngresosEfectivo").DataTable(dataTableOptions);
+				table = $("#tablaIngresosEfectivo").DataTable( {
+					"order": [[ 1, "asc" ]]
+				} );
 				console.log(table);
 			},
 			error: function (xhr, status, msg) {
@@ -267,7 +269,9 @@ function filtrarIngresosBanco() {
 				var tableBody = $('#tablaIngresosBanco').find("tbody");
 				var str = buildTrUserBanco(r.content);
 				$(tableBody).html(str);
-				table = $("#tablaIngresosBanco").DataTable(dataTableOptions);
+				table = $("#tablaIngresosBanco").DataTable( {
+					"order": [[ 1, "asc" ]]
+				} );
 				console.log(table);
 			},
 			error: function (xhr, status, msg) {
@@ -290,7 +294,9 @@ function getingresosEfectivo() {
 			var tableBody = $('#tablaIngresosEfectivo').find("tbody");
 			var str = buildTrUserEfectivo(r.content);
 			$(tableBody).html(str);
-			table = $("#tablaIngresosEfectivo").DataTable(dataTableOptions);
+			table = $("#tablaIngresosEfectivo").DataTable( {
+				"order": [[ 1, "asc" ]]
+			} );
 			flujoDeCajaEfectivo();
 			console.log(table);
 		},
@@ -311,7 +317,9 @@ function getIngresosEfectivo2() {
 			var tableBody = $('#tablaIngresosEfectivo').find("tbody");
 			var str = buildTrUserEfectivo(r.content);
 			$(tableBody).html(str);
-			table = $("#tablaIngresosEfectivo").DataTable(dataTableOptions);
+			table = $("#tablaIngresosEfectivo").DataTable( {
+				"order": [[ 1, "asc" ]]
+			} );
 			//console.log(table);
 		},
 		error: function (xhr, status, msg) {
@@ -333,7 +341,9 @@ function getingresosBanco() {
 			var tableBody = $('#tablaIngresosBanco').find("tbody");
 			var str = buildTrUserBanco(r.content);
 			$(tableBody).html(str);
-			table = $("#tablaIngresosBanco").DataTable(dataTableOptions);
+			table = $("#tablaIngresosBanco").DataTable( {
+				"order": [[ 1, "asc" ]]
+			} );
 			console.log(table);
 		},
 		error: function (xhr, status, msg) {
