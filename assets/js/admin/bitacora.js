@@ -101,6 +101,7 @@ function cargarTablasBitacoras() {
         } else {
           table = $("#tablaBitacoras").DataTable();
           alert("Aun No hay bitacoras para mostrar de este instrumento, Revisa mas tarde");
+          $("#tablaBitacoras").dataTable().fnDestroy();
         }
 
 
