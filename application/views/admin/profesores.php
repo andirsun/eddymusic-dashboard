@@ -77,22 +77,24 @@
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
       <h1 class="h2">Listado de Profesores</h1>
     </div>
-    <table class="table table-striped table-hover table-lg table-responsive-sm " id="tablaProfesores">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Documento</th>
-          <th scope="col">Celular</th>
-          <th scope="col">Fecha Cumpleaños</th>
-          <th scope="col">Email</th>
-          <th scope="col">H.V</th>
-          <th scope="col">Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
+    <div class="shadow p-3 mb-5 bg-white rounded ">
+      <table class="table table-hover table-lg table-responsive-sm " id="tablaProfesores">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Documento</th>
+            <th scope="col">Celular</th>
+            <th scope="col">Fecha Cumpleaños</th>
+            <th scope="col">Email</th>
+            <th scope="col">H.V</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
   </div>
 
 </div>

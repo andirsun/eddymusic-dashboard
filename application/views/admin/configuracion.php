@@ -1,16 +1,9 @@
 <div class="container-fluid my-4">
     <div class="row">
-        <div class="col">
-<!--             <form id="addInstrument">
-                <div class="form-group">
-                    <input type="hidden" name="id" value="0">
-                    <label for="exampleFormControlInput1">Nombre del instrumento</label>
-                    <input type="text" class="form-control" name="name" id="nomInstrumento" placeholder="Coloca el nombre..">
-                </div>
-                <button type="submit" class="btn btn-primary" data-toggle="modal">
-  					Añadir Instrumento
-				</button>
-            </form> -->
+        
+        <div class="col-4">
+            <div class="shadow p-3 mb-5 bg-white rounded ">
+            <h2>Informacion de Instrumentos</h2>
             <form id="addInstrument">
                 <input type="hidden" name="id" id="id_instrumento" value="0">
                 <fieldset class="form-group">
@@ -58,23 +51,27 @@
                 <div class="alert my-2" id="msg-edit-form">  
                 </div>
             </form>
+            </div>
         </div>
         <div class="col" id="col-form-edit" style="display: none;">
 
         </div>
         <div class="col"> 
-            <table class="table table-striped table-dark table-hover" id="tablaInstrumentos">
-                <thead>
-                    <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                   
-                </tbody>
-            </table>
+            <div class="shadow p-3 mb-5 bg-white rounded ">
+                <h2>Listado Instrumentos</h2>
+                <table class="table table-striped  table-hover" id="tablaInstrumentos">
+                    <thead>
+                        <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
