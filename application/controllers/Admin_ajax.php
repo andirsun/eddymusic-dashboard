@@ -914,17 +914,19 @@ class Admin_ajax extends CI_Controller {
 						->order_by('clases.date desc')
 						->get('clases');
 		/*echo '<pre>';
-		 	var_dump($sql->result()[0]);
+		 	var_dump($sql->result());
 		
-		 echo '</pre>';*/
+		echo '</pre>';*/
 		if($sql->num_rows()>0){
+			
 			$data = array();
+			/*
 			foreach($sql->result() as $key => $c){ // con esto cambio el id del profesor por su nombre en cada registro de la consulta
 				$idProfesor = $c->profesor;
 				if($idProfesor!=0){
-					$c->profesor = $this->db->select('name')->where('id',$idProfesor)->get('users')->result()[0]->name;
+					$c->profesor = $this->db->select('name')->where('id',$idProfesor)->get('users')->result()[0]->profesor;
 				}
-			}
+			}*/
 			$r['content'] = $sql->result();
 			$r['response']=2;
 		}else{
@@ -1083,6 +1085,7 @@ class Admin_ajax extends CI_Controller {
 		$week_end = date('Y-m-d', strtotime('+'.(6-$day).' days')).' 00:00:00';
 		$sql = $this->db->select('relStudentClassHead.*,users.name,instrumentos.name instrumento')
 						->where('type',2)
+						->where('users.idSucursal',$_SESSION['sucursal'])
 						->where('relStudentClassHead.date>',$week_start)
 						->where('relStudentClassHead.date<',$week_end)
 						->join('users','relStudentClassHead.idStudent = users.id')

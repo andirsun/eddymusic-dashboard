@@ -14,10 +14,10 @@
 
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/styles.css?<? echo time_unix(); ?>">
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/main.css?<? echo time_unix(); ?>">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-	 
-	<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/css/bootstrap4-toggle.min.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">	<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/css/bootstrap4-toggle.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/carousel/dist/assets/owl.carousel.min.css?<? echo time_unix(); ?>">
+
 
 	
 	<link rel="icon" href="<?php echo base_url()?>assets/images/miniicono.png">
@@ -105,7 +105,7 @@
 	</script>
 
 	<script src="<?php echo base_url() ?>assets/js/bootstrap.min.js"></script>
-	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 	<script src="<?php echo base_url() ?>assets/js/plugins/jquery-number/jquery.number.min.js"></script>
 	<script src="<?php echo base_url() ?>assets/js/admin/principal.js?<? echo time_unix(); ?>"></script>
 	</body>

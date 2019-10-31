@@ -20,12 +20,32 @@ var options = {
   ]
 } 
 $(function () {
-  $("#tablaBitacoras").DataTable(dataTableOptions);
+  $("#tablaBitacoras").DataTable();
   console.log("AnderDev");
   loadTabs();
   cargarTablasBitacoras();
+  carousel();
 
 });
+
+function carousel(){
+  $('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:15,
+    nav:true,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:5
+        }
+    }
+  });
+}
 
 function loadTabs() {
   $.ajax({
@@ -96,11 +116,21 @@ function cargarTablasBitacoras() {
           var tableBody = $('#tablaBitacoras').find("tbody");
           var str = construirTablaBitacoras(r.content);
           $(tableBody).html(str);
-          table = $("#tablaBitacoras").DataTable(options);
+          table = $("#tablaBitacoras").DataTable( {
+            "order": [[ 1, "desc" ]],
+            "columns": [
+              { "width": "10%" },
+              { "width": "10%" },
+              { "width": "10%" },
+              { "width": "10%" },
+              { "width": "60%" },
+            ]
+          } );
           //console.log(table);
         } else {
           table = $("#tablaBitacoras").DataTable();
           alert("Aun No hay bitacoras para mostrar de este instrumento, Revisa mas tarde");
+          $("#tablaBitacoras").dataTable().fnDestroy();
         }
 
 

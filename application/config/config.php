@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
@@ -24,7 +25,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-$config['base_url'] = 'https://www.eddymusic.tk/';
+$config['base_url'] = 'https://eddymusic.tk/';
+
 
 /*
 |--------------------------------------------------------------------------
