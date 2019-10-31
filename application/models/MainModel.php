@@ -8,10 +8,11 @@ class MainModel extends CI_Model{
 
     public function addLog($type, $desc, $id){
     	$idUser = !isset($_SESION['data_user']) ? 0 : $_SESION['data_user']->id;
-    	$ip = $_SERVER['REMOTE_ADDR'];
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $date = date('y-m-d H:i:s');
     	$this->db->insert('aLog',
     		array(
-    			'idUser'=>$idUser,
+    			'idUser'=>$idUser,'date'=>$date,
     			'ip'=>$ip,'type'=>$type,'description'=>$desc,'idVal'=>$id
     		)
     	);
