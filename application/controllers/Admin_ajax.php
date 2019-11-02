@@ -827,6 +827,19 @@ class Admin_ajax extends CI_Controller {
 		$r['response']=$data;
 		echo json_encode($r);
 	}
+	public function getAccounts(){
+		$sql= $this->db
+						->select('users.id,users.name user,users.date lastAccess,sucursales.name sucursal')
+						->where('level',0)
+						->or_where('level',1)
+						->or_where('level',4)
+						->join('sucursales','sucursales.id=users.idSucursal')
+						->get('users');
+						
+		$r['response'] = 2;	
+		$r['content'] = $sql->result();
+		echo json_encode($r);
+	}
 	public function getClassAvailableStudent(){
 		$sql = $this->db->where('idInstrument',$this->input->get('idInstrument'))->where('idSucursal',$_SESSION['sucursal'])->order_by('nDay asc, time asc')->get('clasesHead');//Obtiene las Cabeceras de clase (Esta bien hecha la consulta)
 		/*echo '<pre>';

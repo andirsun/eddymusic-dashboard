@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-2"></div>
         <div class="col-8 ml-2 mt-2 mr-2 shadow p-3 mb-5 bg-white rounded">
-            <table class="table table-borderless table-hover table-responsive-sm " id="tablaIngresosEfectivo">
+            <table class="table table-borderless table-hover table-responsive-sm " id="tableAccounts">
                 <thead>
                     <tr >
                         <th>Usuario</th>
@@ -18,7 +18,7 @@
                             <td id="sucursal">Ibague</td>
                             <td id="lastAccess">Hace 4 Horas</td>
                             <td class="d-inline-flex">
-                                <button type="button" id="borrarIngresoEfectivo" class="btn btn-danger ml-4" value=''>
+                                <button type="button" id="changePassword" class="btn btn-danger ml-4" value=''>
                                 Cambiar Contrasenia
                                 <i class="fas fa-key"></i>
                                 </button>

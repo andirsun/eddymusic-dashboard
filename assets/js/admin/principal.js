@@ -9,7 +9,9 @@ function unchange(name){
 	$(objeto).removeClass("shadow  mb-1 ml-4 mr-4 bg-white rounded");
 }
 $(function () {
+
 	console.log(666);
+	$("#menu-toggle").trigger( "click" );
 	//setNombreStudent();
 	setNombreSesion();
 	setNombreSucursal();
