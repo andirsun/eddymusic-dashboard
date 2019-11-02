@@ -814,6 +814,19 @@ class Admin_ajax extends CI_Controller {
 		$r['response']=$data;
 		echo json_encode($r);
 	}
+	public function cumpleanosTeachers(){
+		$sql = $this->db->select('name title,birthday start')->where('level',2)->where('idSucursal',$_SESSION['sucursal'])->get('users');/*Los renombro como title y start por que asi los coje el front del calendario*/ 
+		//$auxiliar = $sql->result()[20]->start;
+		foreach ($sql->result() as $key => $c) {
+			///Esta funcion me toma la fecha y le cambiar el año al actual
+			$year = date('Y');
+			$myMonthDay = date('m-d', strtotime($c->start)); 			
+			$c->start = $year . '-' . $myMonthDay;
+			$data[] = array('title'=>$c->title,'start'=>$c->start);
+		}
+		$r['response']=$data;
+		echo json_encode($r);
+	}
 	public function getClassAvailableStudent(){
 		$sql = $this->db->where('idInstrument',$this->input->get('idInstrument'))->where('idSucursal',$_SESSION['sucursal'])->order_by('nDay asc, time asc')->get('clasesHead');//Obtiene las Cabeceras de clase (Esta bien hecha la consulta)
 		/*echo '<pre>';
