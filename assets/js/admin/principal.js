@@ -1,6 +1,6 @@
 var userLevel;
 var sucursalActive;
-function change(name){
+function change(name){ //these functions change the aspect to side menu when you hover with the mouse
 	var objeto = "#"+name;
 	$(objeto).addClass("shadow  mb-1 ml-4 mr-4 bg-white rounded");
 }
@@ -11,7 +11,7 @@ function unchange(name){
 $(function () {
 
 	console.log(666);
-	$("#menu-toggle").trigger( "click" );
+	//$("#menu-toggle").trigger( "click" );
 	//setNombreStudent();
 	setNombreSesion();
 	setNombreSucursal();
@@ -20,7 +20,6 @@ $(function () {
 	getLevelUser();
 	getHeadquarters();
 	closeListHeadquarters();
-	// getActiveHeadquarter();
 	changeHeadquarter();
 	$('#loadModal').click(function (event) {
 		loadModal('titulo 666', '<h1>body 666</h1>', 'btn popo');
