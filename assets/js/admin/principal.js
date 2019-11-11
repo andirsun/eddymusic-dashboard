@@ -13,15 +13,8 @@ $(function () {
 	console.log(666);
 	//$("#menu-toggle").trigger( "click" );
 	//setNombreStudent();
-
-
-
-
-
-
-	
-	setNombreSesion();
 	setNombreSucursal();
+	setNombreSesion();
 	setActive();
 	toggleMenu();
 	getLevelUser();
