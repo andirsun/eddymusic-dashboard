@@ -1109,7 +1109,7 @@ class Admin_ajax extends CI_Controller {
 		$day = date('w');
 		$week_start = date('Y-m-d', strtotime('-'.$day.' days')).' 00:00:00';
 		$week_end = date('Y-m-d', strtotime('+'.(6-$day).' days')).' 00:00:00';
-		$sql = $this->db->select('relStudentClassHead.*,users.name,instrumentos.name instrumento')
+		$sql = $this->db->select('relStudentClassHead.*,users.name,users.id userId,instrumentos.name instrumento')
 						->where('type',2)
 						->where('users.idSucursal',$_SESSION['sucursal'])
 						->where('relStudentClassHead.date>',$week_start)

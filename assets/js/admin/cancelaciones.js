@@ -1,4 +1,5 @@
 $(function(){
+   console.log("HI");
    loadData();
    revisarRegistro();
    deshacerRegistro();
@@ -16,7 +17,7 @@ function loadData(){
 		},
 		success: function (r) {
          if (r.response == 2) {
-				//console.log('data \n', r.content);
+				console.log('data \n', r.content);
             var tableBody = $('#tableCancelations').find("tbody");//pick the body of the table
             var str = buildTable(r.content);//build the table with the info 
             $(tableBody).html(str); //load the data into the html of the table
@@ -114,6 +115,7 @@ function buildTable(data){
          $(tr).find('#estado').html("Revisado <i style='color:green;' class='fas fa-check-circle'></i>");
       }
       $(tr).find('#customSwitch1').attr("id",el.id);
+      $(tr).find('#fechaCancelacion').attr("href","clasesStudent/"+el.userId);
       $(tr).find('#estado').attr("for",el.id);
       $(tr).find('#revertir').attr("id",el.id)
 		$(tr).find('#customSwitch1').attr('value', el.id);//este id es el de guia para hacer los checks 

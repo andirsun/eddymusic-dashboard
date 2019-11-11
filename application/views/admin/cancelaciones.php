@@ -2,7 +2,7 @@
 <div class="container mt-5 mb-5 shadow p-3 mb-5 bg-white rounded">
     <div clas="row">
         <div class="col ">
-            <h2>Reprogramaciones de clase (USO EXPERIMENTAL)</h2>
+            <h2>Reprogramaciones de clase (En construccion...)</h2>
             
             <table class="table table-borderless table-hover table-responsive-sm" id="tableCancelations">
                 <thead >
@@ -10,6 +10,7 @@
                         <th>Fecha/hora</th>
                         <th>Estudiante</th>
                         <th>Instrumento</th>
+                        <th>Clase Cancelada</th>
                         <th>Clase Agendada</th>
                         <th>Acciones</th>
                     </tr>
@@ -19,6 +20,11 @@
                         <th scope="row" id="fecha"></th>
                         <td id="estudiante"></td>
                         <td id="instrumento"></td>
+                        <td >
+                            <a id="fechaCancelacion" href="" >
+                            <i class="fas fa-calendar-alt fa-2x"></i>
+                            </a>
+                        </td>
                         <td id="fechaReprogramacion"></td>
                         <td id="acciones">
                             <div class="custom-control custom-switch">
