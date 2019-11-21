@@ -2,7 +2,7 @@
 <div class="container mt-5 mb-5 shadow p-3 mb-5 bg-white rounded">
     <div clas="row">
         <div class="col ">
-            <h2>Reprogramaciones de clase (En construccion...)</h2>
+            <h2>Reprogramaciones de clase</h2>
             
             <table class="table table-borderless table-hover table-responsive-sm" id="tableCancelations">
                 <thead >
