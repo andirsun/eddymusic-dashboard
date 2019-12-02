@@ -102,7 +102,7 @@ function deleteTeacher() {
 			beforeSend: function () {},
 			success: function (r) {
 				if (r.response == 2) {
-					alert("Profesor Eliminado");
+					alert("Profesor Desactivado");
 				}
 				getTeachers(); //para volver a refrezcar la tabla con el profesor ya eliminado
 
@@ -175,6 +175,11 @@ function getTeachers() {
 			var table = $('#tablaProfesores').find("tbody");
 			var str = '';
 			$.each(r.content, function (index, el) {
+				if(el.active ==1 ){
+					el.active = "Activo"
+				}else{
+					el.active ="Desactivado"
+				}
 				str +=
 					'<tr>' +
 					'<th scope="row">' + el.id + '</th>' +
@@ -188,6 +193,7 @@ function getTeachers() {
 					'<div id="editarUsuario" class="btn btn-warning mr-2" value=' + el.id + ' data-toggle="modal" data-target="#modalEditarUser"><i class="fas fa-edit"></i></div>' +
 					((level == 0 || level == 4) ? '<div id="borrarUsuario" class="btn btn-danger" value=' + el.id + '><i class="fas fa-trash"></i></div>' : '') +
 					'</td>' +
+					'<td>' + el.active + '</td>' +
 					'</tr>';
 			});
 			$(table).html(str);
@@ -237,6 +243,7 @@ function sendTeacher() {
 								'<div id="editarUsuario" class="btn btn-warning" value=' + el.id + ' data-toggle="modal" data-target="#modalEditarUser"><i class="fas fa-edit"></i></div>' +
 								'<div id="borrarUsuario" class="btn btn-danger" value=' + el.id + '><i class="fas fa-trash"></i></div>' +
 								'</td>' +
+								'<td>' + el.active + '</td>' +
 								'</tr>';
 						});
 						$(table).append(str);

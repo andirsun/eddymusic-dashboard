@@ -122,6 +122,8 @@
                         <th scope="col">Fecha Cumpleaños</th>
                         <th scope="col">Observaciones </th>
                         <th scope="col">Acciones</th>
+                        <th scope="col">Status</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -212,6 +214,7 @@
                   <i class="fas fa-calendar"></i>
                 </a>
               </td>
+              <td id="status">Activo</td>
             </tr>
         </tbody>
     </table>

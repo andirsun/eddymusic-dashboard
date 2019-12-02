@@ -654,10 +654,11 @@ class Admin_ajax extends CI_Controller {
 	}
 	public function deleteUser(){
 		$id = $this->input->get('id');
-		$sql = $this->db->where('idUser',$id)->delete('userRelInstrument');
-		//$sql = $this->db->where('idUser',$id)->delete('directorios');
-		$sql = $this->db->where('id',$id)->delete('users');
-		$this->mainModel->addLog('Usuario Eliminado','',$id);
+		//$sql = $this->db->where('idUser',$id)->delete('userRelInstrument');
+		
+		//$sql = $this->db->where('id',$id)->delete('users'); //ya no se eliminaran los usuarios si no que se desactivaran
+		$this->db->set('active',0)->where('id',$id)->update('users');
+		$this->mainModel->addLog('Usuario Desactivado','',$id);
 		$r['response'] = 2;
 		$r['content'] = 'deleted';
 		echo json_encode($r);

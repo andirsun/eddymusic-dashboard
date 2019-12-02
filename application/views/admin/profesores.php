@@ -13,6 +13,7 @@
 	<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
 		<div class="container">
 			<div class="shadow p-3 mb-5 bg-white rounded">
+				<h2>Formulario Docentes</h2>
 				<form id="addUserForm">
 					<input type="hidden" name="id" id="id" value="0">
 					<input type="hidden" id="level" name="level" value="2">
@@ -99,6 +100,7 @@
 						<th scope="col">Email</th>
 						<th scope="col">H.V</th>
 						<th scope="col">Acciones</th>
+						<th scope="col">Status</th>
 					</tr>
 				</thead>
 				<tbody>

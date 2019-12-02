@@ -323,6 +323,11 @@ function buildTrUser(listUser) {
 		if (el.birthday != "0000-00-00" && el.birthday != null) {
 			birthday = el.birthday;
 		}
+		if(el.active == 1){
+			el.active = "Activo"
+		}else{
+			el.active = "Desactivado"
+		}
 		$(tr).removeAttr('id');
 		$(tr).attr('data-id', el.id);
 		$(tr).find('#id_user').text(el.id);
@@ -333,6 +338,7 @@ function buildTrUser(listUser) {
 		$(tr).find('#birthday').text(birthday);
 		$(tr).find('#observaciones').text(el.observaciones);
 		$(tr).find('#editarUsuario').attr('value', el.id);
+		$(tr).find('#status').text(el.active);
 		$(tr).find('#borrarUsuario').attr('value', el.id);
 		$(tr).find("#usuarioCalendario").attr('href', base_url + 'admin/nav/clasesStudent/' + el.id);
 		$(tr).find("#usuarioCalendario").attr('value', el.id);
