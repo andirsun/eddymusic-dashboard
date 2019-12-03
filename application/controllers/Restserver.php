@@ -41,7 +41,7 @@ class Restserver extends REST_Controller {
         /*New Method of autetication with the email and the document */
 		$user = $this->input->get('user');//DOcumento de la persona
 		$pass = $this->input->get('pass');
-        $sql = $this->db->where('email',$user)->where('document',$pass)->get('users'); 
+        $sql = $this->db->where('email',$user)->where('document',$pass)->where('active',1)->get('users'); 
         /*POr si no entra en el if*/
         $response = 3;
         $r['Estado'] = "Error interno del servidor, contacta con el administrador";

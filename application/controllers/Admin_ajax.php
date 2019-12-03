@@ -657,7 +657,7 @@ class Admin_ajax extends CI_Controller {
 		//$sql = $this->db->where('idUser',$id)->delete('userRelInstrument');
 		
 		//$sql = $this->db->where('id',$id)->delete('users'); //ya no se eliminaran los usuarios si no que se desactivaran
-		$this->db->set('active',0)->where('id',$id)->update('users');
+		$this->db->set('active',0)->where('idUser')->update('users');
 		$this->mainModel->addLog('Usuario Desactivado','',$id);
 		$r['response'] = 2;
 		$r['content'] = 'deleted';
@@ -1099,7 +1099,7 @@ class Admin_ajax extends CI_Controller {
 		if($level!=null){
 			$this->db->where('level',$level);
 		}
-		$this->db->where('idSucursal',$_SESSION['sucursal']);
+		$this->db->where('active',1)->where('idSucursal',$_SESSION['sucursal']);
 		$sql = $this->db->get('users');
 		$r['response'] = 2;
 		$r['content'] = $sql->result();

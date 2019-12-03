@@ -336,8 +336,8 @@ function getTeachers(func) {
             level: 2
         },
         success: function (r) {
-            // console.log('listprofesors');
-            // console.log(r);
+            console.log('listprofesors');
+            console.log(r);
             func(true, r);
         },
         error: function (xhr, status, msg) {
