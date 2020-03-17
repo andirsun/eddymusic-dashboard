@@ -218,8 +218,8 @@
 						<input type="text" class="form-control" name="date" id="date-reasign" required>
 						<select name="time" class="form-control" required>
 							<?php for ($i = 8; $i<=19; $i++): ?>
-							<option value="<?echo $i<10? " 0".$i : $i ?>:00">
-								<?echo $i<10? "0".$i : $i ?>:00</option>
+							<option value="<?php echo $i<10? " 0".$i : $i ?>:00">
+								<?php echo $i<10? "0".$i : $i ?>:00</option>
 							<?php endfor ?>
 						</select>
 						<button type="submit" class="btn btn-success btn-block btn-sm mt-1">
