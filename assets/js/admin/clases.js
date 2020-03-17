@@ -83,6 +83,7 @@
     }
 
     function setNombreStudent() {
+        console.log("el id del usuario es "+ idUserStudent);
         $.ajax({
             url: base_url + 'admin_ajax/nameStudent',
             type: 'GET',

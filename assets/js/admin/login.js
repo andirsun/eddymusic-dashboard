@@ -1,6 +1,6 @@
 $(function () {
     autenticar();
-    console.log(666);
+    console.log(666 + base_url);
 });
 
 function autenticar() {
