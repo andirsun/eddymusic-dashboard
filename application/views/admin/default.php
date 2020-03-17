@@ -38,7 +38,7 @@
 </style>
 </head>
 
-<script src='<?php echo base_url() ?>assets/fullcalendar/packages/core/main.js?<? echo time_unix(); ?>'></script>
-<script src='<?php echo base_url() ?>assets/fullcalendar/packages/interaction/main.js?<? echo time_unix(); ?>'></script>
-<script src='<?php echo base_url() ?>assets/fullcalendar/packages/daygrid/main.js?<? echo time_unix(); ?>'></script>
-<script src='<?php echo base_url() ?>assets/js/admin/calendario.js?<? echo time_unix(); ?>'></script>
+<script src='<?php echo base_url() ?>assets/fullcalendar/packages/core/main.js?<?php echo time_unix(); ?>'></script>
+<script src='<?php echo base_url() ?>assets/fullcalendar/packages/interaction/main.js?<?php echo time_unix(); ?>'></script>
+<script src='<?php echo base_url() ?>assets/fullcalendar/packages/daygrid/main.js?<?php echo time_unix(); ?>'></script>
+<script src='<?php echo base_url() ?>assets/js/admin/calendario.js?<?php echo time_unix(); ?>'></script>

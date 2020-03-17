@@ -133,5 +133,5 @@
     </tr>
   </table>
 </div>
-<script src="<?echo base_url() ?>assets/js/admin/directorio.js?<?echo time_unix(); ?>"></script>
+<script src="<?php echo base_url() ?>assets/js/admin/directorio.js?<?php echo time_unix(); ?>"></script>
 <!--Aca acaba la tabla para ver las bitacoras -->

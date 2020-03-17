@@ -29,4 +29,4 @@
         </div>
     </div>
 </div>
-<script src="<?echo base_url() ?>assets/js/admin/adminAccounts.js?<?echo time_unix(); ?>"></script>
+<script src="<?php echo base_url() ?>assets/js/admin/adminAccounts.js?<?php echo time_unix(); ?>"></script>

@@ -219,4 +219,4 @@
         </tbody>
     </table>
 </div>
-<script src="<?echo base_url() ?>assets/js/admin/addUser.js?<?echo time_unix(); ?>"></script>
+<script src="<?php echo base_url() ?>assets/js/admin/addUser.js?<?php echo time_unix(); ?>"></script>

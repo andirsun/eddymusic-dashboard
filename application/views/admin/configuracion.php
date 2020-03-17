@@ -114,4 +114,4 @@
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/semantic.min.css"/>
 <!-- Bootstrap theme -->
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/bootstrap.min.css"/>
-<script src="<?echo base_url() ?>assets/js/admin/configuracion.js?<?echo time_unix(); ?>"></script>
+<script src="<?php echo base_url() ?>assets/js/admin/configuracion.js?<?php echo time_unix(); ?>"></script>

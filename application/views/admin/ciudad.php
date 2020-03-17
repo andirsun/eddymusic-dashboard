@@ -16,15 +16,13 @@
 
 <body>
 	/*<script src="<?php echo base_url() ?>assets/js/jquery-3.3.1.min.js" type="text/javascript"></script>*/
-	<script >var active = '<?echo $view ?>';  var base_url = '<?echo base_url() ?>'</script>
-	
-	<h1>HOLA ALA VERGA aaa</h1>
-		
-	
-	
-		
+	<script >
+		var active = '<?php echo $view ?>';
+		var base_url = '<?php echo base_url() ?>'
+	</script>
+	<h1>HOLA ALA VERGA aaa</h1>		
 	<script src="<?php echo base_url() ?>assets/js/bootstrap.min.js"></script>
-	<script src="<?php echo base_url() ?>assets/js/admin/principal.js?<? echo time_unix(); ?>"></script>
+	<script src="<?php echo base_url() ?>assets/js/admin/principal.js?<?php echo time_unix(); ?>"></script>
 </body>
 
 			</html>

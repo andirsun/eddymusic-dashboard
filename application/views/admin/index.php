@@ -11,24 +11,24 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 
-	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/styles.css?<? echo time_unix(); ?>">
-	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/main.css?<? echo time_unix(); ?>">
+	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/styles.css?<?php echo time_unix(); ?>">
+	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/main.css?<?php echo time_unix(); ?>">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
 		integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 	<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/css/bootstrap4-toggle.min.css"
 		rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 	<link rel="stylesheet"
-		href="<?php echo base_url() ?>assets/plugins/carousel/dist/assets/owl.carousel.min.css?<? echo time_unix(); ?>">
-	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/simple-sidebar.css?<? echo time_unix(); ?>">
+		href="<?php echo base_url() ?>assets/plugins/carousel/dist/assets/owl.carousel.min.css?<?php echo time_unix(); ?>">
+	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/simple-sidebar.css?<?php echo time_unix(); ?>">
 	<link rel="icon" href="<?php echo base_url()?>assets/images/miniicono.png">
 </head>
 
 <body>
 	<script src="<?php echo base_url() ?>assets/js/jquery-3.3.1.min.js" type="text/javascript"></script>
 	<script>
-		var active = '<?echo $view ?>';
-		var base_url = '<?echo base_url() ?>';
+		var active = '<?php echo $view ?>';
+		var base_url = '<?php echo base_url() ?>';
 		var level = '<?php echo $level; ?>' ;
 	</script>
 	<div class="d-flex" id="wrapper">
@@ -55,7 +55,7 @@
 					<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
 						<li class="nav-item" id="nombreUsuario">
 							<img style="height: 45px;width: 45px;"
-								src="<?echo base_url() ?>assets/images/icons/user.svg" alt="Kiwi standing on oval">
+								src="<?php echo base_url() ?>assets/images/icons/user.svg" alt="Kiwi standing on oval">
 
 						</li>
 						<li class="nav-item dropdown">
@@ -67,13 +67,13 @@
 								<?php if ($level==0): ?>
 								<a id="btnHeadquaters" class="dropdown-item">
 									<img style="height: 45px;width: 45px;"
-										src="<?echo base_url() ?>assets/images/icons/sucursal.svg">
+										src="<?php echo base_url() ?>assets/images/icons/sucursal.svg">
 									Cambiar Susursal
 								</a>
 								<a class="dropdown-item" data-active="addUser"
-									href="<?echo base_url() ?>admin/nav/adminAccounts">
+									href="<?php echo base_url() ?>admin/nav/adminAccounts">
 									<img style="height: 45px;width: 45px;"
-										src="<?echo base_url() ?>assets/images/icons/cuentas.svg">
+										src="<?php echo base_url() ?>assets/images/icons/cuentas.svg">
 									Cuentas
 								</a>
 								<?php endif ?>
@@ -81,7 +81,7 @@
 								<a class="dropdown-item" href="<?php echo base_url() ?>login/logout">
 									Cerrar Sesion
 									<img style="height: 45px;width: 45px;"
-										src="<?echo base_url() ?>assets/images/icons/exit.svg">
+										src="<?php echo base_url() ?>assets/images/icons/exit.svg">
 								</a>
 							</div>
 						</li>
@@ -152,7 +152,7 @@
 	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js">
 	</script>
 	<script src="<?php echo base_url() ?>assets/js/plugins/jquery-number/jquery.number.min.js"></script>
-	<script src="<?php echo base_url() ?>assets/js/admin/principal.js?<? echo time_unix(); ?>"></script>
+	<script src="<?php echo base_url() ?>assets/js/admin/principal.js?<?php echo time_unix(); ?>"></script>
 </body>
 
 </html>

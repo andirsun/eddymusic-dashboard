@@ -1,4 +1,4 @@
-<link href="<?echo base_url() ?>assets/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" type="text/css" >
+<link href="<?php echo base_url() ?>assets/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" type="text/css" >
 <form formAddHeadClass class="mb-4">
 	<input type="hidden" id="instrumentId" value="0">
 	<div class="row">
@@ -37,8 +37,8 @@
 		</div>
 	</div>
 </form>
-<script src="<?echo base_url() ?>assets/js/moment.min.js"></script>
-<script src="<?echo base_url() ?>assets/js/tempusdominus-bootstrap-4.min.js"></script>
+<script src="<?php echo base_url() ?>assets/js/moment.min.js"></script>
+<script src="<?php echo base_url() ?>assets/js/tempusdominus-bootstrap-4.min.js"></script>
 <script>
 	function datetime() {
 		$('[id=dateformAddHeadClass]').datetimepicker({

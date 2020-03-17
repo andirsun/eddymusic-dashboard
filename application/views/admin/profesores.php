@@ -145,4 +145,4 @@
 	</div>
 </div>
 <script type="text/javascript"></script>
-<script src="<?echo base_url() ?>assets/js/admin/profesor.js?<?echo time_unix(); ?>"></script>
+<script src="<?php echo base_url() ?>assets/js/admin/profesor.js?<?php echo time_unix(); ?>"></script>

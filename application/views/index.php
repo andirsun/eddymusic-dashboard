@@ -17,7 +17,10 @@
 </head>
 
 <body>
-  <script>var base_url = '<?echo base_url(); ?>'</script>
+  <script>
+    var base_url = '<?php echo base_url(); ?>';
+    console.log("base url "+base_url);
+  </script>
   <div class="container">
 	<div class="d-flex justify-content-center h-100">
 		<div class="card">
@@ -50,10 +53,10 @@
 	</div>
 </div>  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="<?php echo base_url() ?>assets/js/jquery-3.3.1.min.js" type="text/javascript"></script>
-  <script src="<?php echo base_url() ?>assets/js/bootstrap.min.js"></script>
-  <script src="<?php echo base_url() ?>assets/js/main.js?<?php echo strtotime(date('Y-m-d H:i:s')) ?>"></script>
-  <script src="<?php echo base_url() ?>assets/js/admin/login.js?<? echo time_unix(); ?>"></script>
+  <script src="<?php echo base_url(); ?>assets/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+  <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/main.js?<?php echo strtotime(date('Y-m-d H:i:s')) ?>"></script>
+  <script src="<?php echo base_url(); ?>assets/js/admin/login.js"></script>
 </body>
 
 </html>

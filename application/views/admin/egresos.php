@@ -224,5 +224,5 @@
         </div>
     </div>
 </div>
-<script src="<?echo base_url() ?>assets/js/admin/egresos.js?<?echo time_unix(); ?>"></script>
+<script src="<?php echo base_url() ?>assets/js/admin/egresos.js?<?php echo time_unix(); ?>"></script>
 <!-- Aca se acaba el modal para agregar un nuevo ingreso-->

@@ -1,5 +1,5 @@
 
-<link rel="stylesheet" href="<? echo base_url() ?>assets/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css">
+<link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css">
 <div class="container-fluid py-2">
 	<h2 id="titulo2">Administrador de paquetes de estudio de : </h2>
 	<div class="container" id="titulo">
@@ -313,8 +313,9 @@
 </div>
 
 <script>
-	var idUserStudent = '<? echo $idUser ?>';
+	/*Este es el id del estudiante el cual sirve para todas las consultas del tipo https://eddymusic.tk/admin/nav/clasesStudent/1413 en la pagina de clases del estudiante*/
+	var idUserStudent = '<?php echo $idUser ?>';
 </script>
-<script src="<?echo base_url() ?>assets/js/moment.min.js"></script>
-<script src="<?echo base_url() ?>assets/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
-<script src="<?echo base_url() ?>assets/js/admin/clases.js?<? echo time_unix(); ?>" type="text/javascript"></script>
+<script src="<?php echo base_url() ?>assets/js/moment.min.js"></script>
+<script src="<?php echo base_url() ?>assets/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
+<script src="<?php echo base_url() ?>assets/js/admin/clases.js?<?php echo time_unix(); ?>" type="text/javascript"></script>

@@ -207,4 +207,4 @@
 <!-- Aca se acaba el modal para agregar un nuevo ingreso-->
 
 <!-- Aca se acaba el modal para agregar un nuevo ingreso-->
-<script src="<?echo base_url() ?>assets/js/admin/ingresos.js?<?echo time_unix(); ?>"></script>
+<script src="<?php echo base_url() ?>assets/js/admin/ingresos.js?<?php echo time_unix(); ?>"></script>

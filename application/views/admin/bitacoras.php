@@ -20,35 +20,35 @@
 
       <div class="owl-carousel owl-theme">
         <div class="shadow p-2 mb-3 bg-white rounded">
-          <img src="<?echo base_url() ?>assets/images/canto.jpg" class="card-img-top" alt="...">
+          <img src="<?php echo base_url() ?>assets/images/canto.jpg" class="card-img-top" alt="...">
             <h4 class="card-title">Canto</h4>
         </div>
         <div class="shadow p-2 mb-3 bg-white rounded">
-          <img src="<?echo base_url() ?>assets/images/bateria.jpg" class="card-img-top" alt="...">
+          <img src="<?php echo base_url() ?>assets/images/bateria.jpg" class="card-img-top" alt="...">
             <h4 class="card-title">Bateria</h4>
         </div>
         <div class="shadow p-2 mb-3 bg-white rounded">
-          <img src="<?echo base_url() ?>assets/images/Bajo.png" class="card-img-top" alt="...">
+          <img src="<?php echo base_url() ?>assets/images/Bajo.png" class="card-img-top" alt="...">
             <h4 class="card-title">Bajo</h4>
         </div>
         <div class="shadow p-2 mb-3 bg-white rounded">
-          <img src="<?echo base_url() ?>assets/images/guitarraAcustica.jpg" class="card-img-top" alt="...">
+          <img src="<?php echo base_url() ?>assets/images/guitarraAcustica.jpg" class="card-img-top" alt="...">
             <h4 class="card-title">Guit. Acustica</h4>
         </div>
         <div class="shadow p-2 mb-3 bg-white rounded">
-          <img src="<?echo base_url() ?>assets/images/guitarraElectrica.jpg" class="card-img-top" alt="...">
+          <img src="<?php echo base_url() ?>assets/images/guitarraElectrica.jpg" class="card-img-top" alt="...">
             <h4 class="card-title">Guit. Electrica</h4>
         </div>
         <div class="shadow p-2 mb-3 bg-white rounded">
-          <img src="<?echo base_url() ?>assets/images/piano.jpg" class="card-img-top" alt="...">
+          <img src="<?php echo base_url() ?>assets/images/piano.jpg" class="card-img-top" alt="...">
             <h4 class="card-title">Piano</h4>
         </div>
         <div class="shadow p-2 mb-3 bg-white rounded">
-          <img src="<?echo base_url() ?>assets/images/percusion.jpg" class="card-img-top" alt="...">
+          <img src="<?php echo base_url() ?>assets/images/percusion.jpg" class="card-img-top" alt="...">
             <h4 class="card-title">Percusion</h4>
         </div>
         <div class="shadow p-2 mb-3 bg-white rounded">
-          <img src="<?echo base_url() ?>assets/images/violin.png" class="card-img-top" alt="...">
+          <img src="<?php echo base_url() ?>assets/images/violin.png" class="card-img-top" alt="...">
             <h4 class="card-title">Violin</h4>
         </div>
 
@@ -90,5 +90,5 @@
 
 
 
-<script src="<?echo base_url() ?>assets/js/admin/bitacora.js?<?echo time_unix(); ?>"></script>
-<script src="<?echo base_url() ?>assets/plugins/carousel/dist/owl.carousel.min.js?<?echo time_unix(); ?>"></script>
+<script src="<?php echo base_url() ?>assets/js/admin/bitacora.js?<?echo time_unix(); ?>"></script>
+<script src="<?php echo base_url() ?>assets/plugins/carousel/dist/owl.carousel.min.js?<?echo time_unix(); ?>"></script>

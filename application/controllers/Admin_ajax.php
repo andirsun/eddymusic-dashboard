@@ -21,6 +21,9 @@ class Admin_ajax extends CI_Controller {
 		$sql = $this->db->select('name')->where('id',$idUser)->get('users')->result()[0];
 		$b['content'] = $sql;
 		$b['response'] = 2;
+		echo '<pre>';
+			var_dump($idUser);
+		echo '</pre>';
 		echo json_encode($b);
 	}
 	public function nameSession(){
@@ -159,7 +162,7 @@ class Admin_ajax extends CI_Controller {
 								'nDay' => $this->input->get('nDay'),
 								'type' => 2
 							);
-							/*cho '<pre>';
+							/*echo '<pre>';
 								echo 'AL estudiante voy a meterlo en la clase';
 								var_dump($idClassHead);
 								var_dump($a);

@@ -41,7 +41,7 @@
         </div>
     </div>
 </div>
-<script src="<?echo base_url() ?>assets/js/admin/cancelaciones.js?<? echo time_unix(); ?>" type="text/javascript"></script>
+<script src="<?php echo base_url() ?>assets/js/admin/cancelaciones.js?<?php echo time_unix(); ?>" type="text/javascript"></script>
 <!--Switches, Documentation in https://gitbrent.github.io/bootstrap4-toggle/-->
 
 <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/js/bootstrap4-toggle.min.js"></script>

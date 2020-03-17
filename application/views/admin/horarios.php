@@ -4,7 +4,7 @@
 ?>
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"> -->
 <link rel="stylesheet"
-	href="<? echo base_url() ?>assets/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css">
+	href="<?php echo base_url() ?>assets/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css">
 <style>
 	.table-responsive form .bootstrap-datetimepicker-widget.dropdown-menu {
 		width: auto !important;
@@ -275,10 +275,10 @@
 	</table>
 </div>
 <script>
-	var firstDayWeek = '<? echo $week_start ?>';
+	var firstDayWeek = '<?php echo $week_start ?>';
 </script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="<?echo base_url() ?>assets/js/moment.min.js"></script>
-<script src="<?echo base_url() ?>assets/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
+<script src="<?php echo base_url() ?>assets/js/moment.min.js"></script>
+<script src="<?php echo base_url() ?>assets/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script> -->
-<script src="<?echo base_url() ?>assets/js/admin/horarios.js?<? echo time_unix(); ?>" type="text/javascript"></script>
+<script src="<?php echo base_url() ?>assets/js/admin/horarios.js?<?php echo time_unix(); ?>" type="text/javascript"></script>
