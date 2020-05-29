@@ -1,5 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
-//Pruebas Con el servidor de hostingerrrrrrrrrrrrrrrr
+
 
 class Admin_ajax extends CI_Controller {
 	private $data;
@@ -559,6 +559,20 @@ class Admin_ajax extends CI_Controller {
 		->update('relStudentClassHead',array('status'=>1));
 		$r['response'] = 2;
 		$r['content'] = 'deleted';
+		echo json_encode($r);
+	}
+	public function changePasswordAccount(){
+		$idUser = $this->input->get('idUser');
+		$pass = do_hash($this->input->get('password'));
+		/* Update password , que update query returns a boolean */
+		$sql = $this->db->set('password',$pass)->where('id',$idUser)->update('users'); 
+		if($sql){
+			$r['response'] = 2;
+			$r['content'] =  $sql;
+		}else{
+			$r['response'] = 1;
+			$r['content'] = "No se pudo actualizar la contraseña";
+		}
 		echo json_encode($r);
 	}
 	public function changeSucursal(){

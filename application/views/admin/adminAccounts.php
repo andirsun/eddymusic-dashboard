@@ -18,7 +18,10 @@
 						<td id="sucursal">Ibague</td>
 						<td id="lastAccess">Hace 4 Horas</td>
 						<td class="d-inline-flex">
-							<button type="button" id="changePassword" class="btn btn-outline-danger ml-4" value=''>
+							<button 
+								type="button"
+								id="changePassword"
+								class="btn btn-outline-danger ml-4">
 								<i class="fas fa-key"></i>
 								Cambiar Contraseña
 							</button>
