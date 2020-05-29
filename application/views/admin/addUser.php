@@ -119,7 +119,7 @@
                         <th scope="col">Nombre completo </th>
                         <th scope="col">Tipo Documento</th>
                         <th scope="col">Documento</th>
-                        <th scope="col">Fecha Cumpleaños</th>
+                        <th scope="col">Cumpleaños</th>
                         <th scope="col">Observaciones </th>
                         <th scope="col">Acciones</th>
                         <th scope="col">Status</th>
@@ -202,16 +202,19 @@
               <td id="birthday"></td>
               <td id="observaciones"></td>
               <td class="d-inline-flex">
-                <button type="button" id="editarUsuario" class="btn btn-warning" value=''>
-                  <i class="fas fa-edit"></i>
+                <button type="button" id="editarUsuario" class="btn btn-light" value=''>
+                  <i class="fas fa-edit" style="color:#FFC53E" ></i>
+                  Editar
                 </button>
                 <?php if ($level==0 || $level==4): ?>
-                    <button type="button" id="borrarUsuario" class="btn btn-danger ml-4" value=''>
-                      <i class="fas fa-trash"></i>
+                    <button type="button" id="borrarUsuario" class="btn btn-ligth ml-4" value=''>
+                      <i class="fas fa-trash" style="color : #F65258"></i>
+                      Borrar
                     </button>
                 <?php endif ?>
-                <a href="#" id="usuarioCalendario"  class="btn btn-primary ml-4" value=''>
-                  <i class="fas fa-calendar"></i>
+                <a href="#" id="usuarioCalendario"  class="btn btn-ligth ml-4" value=''>
+                  <i class="fas fa-calendar" style="color:#0078CB"></i>
+                  Clases
                 </a>
               </td>
               <td id="status">Activo</td>
