@@ -1,54 +1,27 @@
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-  <h1 class="h6">Directorio</h1>
-  <div class="btn-toolbar mb-2 mb-md-1">
-    <div class="btn-group mr-3">
-      <button type="button" class="btn btn-sm btn-outline-secondary">
-        <i class="fas fa-share-alt-square"></i>
-        Compartir
-      </button>
-      <button type="button" class="btn btn-sm btn-outline-secondary">
-        <i class="fas fa-file-export"></i>
-        Exportar
-      </button>
-    </div>
-    <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-      <i class="fas fa-calendar-alt"></i>
-      Desde el inicio
-    </button>
-  </div>
+<div class=" shadow p-3 mb-5 bg-white rounded">
+  <h1>Directorio</h1>
+  <table class="table table-borderless table-hover table-responsive-sm" id="tablaDirectorio">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nombre Completo</th>
+        <th scope="col">Acudiente</th>
+        <th scope="col">Direccion</th>
+        <th scope="col">Telefono Principal</th>
+        <th scope="col">Telefono Opcional</th>
+        <th scope="col">Fecha Cumpleaños</th>
+        <th scope="col">Correo electronico </th>
+        <th scope="col">Tipo de documento</th>
+        <th scope="col">Documento</th>
+        <th scope="col">#Hueller</th>
+        <th scope="col">#Sucursal</th>
+        <th scope="col">#Inscripcion</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
 </div>
-<!-- <div class="form-2-3">
-  <label for="">Buscar Por :  </label>
-    <select id="filterStudent">
-      <option value = "0">Nombre</option>
-      <option value = "1">Tel Principal</option>
-    </select>
-    <label for="caja_busqueda">Buscar : </label>
-    <input type="text" name="caja_busqueda" id="caja_busqueda"> 
-    <div id="buttonSearch" class="btn btn-primary" ><i class="fas fa-search"></i></div>
-</div> -->
-<table class="table table-sm table-striped table-responsive " id="tablaDirectorio">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Nombre Completo</th>
-      <th scope="col">Acudiente</th>
-      <th scope="col">Direccion</th>
-      <th scope="col">Telefono Principal</th>
-      <th scope="col">Telefono Opcional</th>
-      <th scope="col">Fecha Cumpleaños</th>
-      <th scope="col">Correo electronico </th>
-      <th scope="col">Tipo de documento</th>
-      <th scope="col">Documento</th>
-      <th scope="col">#Hueller</th>
-      <th scope="col">#Sucursal</th>
-      <th scope="col">#Inscripcion</th>
-    </tr>
-  </thead>
-  <tbody>
-  </tbody>
-</table>
-
 
 <div class="modal fade" id="modalEditarUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">

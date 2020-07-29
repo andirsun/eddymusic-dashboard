@@ -1,4 +1,3 @@
-<h1>Caracteristica en desarrollo....</h1>
 <div class="container-fluid ">
 	<div class="row">
 		<div class="col-2"></div>
@@ -9,7 +8,7 @@
 						<th>Usuario</th>
 						<th>Sucursal</th>
 						<th>Ultima Modificacion</th>
-						<th>Acciones</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>

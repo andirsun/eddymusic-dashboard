@@ -3,16 +3,15 @@
 
 
 <div class="container-fluid py-2">
-  <h1 class="h2">Regristro de Progresos de los estudiantes</h1>
-  
-  <ul class="nav nav-tabs" id="list-instruments"> <!--Aqui se agregan dinamicamente los instrumentos en los tabs-->
+  <h1 class="h2">Registro de Bitacoras</h1>
+  <ul class="nav nav-tabs" id="list-instruments"> 
   </ul>
   <div class="tab-content" id="tabContentInstruments">
   </div>
 </div>
 
 
-<div class="container-fluid">
+<!-- <div class="container-fluid">
   <div class="row">
     <div class="col-1">
     </div>
@@ -55,7 +54,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
   
 <div class="container-fluid py-2 mt-2 mb-5 shadow p-3 mb-5 bg-white rounded" id="contenido">
   <table  class="table table-borderless table-hover table-responsive-sm" id="tablaBitacoras" >
