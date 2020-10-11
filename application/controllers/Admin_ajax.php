@@ -945,7 +945,14 @@ class Admin_ajax extends CI_Controller {
 	}
 	public function getBitacoras(){
 		$instrumento = $this->input->get('id');
-		$sql = $this->db->select('users.name estudiante ,instrumentos.name instrumento,clases.bitacora bitacora,clases.dateClass fecha,clases.idTeacher profesor')
+		$sql = $this->db
+						->select(
+							'users.name estudiante,
+							instrumentos.name instrumento,
+							clases.bitacora bitacora,
+							clases.dateClass fecha,
+							clases.idTeacher profesor
+						')
 						->where('idInstrument',$instrumento)
 						//->where('clases.bitacora is not null')
 						->where('clases.status',1)
@@ -954,20 +961,22 @@ class Admin_ajax extends CI_Controller {
 						->join('instrumentos','instrumentos.id=clases.idInstrument')
 						->order_by('clases.date desc')
 						->get('clases');
-		/*echo '<pre>';
-		 	var_dump($sql->result());
+		// echo '<pre>';
+		//  	var_dump($sql->result());
 		
-		echo '</pre>';*/
+		// echo '</pre>';
+
+		// If exists Records
 		if($sql->num_rows()>0){
-			
-			$data = array();
-			/*
-			foreach($sql->result() as $key => $c){ // con esto cambio el id del profesor por su nombre en cada registro de la consulta
+			// con esto cambio el id del profesor por su nombre en cada registro de la consulta
+			foreach($sql->result() as $key => $c){ 
+				// Get only the teacher id from every row
 				$idProfesor = $c->profesor;
 				if($idProfesor!=0){
-					$c->profesor = $this->db->select('name')->where('id',$idProfesor)->get('users')->result()[0]->profesor;
+					//Replace de id for the teacher name
+					$c->profesor = $this->db->select('name')->where('id',$idProfesor)->get('users')->result()[0]->name;
 				}
-			}*/
+			}
 			$r['content'] = $sql->result();
 			$r['response']=2;
 		}else{
