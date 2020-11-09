@@ -973,8 +973,13 @@ class Admin_ajax extends CI_Controller {
 				// Get only the teacher id from every row
 				$idProfesor = $c->profesor;
 				if($idProfesor!=0){
-					//Replace de id for the teacher name
-					$c->profesor = $this->db->select('name')->where('id',$idProfesor)->get('users')->result()[0]->name;
+					// get the row of the teacher with the id = $idProfesor
+					$queryTeacher = $this->db->select('name')->where('id',$idProfesor)->get('users')->result();
+					// If exists the techaer in the database';
+					if($queryTeacher){
+						//Replace de id for the teacher name
+						$c->profesor = $queryTeacher[0]->name;
+					}
 				}
 			}
 			$r['content'] = $sql->result();
