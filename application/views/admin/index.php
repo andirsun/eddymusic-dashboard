@@ -125,7 +125,7 @@
 	<!---->
 	<footer>
 
-		<a style="color:white;" href="https://www.andersonlaverde.com"> © 2019 Copyright - Made By Anderson Laverde
+		<a style="color:white;" href="https://www.andersonlaverde.tk"> © 2021 Made By Anderson Laverde
 		</a>
 	</footer>
 	<?php require __DIR__.'/modal.php'; ?>
