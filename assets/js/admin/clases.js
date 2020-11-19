@@ -358,9 +358,10 @@
             var msgContent = $(cardbody).find("#msg-card-class");
             var contentTxt = $(msgContent).find('#text-msg-card-class');
             var dateSelectedWithOptions = $(cardbody).find("#date-select-class").val();
-            // console.log($(cardbody).find("#date-select-class").val())
+            // If is normal class type 0
             if (type == 0) {
-                dateStart = "0000-00-00";
+                // When the type is 0 means normal class an the dateStart doesnt matter
+                dateStart = "1999-11-10";
             } else if (!dateSelectedWithOptions) {
                 classAlert = 'alert-warning';
                 $(contentTxt).html('La fecha es requerida <i class="fas fa-exclamation-triangle"></i>');
@@ -897,7 +898,7 @@
                                 $.each(listClass, function (index, classAvailable) {
                                     
                                     if (classAvailable.dataClass.nDay != 0) {
-                                        
+
                                         var cardClone = $("#card-clone").clone();
                                         $(cardClone).removeAttr('id');
                                         $(cardClone).find('[card-body]').attr('data-nday', classAvailable.dataClass.nDay);
@@ -929,7 +930,7 @@
                                         $(cardClone).find("#name_instrument").text(nameInstrument);
                                         $(cardClone).find("#n_students").text(classAvailable.studentsInscribed);
                                         $(cardClone).find("#n_hours").text(classAvailable.dataClass.hours);
-                                        $(cardClone).find("#day").text(_days[classAvailable.dataClass.nDay]);
+                                        $(cardClone).find("#day").text(_days[classAvailable.dataClass.nDay-1]);
                                         $(cardClone).find("form#formAgendClass #time_send").attr('value', classAvailable.dataClass.time);
                                         $(cardClone).find("form#formAgendClass #nDay").attr('value', classAvailable.dataClass.nDay);
                                         $(cardClone).find("form#formAgendClass #idInstrument").attr('value', classAvailable.dataClass.idInstrument);
