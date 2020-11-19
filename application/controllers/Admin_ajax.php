@@ -41,23 +41,36 @@ class Admin_ajax extends CI_Controller {
 		$idInstrument = $this->input->get('idInstrument');
 		$instrument = $this->db->where('id',$this->input->get('idInstrument'))->get('instrumentos')->result()[0];
 		$hoursRest = $this->mainModel->horasRestantesEstudiante($idUser,$idInstrument);
-		$checkClass = $this->db->select('id')->where('idStudent',$idUser)->where('idClassHead',$idClassHead)->where('type',0)->get('relStudentClassHead');
-		$nAlumns = $this->db->select('COUNT(id) AS n')->where('idClassHead',$idClassHead)->where('type',0)->get('relStudentClassHead')->result()[0]->n; //aqui solo voy a contar los que esten regularmente 
+		// Check if the student is already enrolled in the same class
+		$checkClass = $this->db->select('id')
+														->where('idStudent',$idUser)
+														->where('idClassHead',$idClassHead)
+														->where('type',0)
+														->get('relStudentClassHead');
+		// Count how many alumns are already enrolled in this class
+		$nAlumns = $this->db->select('COUNT(id) AS n')
+												->where('idClassHead',$idClassHead)
+												->where('type',0)
+												->get('relStudentClassHead')
+												->result()[0]->n;  
+
+		//If the user is not enrolled in the current class yet
 		if($checkClass->num_rows()==0){
-			$classHead = $this->db->where('id',$idClassHead)->get('clasesHead');
+			// Get the class head
+			$classHead = $this->db->where('id',$idClassHead)
+														->get('clasesHead');
+			// if the class exists
 			if($classHead->num_rows()>0){
 				$classHead = $classHead->result()[0];
+				
+				// If not is a private class
 				if($classHead->private==0){
+					
+					//If the class has spot to enroll the user
 					if($nAlumns < $instrument->cupos ){
+						
+						// If the student has hours available to enroll the class 
 						if($hoursRest >0){
-							// $a = array(
-							// 	'idStudent' => $idUser,
-							// 	'idClassHead' => $idClassHead,
-							// 	'nHours' => $nHours,
-							// 	'dateStart' => $dateStart,
-							// 	'idInstrument' => $idInstrument
-							// );
-							// $this->db->insert('clases',$a);
 							
 							$a = array(
 								'idStudent' => $idUser,
