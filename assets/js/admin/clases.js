@@ -669,19 +669,6 @@
                                 $(itemClone).removeAttr('id');
                                 $(itemClone).attr('data-id', item.id);
                                 var _h = item.dateStart.split(' ')[1];
-                                /*
-                                if(_h != "00:00:00") {
-                                	var _date_ = new Date();
-                                	var date = new Date(_date_.getFullYear()+' '+_date_.getMonth()+' '+_date_.getDate()+' '+_h);
-                                	if(date.getHours() > 12) {
-                                		_h = (date.getHours() - 12) + ' pm';
-                                	} else if(date.getHours() <= 11) {
-                                		_h = date.getHours() + ' am';
-                                	} else {
-                                		_h = date.getHours() + ' pm';
-                                	}
-                                }
-                                */
                                 var days = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
                                 var _d = item.dateStart.split(' ')[0];
                                 console.log(_d);
@@ -897,68 +884,65 @@
                     console.log(r);
                     if (r.response == 2) {
                         var str = '<h4>Horas restantes: <span id="remaining-hour"></span></h2>';
-                        var _days = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
+                        var _days = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
                         var instrument = r.instrument;
                         var nCupos = instrument.cupos;
                         if (r.content.length) {
                             var listClass = r.content.filter(function (_class) {
-                                return _class.dataClass.idStudent === null; //aca se hace un filtrado de que cuando el el id del estudiante venga en el array de la clase entonces es por que esta matriculado y no le debe mostrar esa clase
+                                //aca se hace un filtrado de que cuando el el id del estudiante venga en el array de la clase entonces es por que esta matriculado y no le debe mostrar esa clase
+                                return _class.dataClass.idStudent === null; 
                             });
-                            console.log("aqui ya no debe estar", listClass);
-                            // console.log('lista de class para inscribir');
-                            // console.log(listClass);
-                            // console.log('lista de clases recibibdas por el servicio');
-                            // console.log(r.content);
                             var nameInstrument = $("#list-instruments a[href='#instrument-" + r.content[0].dataClass.idInstrument + "']").text();
                             if (listClass.length) {
                                 $.each(listClass, function (index, classAvailable) {
-                                    console.log(classAvailable);
-                                    var cardClone = $("#card-clone").clone();
-                                    $(cardClone).removeAttr('id');
-
-                                    $(cardClone).find('[card-body]').attr('data-nday', classAvailable.dataClass.nDay);
-                                    $(cardClone).find('[card-body]').attr('data-time', classAvailable.dataClass.time);
-                                    $(cardClone).find("input#general").attr('name', 'type-' + classAvailable.dataClass.id);
-                                    $(cardClone).find("input#general").attr('id', 'general-' + classAvailable.dataClass.id);
-                                    $(cardClone).find("label[for=general]").attr('for', 'general-' + classAvailable.dataClass.id);
-                                    $(cardClone).find("input#bono").attr('name', 'type-' + classAvailable.dataClass.id);
-                                    $(cardClone).find("input#bono").attr('id', 'bono-' + classAvailable.dataClass.id);
-                                    $(cardClone).find("label[for=bono]").attr('for', 'bono-' + classAvailable.dataClass.id);
-                                    $(cardClone).find("input#reprogramado").attr('name', 'type-' + classAvailable.dataClass.id);
-                                    $(cardClone).find("input#reprogramado").attr('id', 'reprogramado-' + classAvailable.dataClass.id);
-                                    $(cardClone).find("label[for=reprogramado]").attr('for', 'reprogramado-' + classAvailable.dataClass.id);
-                                    var timer = classAvailable.dataClass.time.split(':');
-                                    timer.pop();
-                                    var _hour = Number(timer[0]);
-                                    if (!isNaN(_hour)) {
-                                        if (_hour >= 12) {
-                                            if (_hour > 12) {
-                                                timer[0] = _hour - 12;
+                                    
+                                    if (classAvailable.dataClass.nDay != 0) {
+                                        
+                                        var cardClone = $("#card-clone").clone();
+                                        $(cardClone).removeAttr('id');
+                                        $(cardClone).find('[card-body]').attr('data-nday', classAvailable.dataClass.nDay);
+                                        $(cardClone).find('[card-body]').attr('data-time', classAvailable.dataClass.time);
+                                        $(cardClone).find("input#general").attr('name', 'type-' + classAvailable.dataClass.id);
+                                        $(cardClone).find("input#general").attr('id', 'general-' + classAvailable.dataClass.id);
+                                        $(cardClone).find("label[for=general]").attr('for', 'general-' + classAvailable.dataClass.id);
+                                        $(cardClone).find("input#bono").attr('name', 'type-' + classAvailable.dataClass.id);
+                                        $(cardClone).find("input#bono").attr('id', 'bono-' + classAvailable.dataClass.id);
+                                        $(cardClone).find("label[for=bono]").attr('for', 'bono-' + classAvailable.dataClass.id);
+                                        $(cardClone).find("input#reprogramado").attr('name', 'type-' + classAvailable.dataClass.id);
+                                        $(cardClone).find("input#reprogramado").attr('id', 'reprogramado-' + classAvailable.dataClass.id);
+                                        $(cardClone).find("label[for=reprogramado]").attr('for', 'reprogramado-' + classAvailable.dataClass.id);
+                                        // Set Am or PM
+                                        var timer = classAvailable.dataClass.time.split(':');
+                                        timer.pop();
+                                        var _hour = Number(timer[0]);
+                                        if (!isNaN(_hour)) {
+                                            if (_hour >= 12) {
+                                                if (_hour > 12) {
+                                                    timer[0] = _hour - 12;
+                                                }
+                                                timer = timer.join(':') + ' pm';
+                                            } else {
+                                                timer = timer.join(':') + ' am';
                                             }
-                                            timer = timer.join(':') + ' pm';
-                                        } else {
-                                            timer = timer.join(':') + ' am';
                                         }
+                                        $(cardClone).find("#time").text(timer);
+                                        $(cardClone).find("#name_instrument").text(nameInstrument);
+                                        $(cardClone).find("#n_students").text(classAvailable.studentsInscribed);
+                                        $(cardClone).find("#n_hours").text(classAvailable.dataClass.hours);
+                                        $(cardClone).find("#day").text(_days[classAvailable.dataClass.nDay]);
+                                        $(cardClone).find("form#formAgendClass #time_send").attr('value', classAvailable.dataClass.time);
+                                        $(cardClone).find("form#formAgendClass #nDay").attr('value', classAvailable.dataClass.nDay);
+                                        $(cardClone).find("form#formAgendClass #idInstrument").attr('value', classAvailable.dataClass.idInstrument);
+                                        $(cardClone).find('form#formAgendClass #idClassHead').attr('value', classAvailable.dataClass.id);
+                                        $(cardClone).find('form#formAgendClass #nHours').attr('value', classAvailable.dataClass.hours);
+                                        $(cardClone).find('form#formAgendClass #dateStart').attr('value', classAvailable.dataClass.dateStart);
+                                        //console.log('comparacion 666',classAvailable.studentsInscribed, nCupos, classAvailable.studentsInscribed >= nCupos)
+                                        if (classAvailable.studentsInscribed >= nCupos) {
+                                            $(cardClone).find('#addClassStudent').attr('disabled', 'disabled');
+                                        }
+    
+                                        str += $(cardClone).prop('outerHTML');
                                     }
-                                    $(cardClone).find("#time").text(timer);
-
-                                    $(cardClone).find("#name_instrument").text(nameInstrument);
-                                    $(cardClone).find("#n_students").text(classAvailable.studentsInscribed);
-
-                                    $(cardClone).find("#n_hours").text(classAvailable.dataClass.hours);
-                                    $(cardClone).find("#day").text(_days[classAvailable.dataClass.nDay]);
-                                    $(cardClone).find("form#formAgendClass #time_send").attr('value', classAvailable.dataClass.time);
-                                    $(cardClone).find("form#formAgendClass #nDay").attr('value', classAvailable.dataClass.nDay);
-                                    $(cardClone).find("form#formAgendClass #idInstrument").attr('value', classAvailable.dataClass.idInstrument);
-                                    $(cardClone).find('form#formAgendClass #idClassHead').attr('value', classAvailable.dataClass.id);
-                                    $(cardClone).find('form#formAgendClass #nHours').attr('value', classAvailable.dataClass.hours);
-                                    $(cardClone).find('form#formAgendClass #dateStart').attr('value', classAvailable.dataClass.dateStart);
-                                    //console.log('comparacion 666',classAvailable.studentsInscribed, nCupos, classAvailable.studentsInscribed >= nCupos)
-                                    if (classAvailable.studentsInscribed >= nCupos) {
-                                        $(cardClone).find('#addClassStudent').attr('disabled', 'disabled');
-                                    }
-
-                                    str += $(cardClone).prop('outerHTML');
                                 });
                             } else {
                                 str += '<h5>No hay clases disponibles para inscribir</h5>';
