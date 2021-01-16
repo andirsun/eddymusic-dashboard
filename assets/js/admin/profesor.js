@@ -219,7 +219,10 @@ function getTeachers() {
 		url: base_url + 'admin_ajax/getTeachers',
 		type: 'GET',
 		dataType: 'json',
-		beforeSend: function () {},
+		beforeSend: function () {
+			//Destroy table if exists to reinitialize the data
+			$('#tablaProfesores').DataTable().destroy();
+		},
 		success: function (r) {
 			var table = $('#tablaProfesores').find("tbody");
 			var str = '';
