@@ -206,6 +206,17 @@ class Admin_ajax extends CI_Controller {
 		echo json_encode($r);
 		
 	}
+	public function activeUser(){
+		$id = $this->input->get('id');
+		$this->db->set('active',1)
+							->where('id',$id)
+							->update('users');
+		// Register Log
+		$this->mainModel->addLog('User Activated','',$id);
+		$r['response'] = 2;
+		$r['content'] = 'Activated';
+		echo json_encode($r);
+	}
 	public function addHeadClass(){
 		$idInstrument = $this->input->get('idInstrument');
 		$nHours = 1;
@@ -681,13 +692,24 @@ class Admin_ajax extends CI_Controller {
 	}
 	public function deleteUser(){
 		$id = $this->input->get('id');
-		//$sql = $this->db->where('idUser',$id)->delete('userRelInstrument');
-		
-		//$sql = $this->db->where('id',$id)->delete('users'); //ya no se eliminaran los usuarios si no que se desactivaran
-		$this->db->set('active',0)->where('idUser')->update('users');
-		$this->mainModel->addLog('Usuario Desactivado','',$id);
+		$this->db->set('deleted',1)
+							->where('id',$id)
+							->update('users');
+		// Register Log
+		$this->mainModel->addLog('Usuario eliminado','',$id);
 		$r['response'] = 2;
 		$r['content'] = 'deleted';
+		echo json_encode($r);
+	}
+	public function disableUser(){
+		$id = $this->input->get('id');
+		$this->db->set('active',0)
+							->where('id',$id)
+							->update('users');
+		// Register Log
+		$this->mainModel->addLog('User disabled','',$id);
+		$r['response'] = 2;
+		$r['content'] = 'disable';
 		echo json_encode($r);
 	}
 	public function deleteClassHistoryStudent(){

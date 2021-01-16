@@ -13,7 +13,8 @@ var dataTableOptions = {
 	},
 };
 $(function () {
-	console.log(666);
+	activeTeacher();
+	disableTeacher();
 	clearInputFileCv();
 	checkDoucument();
 	sendTeacher();
@@ -102,9 +103,59 @@ function deleteTeacher() {
 			beforeSend: function () {},
 			success: function (r) {
 				if (r.response == 2) {
+					alert("Profesor Eliminado");
+				}
+				getTeachers();
+
+			},
+			error: function (xhr, status, msg) {
+				console.log(xhr.responseText);
+			}
+		});
+	});
+}
+
+function disableTeacher() {
+	$("body").on("click", "#tablaProfesores #disableTeacher", function (event) {
+		idTeacher = $(this).attr("value");
+		$.ajax({
+			url: base_url + 'admin_ajax/disableUser',
+			type: 'GET',
+			dataType: 'json',
+			data: {
+				id: idTeacher
+			},
+			beforeSend: function () {},
+			success: function (r) {
+				if (r.response == 2) {
 					alert("Profesor Desactivado");
 				}
-				getTeachers(); //para volver a refrezcar la tabla con el profesor ya eliminado
+				getTeachers();
+
+			},
+			error: function (xhr, status, msg) {
+				console.log(xhr.responseText);
+			}
+		});
+	});
+}
+
+function activeTeacher() {
+	$("body").on("click", "#tablaProfesores #activeTeacher", function (event) {
+		idTeacher = $(this).attr("value");
+		$.ajax({
+			url: base_url + 'admin_ajax/activeUser',
+			type: 'GET',
+			dataType: 'json',
+			data: {
+				id: idTeacher
+			},
+			beforeSend: function () {},
+			success: function (r) {
+				if (r.response == 2) {
+					alert("Profesor activado");
+				}
+				getTeachers();
 
 			},
 			error: function (xhr, status, msg) {
@@ -168,21 +219,20 @@ function getTeachers() {
 		url: base_url + 'admin_ajax/getTeachers',
 		type: 'GET',
 		dataType: 'json',
-		beforeSend: function () {
-
-		},
+		beforeSend: function () {},
 		success: function (r) {
 			var table = $('#tablaProfesores').find("tbody");
 			var str = '';
 			$.each(r.content, function (index, el) {
-				if(el.active ==1 ){
-					el.active = "Activo"
-				}else{
-					el.active ="Desactivado"
-				}
+
 				str +=
 					'<tr>' +
 					'<th scope="row">' + el.id + '</th>' +
+					(
+						el.active == 1 ? 
+						'<th><span class="badge badge-success">Activo</span></th>'	
+						: '<th><span class="badge badge-danger">Inactivo</span></th>'
+					)+
 					'<td>' + el.name + '</td>' +
 					'<td>' + el.document + '</td>' +
 					'<td>' + el.tel + '</td>' +
@@ -190,10 +240,17 @@ function getTeachers() {
 					'<td>' + el.email + '</td>' +
 					'<td>' + '<button type="button"' + 'value ="' + el.id + '"class="btn btn-danger" id="btn-modal-cv">Hoja de vida<i class="far fa-file-pdf ml-2"></i></button>' + '</td>' +
 					'<td>' +
-					'<div id="editarUsuario" class="btn btn-warning mr-2" value=' + el.id + ' data-toggle="modal" data-target="#modalEditarUser"><i class="fas fa-edit"></i></div>' +
-					((level == 0 || level == 4) ? '<div id="borrarUsuario" class="btn btn-danger" value=' + el.id + '><i class="fas fa-trash"></i></div>' : '') +
+					'<div id="editarUsuario" class="mr-2" value=' + el.id + ' data-toggle="modal" data-target="#modalEditarUser"><i class="fas fa-edit"></i></div>' +
+					// If the current user are admin
+					((level == 0 || level == 4) ? 
+						'<div id="borrarUsuario" value=' + el.id + '><i class="fas fa-trash"></i></div>': '') +
+					(
+						(level == 0 || level == 4) && el.active == 1 ? 
+							'<div id="disableTeacher" style="color:red" value=' + el.id + '><i class="fas fa-user-slash"></i></div>'
+							: 
+							'<div id="activeTeacher" style="color:green" value=' + el.id + '><i class="fas fa-user-plus"></i></div>'
+					) +
 					'</td>' +
-					'<td>' + el.active + '</td>' +
 					'</tr>';
 			});
 			$(table).html(str);

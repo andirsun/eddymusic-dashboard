@@ -1,16 +1,17 @@
 <ul class="nav nav-pills mb-3 mt-2 nav-justified" id="pills-tab" role="tablist">
 	<li class="nav-item">
-		<a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+		<a class="nav-link " id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
 			aria-controls="pills-home" aria-selected="true">Añadir Nuevo Profesor</a>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+		<a class="nav-link active" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
 			aria-controls="pills-profile" aria-selected="false">Lista de Profesores</a>
 	</li>
-
 </ul>
+
 <div class="tab-content" id="pills-tabContent">
-	<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+
+	<div class="tab-pane fade " id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
 		<div class="container">
 			<div class="shadow p-3 mb-5 bg-white rounded">
 				<h2>Formulario Docentes</h2>
@@ -82,8 +83,7 @@
 		</div>
 	</div>
 
-
-	<div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+	<div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
 		<div
 			class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 			<h1 class="h2">Listado de Profesores</h1>
@@ -93,6 +93,7 @@
 				<thead>
 					<tr>
 						<th scope="col">#</th>
+						<th scope="col"></th>
 						<th scope="col">Nombre</th>
 						<th scope="col">Documento</th>
 						<th scope="col">Celular</th>
@@ -100,7 +101,6 @@
 						<th scope="col">Email</th>
 						<th scope="col">H.V</th>
 						<th scope="col">Acciones</th>
-						<th scope="col">Status</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -110,6 +110,7 @@
 	</div>
 
 </div>
+
 <button type="hidden" hidden data-toggle="modal" data-target=".bd-example-modal-lg" id="btn-open-modal-cv"></button>
 <!-- Modal para ver el archivo pdf de la hoja de vida usuario -->
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
@@ -144,5 +145,6 @@
 		</div>
 	</div>
 </div>
+
 <script type="text/javascript"></script>
 <script src="<?php echo base_url() ?>assets/js/admin/profesor.js?<?php echo time_unix(); ?>"></script>
