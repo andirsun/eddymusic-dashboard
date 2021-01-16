@@ -1104,13 +1104,22 @@ class Admin_ajax extends CI_Controller {
 		echo json_encode($r);
 	}
 	public function getUsers(){ //Para llenar la tabla de los usuarios
-		$sql = $this->db->where('level',3)->where('idSucursal',$_SESSION['sucursal'])->order_by('name asc')->get('users'); //ordena pro orden alfabetico
+		$sql = $this->db->where('level',3)
+										->where('idSucursal',$_SESSION['sucursal'])
+										->where('deleted',0)
+										->order_by('name asc')
+										->get('users');
 		$r['response'] = 2;
 		$r['content'] = $sql->result();
 		echo json_encode($r);
 	}
-	public function getTeachers(){ //Para llenar la tabla de los usuarios
-		$sql = $this->db->where('level',2)->where('idSucursal',$_SESSION['sucursal'])->order_by('name asc')->get('users'); //ordena pro orden alfabetico
+	public function getTeachers(){
+		//level 2 is for teachers
+		$sql = $this->db->where('level',2)
+										->where('idSucursal',$_SESSION['sucursal'])
+										->where('deleted',0)
+										->order_by('name asc')
+										->get('users');
 		$r['response'] = 2;
 		$r['content'] = $sql->result();
 		echo json_encode($r);
