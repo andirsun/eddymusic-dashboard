@@ -130,7 +130,6 @@
 	</footer>
 	<?php require __DIR__.'/modal.php'; ?>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-143760552-1"></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
 
