@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Academia Eddy Music</title>
+    <title>Eddy Music 2021</title>
 
     <!-- CSS only -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -25,9 +25,9 @@
           <div class="card" style="width: 18rem;">
             <img class="card-img-top" src="<?php echo base_url() ?>assets/images/ibague.jpg" alt="Card image cap" height="200">
             <div class="card-body">
-              <h5 class="card-title">♪ Sede Ibague ♪</h5>
+              <h5 class="card-title">Sede Ibague</h5>
               <p class="card-text">♫ Somos mas que solo musica ♫</p>
-              <a href="<?php echo base_url() ?>login/login" class="btn btn-warning">Iniciar ♫</a>
+              <a href="<?php echo base_url() ?>login/login" class="btn btn-warning">Iniciar</a>
             </div>
           </div>
         </div>
@@ -35,9 +35,9 @@
           <div class="card" style="width: 18rem;">
             <img class="card-img-top" src="<?php echo base_url() ?>assets/images/armenia.jpg" alt="Card image cap" height="200">
             <div class="card-body">
-              <h5 class="card-title">♪ Sede Armenia ♪</h5>
+              <h5 class="card-title">Sede Armenia</h5>
               <p class="card-text">♫ Somos mas que solo musica ♫</p>
-              <a href="<?php echo base_url() ?>login/login" class="btn btn-warning">Iniciar ♫</a>
+              <a href="<?php echo base_url() ?>login/login" class="btn btn-warning">Iniciar</a>
             </div>
           </div>
         </div>
@@ -45,9 +45,19 @@
           <div class="card" style="width: 18rem;">
             <img class="card-img-top" src="<?php echo base_url() ?>assets/images/pitalito.jpg" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">♪ Sede Pitalito ♪</h5>
+              <h5 class="card-title">Sede Pitalito</h5>
               <p class="card-text">♫ Somos mas que solo musica ♫</p>
-              <a href="<?php echo base_url() ?>login/login" class="btn btn-warning">Iniciar ♫</a>
+              <a href="<?php echo base_url() ?>login/login" class="btn btn-warning">Iniciar</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="<?php echo base_url() ?>assets/images/pitalito.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Sede Pereira</h5>
+              <p class="card-text">♫ Somos mas que solo musica ♫</p>
+              <a href="<?php echo base_url() ?>login/login" class="btn btn-warning">Iniciar</a>
             </div>
           </div>
         </div>
