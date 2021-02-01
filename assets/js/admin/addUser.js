@@ -11,27 +11,30 @@ var dataTableOptions = {
 		'paginate': {
 			'previous': '<',
 			'next': '>'
-		}
+		},
+		'order': [[ 2, 'desc' ]],
 	},
 };
 
 $(function () {
+	activeStudent();
+	disableStudent();
 	getInstruments();
 	getUsers();
 	checkDoucument();
 	sendUser();
 	changeType();
-	confirmarEliminar();
+	deleteStudent();
 	editarUsuario();
 	handleClasesUser();
 	selectTypeDocumentToEdit();
 	cancelEditUser();
 });
 
-function confirmarEliminar() {
+function deleteStudent() {
 	$("body").on("click", "#tablaEstudiantes #borrarUsuario", function (event) {
 		idseleccion = $(this).attr("value");
-		if (confirm('Seguro Quieres Eliminar Al Estudiante??')) {
+		if (confirm('Confirmar')) {
 			$.ajax({
 				url: base_url + 'admin_ajax/deleteUser',
 				type: 'GET',
@@ -44,7 +47,61 @@ function confirmarEliminar() {
 					if (r.response == 2) {
 						alert("Usuario Eliminado");
 					}
-					getUsers(); //para volver a cargar la tabla
+					getUsers();
+
+				},
+				error: function (xhr, status, msg) {
+					console.log(xhr.responseText);
+				}
+			});
+		}
+	});
+}
+
+function disableStudent() {
+	$("body").on("click", "#tablaEstudiantes #disableStudent", function (event) {
+		idStudent = $(this).attr("value");
+		if (confirm('Confirmar')) {
+			$.ajax({
+				url: base_url + 'admin_ajax/disableUser',
+				type: 'GET',
+				dataType: 'json',
+				data: {
+					id: idStudent
+				},
+				beforeSend: function () {},
+				success: function (r) {
+					if (r.response == 2) {
+						alert("Usuario Inactivado");
+					}
+					getUsers();
+
+				},
+				error: function (xhr, status, msg) {
+					console.log(xhr.responseText);
+				}
+			});
+		}
+	});
+}
+
+function activeStudent() {
+	$("body").on("click", "#tablaEstudiantes #activeStudent", function (event) {
+		idStudent = $(this).attr("value");
+		if (confirm('Confirmar')) {
+			$.ajax({
+				url: base_url + 'admin_ajax/activeUser',
+				type: 'GET',
+				dataType: 'json',
+				data: {
+					id: idStudent
+				},
+				beforeSend: function () {},
+				success: function (r) {
+					if (r.response == 2) {
+						alert("Usuario Activado");
+					}
+					getUsers();
 
 				},
 				error: function (xhr, status, msg) {
@@ -186,17 +243,15 @@ function getUsers() {
 		url: base_url + 'admin_ajax/getUsers',
 		type: 'GET',
 		dataType: 'json',
-		beforeSend: function () {},
+		beforeSend: function () {
+			//Destroy table if exists to reinitialize the data
+			$('#tablaEstudiantes').DataTable().destroy();
+		},
 		success: function (r) {
-			// console.log('list users \n', r);
 			var tableBody = $('#tablaEstudiantes').find("tbody");
 			var str = buildTrUser(r.content);
 			$(tableBody).html(str);
-			table = $("#tablaEstudiantes").DataTable( {
-				"order": [[ 1, "desc" ]],
-				
-			} );
-			// console.log(table);
+			table = $("#tablaEstudiantes").DataTable(dataTableOptions);
 		},
 		error: function (xhr, status, msg) {
 			console.log(xhr.responseText);
@@ -323,22 +378,24 @@ function buildTrUser(listUser) {
 		if (el.birthday != "0000-00-00" && el.birthday != null) {
 			birthday = el.birthday;
 		}
-		if(el.active == 1){
-			el.active = "Activo"
-		}else{
-			el.active = "Desactivado"
+		if (el.active == 1) {
+			$(tr).find('#statusd').html('<span class="badge badge-success">Activo</span>');
+			$(tr).find('#switchStatus').html('<div id="disableStudent" class="btn" style="color:red" value=' + el.id + '><i class="fas fa-user-slash"></i></div>');
+		} else {
+			$(tr).find('#statusd').html('<span class="badge badge-danger">Inactivo</span>');
+			$(tr).find('#switchStatus').html('<div id="activeStudent" class="btn" style="color:green" value=' + el.id + '><i class="fas fa-user-plus"></i></div>');
 		}
 		$(tr).removeAttr('id');
 		$(tr).attr('data-id', el.id);
 		$(tr).find('#id_user').text(el.id);
 		$(tr).find('#idHuellero').text(el.idHuellero);
 		$(tr).find('#name').text(el.name);
+		$(tr).find('data-id', el.id);
 		$(tr).find('#type_document').text(typeDocumentList[el.type_document]);
 		$(tr).find('#document').text(el.document);
 		$(tr).find('#birthday').text(birthday);
 		$(tr).find('#observaciones').text(el.observaciones);
 		$(tr).find('#editarUsuario').attr('value', el.id);
-		$(tr).find('#status').text(el.active);
 		$(tr).find('#borrarUsuario').attr('value', el.id);
 		$(tr).find("#usuarioCalendario").attr('href', base_url + 'admin/nav/clasesStudent/' + el.id);
 		$(tr).find("#usuarioCalendario").attr('value', el.id);

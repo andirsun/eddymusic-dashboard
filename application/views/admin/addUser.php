@@ -123,6 +123,7 @@
 				<thead>
 					<tr>
 						<th scope="col">ID</th>
+						<th scope="col"></th>
 						<th scope="col">numHuellero</th>
 						<th scope="col">Nombre completo </th>
 						<th scope="col">Tipo Documento</th>
@@ -130,7 +131,6 @@
 						<th scope="col">Cumpleaños</th>
 						<th scope="col">Observaciones </th>
 						<th scope="col">Acciones</th>
-						<th scope="col">Status</th>
 					</tr>
 				</thead>
 				<tbody></tbody>
@@ -201,6 +201,7 @@
 		<tbody>
 			<tr id="trClone">
 				<th scope="row" id="id_user"></th>
+				<th id="statusd"></th>
 				<td id="idHuellero"></td>
 				<td id="name"></td>
 				<td id="type_document"></td>
@@ -208,22 +209,19 @@
 				<td id="birthday"></td>
 				<td id="observaciones"></td>
 				<td class="d-inline-flex">
-					<button type="button" id="editarUsuario" class="btn btn-light" value=''>
-						<i class="fas fa-edit" style="color:#FFC53E"></i>
-						Editar
+					<button type="button" id="editarUsuario" class="btn" value=''>
+						<i class="fas fa-edit"></i>
 					</button>
 					<?php if ($level==0 || $level==4): ?>
-					<button type="button" id="borrarUsuario" class="btn btn-ligth ml-4" value=''>
-						<i class="fas fa-trash" style="color : #F65258"></i>
-						Borrar
-					</button>
+						<button type="button" id="borrarUsuario" class="btn" value=''>
+							<i class="fas fa-trash"></i>
+						</button>
+						<div id="switchStatus"></div>
 					<?php endif ?>
-					<a href="#" id="usuarioCalendario" class="btn btn-ligth ml-4" value=''>
+					<a href="#" id="usuarioCalendario" class="btn" value=''>
 						<i class="fas fa-calendar" style="color:#0078CB"></i>
-						Clases
 					</a>
 				</td>
-				<td id="status">Activo</td>
 			</tr>
 		</tbody>
 	</table>
