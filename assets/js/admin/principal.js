@@ -67,6 +67,9 @@ function setNombreSucursal() {
 			if (r.content == 3) {
 				name = 'Pitalito';
 			}
+			if (r.content == 4) {
+				name = 'Pereira';
+			}
 			if (r.response == 2) {
 				$("#nombreSucursal").html('<i class="fas fa-map-marker fa-2x mt-1" style="color:#FF3232"></i> Sucursal <h2 style="color:#FF3232">' + name + '</h2>');
 
