@@ -18,8 +18,6 @@
 	<link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/css/bootstrap4-toggle.min.css"
 		rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-	<link rel="stylesheet"
-		href="<?php echo base_url() ?>assets/plugins/carousel/dist/assets/owl.carousel.min.css?<?php echo time_unix(); ?>">
 	<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/simple-sidebar.css?<?php echo time_unix(); ?>">
 	<link rel="icon" href="<?php echo base_url()?>assets/images/miniicono.png">
 </head>
@@ -96,9 +94,6 @@
 	</div>
 	<!--PANTALLA PARA CAMBIO DE SUSUCURSAL-->
 	<div class="headquarters" id="content-headquarters">
-		<video autoplay muted loop id="myVideo" class="video">
-			<source src="<?php echo base_url() ?>assets/headquartes/guitarra.webm" type="video/mp4">
-		</video>
 		<button type="button" class="btn-close-list-headers" id="btn-close-headquarters">
 			<i class="fas fa-times"></i>
 		</button>
@@ -148,8 +143,10 @@
 	</script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js">
-	</script>
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+	<script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+	<script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css"/>
 	<script src="<?php echo base_url() ?>assets/js/plugins/jquery-number/jquery.number.min.js"></script>
 	<script src="<?php echo base_url() ?>assets/js/admin/principal.js?<?php echo time_unix(); ?>"></script>
 </body>
