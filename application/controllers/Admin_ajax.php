@@ -599,6 +599,21 @@ class Admin_ajax extends CI_Controller {
 		}
 		echo json_encode($r);
 	}
+	public function createUser(){
+		$sucursalId = $this->input->get('sucursal');
+		$userLevel = $this->input->get('level');
+		$username = $this->input->get('userName');
+		$pass = do_hash($this->input->get('password'));
+		$a = array(
+			'name' => $username,
+			'level' => $userLevel,
+			'password' => $pass,
+			'idSucursal' => $sucursalId,
+		);
+		$this->db->insert('users',$a);
+		$r['response'] = "OK";
+		echo json_encode($r);
+	}
 	public function changeSucursal(){
 		$idSucursal = $this->input->get('idSucursal');
 		//if($_SESSION['data_user']['level']==0)		{
