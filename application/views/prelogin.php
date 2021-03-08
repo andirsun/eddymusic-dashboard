@@ -23,7 +23,7 @@
   
         <div class="col">
           <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="<?php echo base_url() ?>assets/images/ibague.jpg" alt="Card image cap" height="200">
+            <img class="card-img-top" src="<?php echo base_url() ?>assets/images/academias/ibague.jpg" alt="Card image cap" height="200">
             <div class="card-body">
               <h5 class="card-title">Sede Ibague</h5>
               <p class="card-text">♫ Somos mas que solo musica ♫</p>
@@ -33,7 +33,7 @@
         </div>
         <div class="col">
           <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="<?php echo base_url() ?>assets/images/armenia.jpg" alt="Card image cap" height="200">
+            <img class="card-img-top" src="<?php echo base_url() ?>assets/images/academias/armenia.jpg" alt="Card image cap" height="200">
             <div class="card-body">
               <h5 class="card-title">Sede Armenia</h5>
               <p class="card-text">♫ Somos mas que solo musica ♫</p>
@@ -43,7 +43,7 @@
         </div>
         <div class="col">
           <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="<?php echo base_url() ?>assets/images/pitalito.jpg" alt="Card image cap">
+            <img class="card-img-top" src="<?php echo base_url() ?>assets/images/academias/pitalito.jpg" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">Sede Pitalito</h5>
               <p class="card-text">♫ Somos mas que solo musica ♫</p>
@@ -53,7 +53,7 @@
         </div>
         <div class="col">
           <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="<?php echo base_url() ?>assets/images/pitalito.jpg" alt="Card image cap">
+            <img class="card-img-top" src="<?php echo base_url() ?>assets/images/academias/pereira.jpg" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">Sede Pereira</h5>
               <p class="card-text">♫ Somos mas que solo musica ♫</p>
