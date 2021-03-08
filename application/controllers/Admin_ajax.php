@@ -898,6 +898,7 @@ class Admin_ajax extends CI_Controller {
 						->where('level',0)
 						->or_where('level',1)
 						->or_where('level',4)
+						->or_where('level',5)
 						->join('sucursales','sucursales.id=users.idSucursal')
 						->get('users');
 						
