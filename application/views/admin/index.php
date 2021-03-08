@@ -62,18 +62,24 @@
 								Acciones
 							</a>
 							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-								<?php if ($level==0): ?>
+								<!-- If the user is 'admin' or 'contador' role, the profile can change between sucursales  -->
+								<?php if ($level==0 || $level==5): ?>
 								<a id="btnHeadquaters" class="dropdown-item">
 									<img style="height: 45px;width: 45px;"
 										src="<?php echo base_url() ?>assets/images/icons/sucursal.svg">
 									Cambiar Susursal
 								</a>
-								<a class="dropdown-item" data-active="addUser"
-									href="<?php echo base_url() ?>admin/nav/adminAccounts">
-									<img style="height: 45px;width: 45px;"
-										src="<?php echo base_url() ?>assets/images/icons/cuentas.svg">
-									Cuentas
-								</a>
+								
+								<?php endif ?>
+								<?php if ($level==0): ?>
+									<a class="dropdown-item" data-active="addUser"
+										href="<?php echo base_url() ?>admin/nav/adminAccounts"
+									>
+										<img style="height: 45px;width: 45px;"
+											src="<?php echo base_url() ?>assets/images/icons/cuentas.svg"
+										>
+											Cuentas
+									</a>
 								<?php endif ?>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="<?php echo base_url() ?>login/logout">
