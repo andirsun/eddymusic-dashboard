@@ -328,13 +328,10 @@ function formAddHeadClass() {
 
 function getTeachers(func) {
     $.ajax({
-        url: base_url + 'admin_ajax/getUserLevel',
+        url: base_url + 'admin_ajax/getTeachers',
         type: 'GET',
         dataType: 'json',
         async: false,
-        data: {
-            level: 2
-        },
         success: function (r) {
             console.log('listprofesors');
             console.log(r);
@@ -810,9 +807,6 @@ function sendTeacher() {
         var form = this;
         var d = new Date();
         var currentDate = $('input#dateformAddHeadClass').val();
-        // d.getFullYear()+'-'+
-        // (d.getMonth()+1 < 10 ? '0'+(d.getMonth()+1) : (d.getMonth()+1))+'-'+
-        // (d.getDate() < 10 ? '0'+d.getDate() : d.getDate());
 
         var data = {
             idStudent: $(form).find("#idStudent").val(),
