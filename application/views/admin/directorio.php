@@ -107,4 +107,3 @@
   </table>
 </div>
 <script src="<?php echo base_url() ?>assets/js/admin/directorio.js?<?php echo time_unix(); ?>"></script>
-<!--Aca acaba la tabla para ver las bitacoras -->

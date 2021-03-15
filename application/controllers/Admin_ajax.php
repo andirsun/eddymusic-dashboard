@@ -1154,10 +1154,10 @@ class Admin_ajax extends CI_Controller {
 	public function getTeachers(){
 		//level 2 is for teachers
 		$sql = $this->db->where('level',2)
-										->where('idSucursal',$_SESSION['sucursal'])
-										->where('deleted',0)
-										->order_by('name asc')
-										->get('users');
+						->where('idSucursal',$_SESSION['sucursal'])
+						->where('deleted',0)
+						->order_by('name asc')
+						->get('users');
 		$r['response'] = 2;
 		$r['content'] = $sql->result();
 		echo json_encode($r);
