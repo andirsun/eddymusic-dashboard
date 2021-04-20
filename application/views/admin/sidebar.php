@@ -2,6 +2,13 @@
 	<li class="nav-item shadow mt-1 mb-1 ml-2 mr-2 bg-white rounded text-center " id="nombreSucursal"></li>
 	<!-- If the User is a 'Contador' profile, only can view the Ingresos and Egresos menu -->
 	<?php if ($level==5): ?>
+		<li class="nav-item" id="botonAlumno">
+			<a class="nav-link" data-active="addUser" href="<?php echo base_url() ?>admin/nav/addUser">
+				<img style="height: 45px;width: 45px;" src="<?php echo base_url() ?>assets/images/icons/alumno.svg">
+				Alumnos
+				<span class="sr-only">(current)</span>
+			</a>
+		</li>
 		<li class="nav-item" id="botonIngresos">
 			<a class="nav-link" data-active="ingresos" href="<?php echo base_url() ?>admin/nav/ingresos">
 				<img style="height: 45px;width: 45px;" src="<?php echo base_url() ?>assets/images/icons/ingresos.svg">
@@ -12,6 +19,12 @@
 			<a class="nav-link" data-active="egresos" href="<?php echo base_url() ?>admin/nav/egresos">
 				<img style="height: 45px;width: 45px;" src="<?php echo base_url() ?>assets/images/icons/egresos.svg">
 				Egresos
+			</a>
+		</li>
+		<li class="nav-item" id="directorio">
+			<a class="nav-link " data-active="directorio" href="<?php echo base_url() ?>admin/nav/directorio">
+				<img style="height: 45px;width: 45px;" src="<?php echo base_url() ?>assets/images/icons/directorio.svg">
+				Directorio
 			</a>
 		</li>
 	<?php else: ?>
